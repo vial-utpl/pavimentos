@@ -1,0 +1,159 @@
+﻿.login-body {
+    background:  rgba(255, 255, 255, 1) url("../Images/backgrd1.jpg") no-repeat fixed;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.register-body {
+    background: url("../Images/backgrd2.jpg") no-repeat fixed;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.login-body .about-details {
+    overflow: visible;
+}
+
+.register-header {
+    margin-top: 36px;
+    padding: 1em;
+    color: #fff;
+}
+
+.login-header {
+    padding: .5em;
+    color: #fff;
+}
+
+/*
+#login-container:after {
+    content: "";
+      width: 1000%;
+      height: 100%;
+      background: rgba(63, 63, 63, 0.75);
+      position: absolute;
+      left: 97.3%;
+      top: 0;
+}
+    */
+
+.register-header h1, .login-header h1 {
+    font-size: 84px;
+    text-shadow: 3px 3px 3px #333;
+}
+
+.login-header h1 {
+    color: #ffe401;
+}
+
+.register-header p, .login-header p {
+    font-size: 36px;
+    text-shadow: 2px 2px 2px #333;
+}
+
+#navigation-in .navbar {
+    background-color: #0c0b0b;
+    opacity: 0.75;
+    margin-bottom: 0;
+}
+
+#navigation-in .navbar li a {
+      font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  padding: 18px 28px;
+  font-family: 'Advent Pro', sans-serif;
+}
+
+#navigation-in .navbar li:first-child a {
+  padding: 18px 28px 18px 4px;
+}
+
+#navigation-in .navbar li a.border:after {
+	color: #E3E3E3;
+	content: "|";
+	font-size: 12px;
+	position:absolute;
+	top:19px;
+	right:0;
+}
+
+.about-details-register .about-content, #login-container .about-content {
+    padding: 2em 2em;
+}
+
+#login-container .about-details, #lostPass-container .about-details{
+    height: 100%;
+}
+
+#lostPass-container .about-content {
+    padding: 17px 50px 36px;
+}
+
+form .about-details-register, form .about-details {
+    margin-top: 36px;
+}
+
+form .about-details-register .form-control,  form .about-details .form-control {
+    min-height: 40px;
+    color: #454545;
+}
+
+.landing-header {
+    background: #1E1E1E;
+    padding: 0 0 4px;
+}
+
+.landing-header a:hover {
+    color: #fff;
+}
+
+.about-bg {
+    z-index: -1000;
+}
+
+.dark-link {
+    color: #333;
+}
+
+.dark-link:hover {
+    color: #2B2B2B;
+}
+/* Body */
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+.outer-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+#content {
+}
+
+/* Footer */
+#footer {
+    min-height: 140px;
+    width: 100%;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}

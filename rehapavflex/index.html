@@ -1,0 +1,3660 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Plantilla
+	</title>
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="./Content/oneclick/Scripts/jquery/jquery-3.1.1.js"></script>
+	<script src="./Content/oneclick/Scripts/bootstrap/bootstrap.min.js"></script>
+	<script src="./Content/oneclick/Scripts/jquery/jquery-ui-1.11.4.min.js"></script>
+	<script src="./Content/oneclick/Scripts/jquery/jquery.validate.min.js"></script>
+	<script src="./Content/oneclick/Scripts/jquery/jquery.validate.unobtrusive.min.js"></script>
+	<script src="./Content/oneclick/Scripts/jquery/jquery.unobtrusive-ajax.min.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/jquery-totemticker/jquery.totemticker.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/jquery-resize/jquery.ba-resize.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/jquery-blockui/jquery.blockUI.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/jquery-niftymodal/js/classie.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/jquery-niftymodal/js/modalEffects.js"></script>
+	<link href="./Content/oneclick/Content/assets/plugins/jquery-niftymodal/css/component.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/jquery-datatables/css/dataTables.bootstrap.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/jquery-jvectormap/jquery-jvectormap.css" rel="stylesheet"/>
+	<!--Javascript-->
+	<script src="./js/Chart.js"></script>
+	<script src="./js/chartjs-plugin-datalabels.js"></script>
+	<script src="./Graficas/SNfuturo.js"></script>
+	<script src="./Graficas/EpMr.js"></script>
+	<script src="./Graficas/graficaME.js"></script>
+	<script src="./Graficas/BaseGranular.js"></script>
+	<script src="./Graficas/BaseCemento.js"></script>
+	<script src="./js/psicoord.js"></script>
+	<script src="./Graficas/Ndt.js"></script>
+	<script src="./Graficas/CF.js"></script>
+	<script src="js/ControlTablas.js" type="text/javascript"></script>
+	<script src="js/Calculos.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/redi.js"></script>
+	<!-- Estilos -->
+	<script src="./Content/oneclick/Content/assets/plugins/pace/pace.min.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/icheck/icheck.min.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/switchery/switchery.min.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/select2/select2.js"></script>
+	<script src="./Content/oneclick/Content/assets/plugins/bootstrap-slider/js/bootstrap-slider.js"></script>
+	<script src="./Content/oneclick/Content/assets/js/form.js"></script>
+	<script src="./Content/oneclick/Content/assets/js/main.js"></script>
+	<script src="js/sweetalert.min.js" type="text/javascript"></script>
+	<link href="./Content/oneclick/Content/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/font-awesome.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/pace/pace-theme-minimal.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/icheck/skins/square/blue.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/switchery/switchery.min.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/select2/select2.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/select2/select2-bootstrap.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/plugins/bootstrap-slider/css/slider.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/prettify/prettify.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/animate.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/icons.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/backend.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/css/main.css" rel="stylesheet"/>
+	<link href="./Content/oneclick/Content/assets/css/skins.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="css/esti.css">
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+	<!-- icoomon -->
+	<link rel="stylesheet" href="style.css"></head>
+</head>
+<body id="bodyy" onload="lanzarGraficas()" style="width: 100%; height: auto;">
+	<style type="text/css">
+		body.modal-open {
+		    overflow: hidden;
+		    position: fixed;
+		}
+	</style>
+	<!-- IMPORTANTE -->
+	<div class="modal fade" id="exampleModalImport" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"  style="margin-right: -33%; margin-top: 15%; position: absolute; overflow: auto; display: none;">
+		<div class="modal-dialog modal-dialog-centered" style="padding-left: 75px; padding-right: 75px;" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 style="text-align:center;" class="modal-title"><strong> Importante!</strong></h4>
+				</div>
+				<div class="modal-body" style="text-align: center">
+					<p style="font-family: Arial; font-size: 15px; text-align: justify">El usuario puede ubicar el procedimiento correspondiente a los parámetros de entrada dando clic en el siguiente ícono, <span class="fa fa-arrow-circle-right" style="color: #00457E"></span> y viceversa puede ubicar los parámetros de entrada de cada procedimiento dando clic en este icono. <span class="fa fa-arrow-circle-left" style="color: #00457E"></span></p>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- FIN IMPROTANTE -->
+	<div class="container col-md-12" id="paginaEntera" style="height:auto; position: static;">
+		<div class="panel panel-default">
+			<div class="panel-heading" style="text-align: center;background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);">
+				<p style="font-size: 14px;  color: white;padding-top: 5px;">ESTIMACIÓN DE ESPESORES DE CAPAS EN LA REHABILITACIÓN DE PAVIMENTOS FLEXIBLES POR EL MÉTODO AASHTO 1998</p>
+			</div>
+			<div class="panel-body">
+
+
+
+				<ul class="nav nav-pills">
+					<li class="active" id="Primero" onclick="DatosDelProyecto()">
+						<a style="font-size: 12px;">Datos del proyecto</a>
+					</li>
+					<li class="myclass" id="Segundo" onclick="VariablesDeEntrada()">
+						<a style="font-size: 12px;">Variables de entrada</a>
+					</li>
+						
+					<button id="btnCalcular" onclick="ActivarCalcular()" style="margin-right: 50px;margin-top: 7px;float: right;display: none;" class="btn btn-warning btn-radius btn-sm" type="submit" >
+						Calcular
+					</form>
+					<button id="btnceje" class="btn btn-warning btn-radius btn-sm botonEjemplo" style="margin-right: 5px;visibility:visible; display:none;" type="button" onclick="cargarEjemplo()" value="Habilitar">Cargar ejemplo
+						<span class="tippf4">
+							<section class="sct-content">
+								Cargar ejemplo modelo
+							</section>
+
+						</span>
+
+					</button>
+				</ul>
+				
+
+				<br>
+				
+				<div class="panel panel-default" id="contenedorPrincipal">
+					<div class="panel-heading" id="cabecera">
+						<strong style="font-size: 13px;"> Información del proyecto</strong>
+					</div>
+					<div class="panel-body">
+						<table>
+							<tbody>
+								<tr>
+									<td style="width: 250px; color: #428bca; font-size: 11px; ">
+										Nombre del proyecto:
+									</td>
+									<td style="width: 450px;">
+										<input class="form-control form-control-sm" type="text" id="txtNombre">
+									</td>
+
+								</tr>
+								<tr>
+									<td style="width: 250px; color: #428bca; font-size: 11px; ">
+										Ubicación del proyecto:
+									</td>
+									<td style="width: 450px;">
+										<input class="form-control form-control-sm" type="text" id="txtUbi">
+									</td>
+								</tr>
+								<tr>
+									<td style="width: 250px; color: #428bca; font-size: 11px; ">
+										Ruta:
+									</td>
+									<td style="width: 450px;">
+										<input class="form-control form-control-sm" type="text" id="txtRuta">
+									</td>
+								</tr>
+								<tr>
+									<td style="width: 250px; color: #428bca; font-size: 11px; ">
+										Tramo:
+									</td>
+									<td style="width: 450px;">
+										<input class="form-control form-control-sm" type="text" id="txtTra">
+									</td>
+								</tr>
+								<tr>
+									<td style="width: 250px; color: #428bca; font-size: 11px; ">
+										Diseñador:
+									</td>
+									<td style="width: 450px;">
+										<input class="form-control form-control-sm" type="text" id="Dise">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<button id="btnContinuar" class="btn btn-warning btn-radius btn-sm" style="display:inline-block; float:right; /*margin-left: 43%; margin-top: 0.2%;*/" type="button" onclick="VariablesDeEntrada()">Continuar</button>
+					</div>
+				</div>
+				
+
+				<form>
+					
+					<div id="contendorGeneral" class="col-md-12">
+						<div class="container"id="contenedorSecundario" style="visibility:hidden; display:none;">
+							<!-- Columna 1 -->
+							<div class="container" id="adentro1">
+								<div class="panel panel-default">
+									<div id="cabecera" class="panel-heading">
+										<strong style="font-size: 12px">Estructura del pavimento previo</strong>
+									</div>
+									<div id="bodyPavimentos" class="panel-body" >
+										<!-- Gráfico -->
+										<br>
+										<br>
+										<table class="  table-hover  table-condensed" id="agmateriales" align="center">
+											<thead>
+												<tr>
+													<th colspan="2">
+														<h4 style="text-align:center;">
+															Añadir capas
+														</h4>
+													</th>
+												</tr>
+												<tr>
+													<td>
+													</td>
+												</tr>
+
+												<tr style="border-bottom: 1px solid; ">
+													<th colspan="2" style="text-align:center;">
+														<div id="addcap" name="addcap" style="text-align:center;">
+															<input id="agregarSubBase" onclick="Habilitarsub()" type="checkbox">Subbase
+															<input id="agregarMaterial" onclick="HabilitarMat()" type="checkbox">Material de mejoramiento
+
+														</div>
+													</th>
+												</tr>
+											</thead>
+
+											<tbody>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td style="text-align:left; height: 36px; width:100px; border: none;">Pavimento asfáltico</td>
+													<td style="border:1px solid; border-color: rgb(255, 255, 255); background:rgb(116, 113, 113); width:190px; height: 35px; "></td>
+												</tr>
+												<tr>
+													<td style="text-align:left; width:100px; height: 37px;">Base</td>
+													<td style="border: 1px solid; border-color: rgb(255, 255, 255); background-color: #7fa1be; width:190px; height: 35px; ">
+													</td>
+												</tr>
+												<tr id="addSubrasante" >
+													<td id="tituloaddSubra" style="text-align:left; height: 36px; width:100px; border: none;">Subrasante</td>
+													<td id="bloquesubra" style="border: 1px solid; border-color: rgb(255, 255, 255); background-color: #8A4B08; width:190px; height: 35px; ">
+													</td>
+												</tr>
+												<tr id="addSubBaseGraf" style="visibility: hidden;">
+													<td id="titulosdegraf" style="text-align:left; height: 36px; width:100px; border: none;">Subbase</td>
+													<td id="bloqueSubBase" style="border:1px solid; border-color: rgb(255, 255, 255); background:#8A4B08; width:190px; height: 35px; ">
+													</td>
+												</tr>
+												<tr id="addMaterialGraf" style="visibility: hidden;">
+													<td id="tituloaddMat" style="text-align:left; height: 37px; width:100px; border: none;">Material de mejoramiento</td>
+													<td id="bloqueMaterial" style="border: 1px solid; border-color: rgb(255, 255, 255); background-color: #7fa1be; width:190px; height: 35px; ">
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<!-- Datos estructura del Pavimento Previo -->
+										<table class="table-hover table-borderless table-condensed table-responsive" align="center">
+											<tbody  >
+												<tr>
+													<td>
+													</td>
+												</tr>
+												<tr>
+													<td>
+													</td>
+												</tr>
+												<tr>
+													<td>
+													</td>
+												</tr>
+												
+												<tr>
+													<td >
+														Espesor de carpeta asfáltica
+
+													</td>
+													<td>
+															
+															<input  class="form-control form-control-sm validar " id="espesorCarpAs" onkeyup="EspesorTotal()" placeholder="Ingrese valor" type="text" required>
+													</td>
+													<td align="center">
+														in
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Espesor de base
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar " id="espesorBase" onkeyup="EspesorTotal()" placeholder="Ingrese valor" type="text" required="">
+													</td>
+													<td align="center">
+														in
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Espesor de sub-base
+													</td>
+													<td>
+														<input class="form-control form-control-sm " disabled="" id="espesorSubBase" onkeyup="EspesorTotal()" placeholder="Ingrese valor" type="text">
+													</td>
+													<td align="center">
+														in
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Espesor de material de mejoramiento
+													</td>
+													<td>
+														<input class="form-control form-control-sm " disabled="" id="espesorMaterial" onkeyup="EspesorTotal()" placeholder="Ingrese valor" type="text">
+													</td>
+													<td align="center">
+														in
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Espesor total
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar" disabled="" id="espesorTotalPav" type="text">
+														<input style="display: none" class="form-control form-control-sm validar" disabled="" id="espesorTotalPavconFre" type="text">
+													</td>
+													<td align="center">
+														in
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Tipo de base
+													</td>
+													<td>
+														<select id="cmbBases" onchange="TiposBases()">
+															<option value="0">
+																Seleccione tipo de base..............
+															</option>
+															<option value="1">
+																Base Granular
+															</option>
+															<option value="2">
+																Base Tratada con Cemento
+															</option>
+														</select>
+													</td>
+													<td id="tipoBase">
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Fresado
+														<input id="checkfreseado" style="width: 15px" name="" onclick="ActivarFresado()" type="checkbox">
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar" id="fres" name="" style="display: none; width: 100%;" type="text"/>
+													</td>
+													<td>
+														in
+													</td>
+												</tr>
+												<tr>
+													<td>
+													</td>
+												</tr>
+											</tbody>
+										</table>				
+									</div>
+								</div>
+							</div>
+
+							<!-- Columna 2  -->
+							<div class="container" id="adentro2">
+								<!-- Serviciabilidad -->
+								<div class="panel panel-default">
+									<div class="panel-heading" id="cabecera" >
+										<strong style="font-size: 12px">
+											Serviciabilidad y desviación estándar
+										</strong>
+									</div>
+									<div class="panel-body">
+										<br>	
+										<table class="table-hover table-borderless table-condensed table-responsive" align="center">
+											<tbody>
+												<tr>
+													<td>
+														Serviciabilidad inicial (pi) 
+													</td>
+													<td >
+														<input class="form-control form-control-sm validar" disabled="" id="servIni" type="text" value="4.2"/>
+													</td>
+													<td>
+														<span id="fa-question-circle " class="fa fa-question-circle">
+
+															<span class="tippf2">
+																<section class="sct-content">
+
+																	<div >
+																		<table class="table-hover table-bordered table-borderless table-condensed table-responsive">
+																			<tr>
+																				<td colspan="2" style="font-size: 15px">
+																					Índice de Serviciabilidad Inicial
+																				</td>
+																			</tr>
+																			<tr>
+																				<td style="font-size: 15px">
+																					Pavimento Rígido
+																				</td>
+																				<td style="font-size: 15px">
+																					4.5
+																				</td>
+																			</tr>
+																			<tr>
+																				<td style="font-size: 15px">
+																					Pavimento Flexible
+																				</td>
+																				<td style="font-size: 15px">
+																					4.2
+																				</td>
+																			</tr>
+																		</table>
+																	</div>  
+																</section>
+
+															</span>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Serviciabilidad final (pf)
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar" type="" placeholder="Ingrese valor" name="" id="serviciabilidad" onkeyup="servi()">
+													</td>
+													<td>
+														<span id="fa-question-circle " class="fa fa-question-circle">
+
+															<span class="tippf2">
+																<section class="sct-content">
+
+																	<div >
+																		<table class="table-hover table-bordered table-borderless table-condensed table-responsive">
+																			<tr>
+																				<td  colspan="2" style="font-size: 15px;text-align: center;">
+																					Índice de serviciabilidad final
+																				</td>
+																			</tr>
+																			<tr>
+																				<td style="font-size: 15px">
+																					Autopistas y vías principales
+																				</td>
+																				<td style="font-size: 15px">
+																					2.5
+																				</td>
+																			</tr>
+																			<tr>
+																				<td style="font-size: 15px">
+																					Vías secundarias
+																				</td>
+																				<td style="font-size: 15px">
+																					2.0
+																				</td>
+																			</tr>
+																		</table>
+																	</div>  
+																</section>
+
+															</span>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Índice de serviciabilidad (Δpsi)
+													</td>
+													<td  id="totalPsi">
+													</td>		
+
+													<td style="display: none">
+														<input class="form-control form-control-sm validar" type="text" id="tl3graf" style="display:none">
+														<input class="form-control form-control-sm validar" type="text" id="psixgraf" style="display:none">
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Desviación estándar (So)
+													</td>
+													<td >
+														<input class="form-control form-control-sm validar" id="desviEst" max="0.5" min="0" placeholder="Ingrese valor" step="0.01" type="text" value="0.45" onkeyup="ControlDeviacion()">
+													</td>
+													<td>
+														<span id="fa-question-circle " class="fa fa-question-circle">
+
+															<span class="tip-content">
+																<section class="sct-content">
+
+																	<div >
+																		<table class="table-hover table-bordered table-borderless table-condensed table-responsive">
+																			<tr>
+																				<td colspan="2" style="font-size: 15px;text-align: center">
+																					Valores recomendados
+																				</td>
+																			</tr>
+																			<tr>
+																				<td style="font-size: 15px">
+																					Pavimento Rígido
+																				</td>
+																				<td style="font-size: 15px">
+																					0.35
+																				</td>
+																			</tr>
+																			<tr>
+																				<td style="font-size: 15px">
+																					Pavimento Flexible
+																				</td>
+																				<td style="font-size: 15px">
+																					0.45
+																				</td>
+																			</tr>
+																		</table>
+																	</div>  
+																</section>
+
+															</span>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+													</td>
+												</tr>
+												<tr>
+													<td>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!-- Datos de Trafico y Entorno -->
+								<div class="panel panel-default" >
+									<div class="panel-heading" id="cabecera">
+										<strong style="font-size: 12px">Datos de tráfico y ensayos</strong>
+
+									</div>
+									<div class="panel-body">
+										<p style="visibility: hidden; "></p>
+										<table class="table-hover table-borderless table-condensed table-responsive" align="center">
+											<tbody>
+												<tr>
+													<td>
+														Nro. ESAL´s final
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar" id="nroFinal" placeholder="Ingrese valor" type="text">
+
+													</td>
+													<td align="center">
+														<h6>
+															Vehículos
+														</h6>
+													</td>
+												</tr>
+												<!--Tercero-->
+												<tr>
+													<td>
+														Temperatura (T)
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar" id="temperatura" onchange="act()" placeholder="Ingrese valor" type="text">
+
+													</td>
+													<td align="center">
+														ºF
+													</td>
+													<td>
+														<span id="fa-question-circle " class="fa fa-question-circle">
+
+															<span class="tippf">
+																<section class="sct-content">
+
+																	<div>
+																		<table class="table-hover table-bordered table-borderless table-condensed table-responsive">
+																			<tr>
+																				<td colspan="2" style="font-size: 15px">
+																					ºF = 9/5 ºC + 32
+																				</td>
+																			</tr>
+
+																		</table>
+																	</div> 
+																</section>
+
+															</span>
+														</span>
+													</td>
+												</tr>
+												<!--Cuarto-->
+												<tr>
+													<td>
+														Carga (P)
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar" id="carga" placeholder="Ingrese valor" type="text">
+
+													</td>
+													<td align="center">
+														lb
+													</td>
+													<td>
+														<span id="fa-question-circle " class="fa fa-question-circle">
+
+															<span class="tippf1">
+																<section class="sct-content">
+
+																	<div >
+																		<img style="width: 100%" src="images/graficacarga.jpg">
+																	</div>  
+																</section>
+
+															</span>
+														</span>
+													</td>
+												</tr>
+												<!--Quinto-->
+												<tr>
+													<td>
+														Radio de plato de carga (a)
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar" id="radioPlato" placeholder="Ingrese valor" type="text">
+
+													</td>
+													<td align="center">
+														in
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Deflexión al centro de carga
+													</td>
+													<td>
+														<input class="form-control form-control-sm validar" id="defleCentroCarga" placeholder="Ingrese valor" type="text">
+
+													</td>
+													<td align="center">
+														in
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Módulo elástico de la nueva carpeta asfáltica
+														<td>
+															<input class="form-control form-control-sm validar" id="modelascarpeta" placeholder="Ingrese valor" type="text">
+
+														</td>
+														<td align="center">
+															psi
+														</td>
+													</tr>
+													<tr>
+														<td>
+														</td>
+													</tr>
+													<tr>
+														<td>
+														</td>
+													</tr>
+													<tr>
+														<td>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<!-- Confiabilidad -->
+									<div class="panel panel-default">
+										<div class="panel-heading" id="cabecera">
+											<strong style="font-size: 12px">Confiabilidad</strong>
+										</div>
+										<div class="panel-body">
+											<table class="table-hover table-borderless table-condensed table-responsive" align="center">
+												<tbody>
+													<tr>
+														<td>
+															Confiabilidad (%)
+														</td>
+														<td>
+															<select id="cmbconfia" onchange="ValorZr(),loadGraphSN()" style="width: 100%;">
+																<option value="1">
+																	<h6>
+																		50
+																	</h6>
+																</option>
+																<option value="2">
+																	<h6>
+																		60
+																	</h6>
+																</option>
+																<option value="3">
+																	<h6>
+																		70
+																	</h6>
+																</option>
+																<option value="4">
+																	<h6>
+																		75
+																	</h6>
+																</option>
+																<option value="5">
+																	<h6>
+																		80
+																	</h6>
+																</option>
+																<option value="6">
+																	<h6>
+																		85
+																	</h6>
+																</option>
+																<option value="7">
+																	<h6>
+																		90
+																	</h6>
+																</option>
+																<option value="8">
+																	<h6>
+																		91
+																	</h6>
+																</option>
+																<option value="9">
+																	<h6>
+																		92
+																	</h6>
+																</option>
+																<option value="10">
+																	<h6>
+																		93
+																	</h6>
+																</option>
+																<option value="11">
+																	<h6>
+																		94
+																	</h6>
+																</option>
+																<option value="12">
+																	<h6>
+																		95
+																	</h6>
+																</option>
+																<option value="13">
+																	<h6>
+																		96
+																	</h6>
+																</option>
+																<option value="14">
+																	<h6>
+																		97
+																	</h6>
+																</option>
+																<option value="15">
+																	<h6>
+																		98
+																	</h6>
+																</option>
+																<option value="16">
+																	<h6>
+																		99
+																	</h6>
+																</option>
+																<option value="17">
+																	<h6>
+																		99.9
+																	</h6>
+																</option>
+																<option value="18">
+																	<h6>
+																		99.99
+																	</h6>
+																</option>
+															</select>
+														</td>
+														<td>
+															<span id="fa-question-circle " class="fa fa-question-circle">
+
+																<span class="tippf3">
+																	<section class="sct-content">
+
+																		<div >
+																			<table class="table-hover table-bordered table-borderless table-condensed table-responsive">
+																				<tr >
+																					<td rowspan="2" style="font-size: 15px;text-align: center">
+																						Clasificación Vial
+																					</td>
+																					<td colspan="2" style="font-size: 15px">
+																						Niveles de confiabilidad
+																					</td>
+
+																				</tr>
+																				<tr style="text-align: center;">
+																					<td style="font-size: 15px">
+																						Urbana
+																					</td>
+																					<td style="font-size: 15px">
+																						Rural
+																					</td>
+																				</tr>
+																				<tr style="text-align: center;">
+																					<td style="font-size: 15px">
+																						Autopistas interestatales y otras
+																					</td>
+																					<td style="font-size: 15px">
+																						85.99 - 99.9
+																					</td>
+																					<td style="font-size: 15px">
+																						80 - 99.9
+																					</td>
+																				</tr>
+																				<tr style="text-align: center;">
+																					<td style="font-size: 15px">
+																						Arterias principales
+																					</td>
+																					<td style="font-size: 15px">
+																						80 - 99
+																					</td>
+																					<td style="font-size: 15px">
+																						75 - 95
+																					</td>
+																				</tr>
+																				<tr style="text-align: center;">
+																					<td style="font-size: 15px">
+																						Colectoras de tránsitos
+																					</td>
+																					<td style="font-size: 15px">
+																						80 - 95
+																					</td>
+																					<td style="font-size: 15px">
+																						75 - 95
+																					</td>
+																				</tr>
+																				<tr style="text-align: center;">
+																					<td style="font-size: 15px">
+																						Carreteras locales
+																					</td>
+																					<td style="font-size: 15px">
+																						50 - 80
+																					</td>
+																					<td style="font-size: 15px">
+																						50 - 80
+																					</td>
+																				</tr>
+																			</table>
+																		</div>  
+																	</section>
+
+																</span>
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															Zr
+														</td>
+														<td>
+															<input class="form-control form-control-sm validar" disabled="" id="zr" type="text">
+														</td>
+													</tr>
+													<tr>
+														<td>
+														</td>
+													</tr>
+													<tr>
+														<td>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+								<!-- Columna 3 -->
+								<div class="container" id="adentro3" >
+									<!-- Capacidad Estructural Futura -->
+									<div class="panel panel-default" id="capacidadEstructuralFutura">
+										<div class="panel-heading" id="cabecera" >
+											<strong style="font-size: 12px">Coeficiente de drenaje y capacidad estructural futura</strong>
+										</div>
+										<table id="datosTraficoEntorno">
+											<tr>
+												<td style="padding-left: 10px">
+													Definir drenaje
+												</td>
+											</tr>
+										</table>
+										<div class="panel with-nav-tabs">
+											<!-- UBICAR -->
+											<div class="panel-heading">
+												<ul class="nav nav-tabs" id="myTab">
+													<li id="navBase" class="active">
+														<a id="MenuBase" data-toggle="tab" href="#condicion1">Base</a>
+													</li>
+													<li id="navSubBase">
+														<a href="#condicion2"  id="MenuSub" ></a>
+													</li>
+													<li id="navMatMej">
+														<a href="#condicion3"  id="MenuMatMej" ></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="tab-content">
+											<!-- CONDICION 1 -->
+											<div class="tab-pane fade in active" id="condicion1">
+												<table  class=" table-borderless table-hover table-bordered table-condensed" align="center">
+													<tbody>
+														<!--Calidad de drenaje-->
+														<tr>
+															<td>
+																Calidad de drenaje
+															</td>
+															<td colspan="2">
+																<select id="cmbcalidre" style="width: 100%;">
+																	<option value="selec">
+																		<h6>
+																			Seleccione....
+																		</h6>
+																	</option>
+																	<option value="0">
+																		<h6>
+																			Excelente
+																		</h6>
+																	</option>
+																	<option value="1">
+																		<h6>
+																			Buena
+																		</h6>
+																	</option>
+																	<option value="2">
+																		<h6>
+																			Aceptable
+																		</h6>
+																	</option>
+																	<option value="3">
+																		<h6>
+																			Pobre
+																		</h6>
+																	</option>
+																	<option value="4">
+																		<h6>
+																			Muy pobre
+																		</h6>
+																	</option>
+																</select>
+															</td>
+														</tr>
+														<!-- Tiempo de exposicion del pavimento a la humedad -->
+														<tr >
+															<td>
+																Porcentaje de tiempo de exposición del pavimento a la humedad
+															</td>
+
+															<td colspan="2">
+																<input class="form-control form-control-sm validar" id="humedad" placeholder="Ingrese valor"  onkeyup="CondicionesDrenajeBase()" step="0.01" style=" width: 100%;" type="text" >
+															</td>
+														</tr>
+														<!-- Coeficiente m -->
+														<tr>
+															<td>
+																Coeficiente "m1":
+															</td>
+															<td colspan="2">
+																<input disabled="" id="coefDrenaBase" name="" type="text"/>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+											</div>
+											<!-- CONDICION 2 -->
+											<div class="tab-pane fade" id="condicion2"  >
+												<table  class=" table-borderless table-hover table-bordered table-condensed" align="center">
+													<tbody>
+														<!--Calidad de drenaje-->
+														<tr>
+															<td>
+																Calidad de drenaje
+															</td>
+															<td colspan="2">
+																<select id="cmbcalidre2" style="width: 100%;">
+																	<option value="selec">
+																		<h6>
+																			Seleccione....
+																		</h6>
+																	</option>
+																	<option value="0">
+																		<h6>
+																			Excelente
+																		</h6>
+																	</option>
+																	<option value="1">
+																		<h6>
+																			Buena
+																		</h6>
+																	</option>
+																	<option value="2">
+																		<h6>
+																			Aceptable
+																		</h6>
+																	</option>
+																	<option value="3">
+																		<h6>
+																			Pobre
+																		</h6>
+																	</option>
+																	<option value="4">
+																		<h6>
+																			Muy pobre
+																		</h6>
+																	</option>
+																</select>
+															</td>
+														</tr>
+														<!-- Tiempo de exposicion del pavimento a la humedad -->
+														<tr >
+															<td>
+																Porcentaje de tiempo de exposición del pavimento a la humedad
+															</td>
+
+															<td colspan="2">
+																<input class="form-control form-control-sm validar" id="humedad2" placeholder="Ingrese valor" onkeyup="CondicionesDrenajeSubBase()" step="0.01" style=" width: 100%;" type="text" >
+															</td>
+														</tr>
+														<!-- Coeficiente m -->
+														<tr>
+															<td>
+																Coeficiente "m2":
+															</td>
+															<td colspan="2">
+																<input disabled="" id="coefDrenaSubBase" name="" type="text"/>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+											</div>
+											<!-- CONDICION 3 -->
+											<div class="tab-pane fade" id="condicion3">
+												<table  class=" table-borderless table-hover table-bordered table-condensed" align="center">
+													<tbody>
+														<!--Calidad de drenaje-->
+														<tr>
+															<td>
+																Calidad de drenaje
+															</td>
+															<td colspan="2">
+																<select id="cmbcalidre3" style="width: 100%;">
+																	<option value="selec">
+																		<h6>
+																			Seleccione....
+																		</h6>
+																	</option>
+																	<option value="0">
+																		<h6>
+																			Excelente
+																		</h6>
+																	</option>
+																	<option value="1">
+																		<h6>
+																			Buena
+																		</h6>
+																	</option>
+																	<option value="2">
+																		<h6>
+																			Aceptable
+																		</h6>
+																	</option>
+																	<option value="3">
+																		<h6>
+																			Pobre
+																		</h6>
+																	</option>
+																	<option value="4">
+																		<h6>
+																			Muy pobre
+																		</h6>
+																	</option>
+																</select>
+															</td>
+														</tr>
+														<!-- Tiempo de exposicion del pavimento a la humedad -->
+														<tr >
+															<td>
+																Porcentaje de tiempo de exposición del pavimento a la humedad
+															</td>
+
+															<td colspan="2">
+																<input class="form-control form-control-sm validar" id="humedad3" placeholder="Ingrese valor"  onkeyup="CondicionesDrenajeMaterialMejora()" step="0.01" style=" width: 100%;" type="text" >
+															</td>
+														</tr>
+														<!-- Coeficiente m -->
+														<tr>
+															<td>
+																Coeficiente "m3":
+															</td>
+															<td colspan="2">
+																<input disabled=""  id="coefDrenaMaterial" name="" type="text"/>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+											</div>
+										</div>
+										<div id="bodyEstructural" class="panel-body" >
+											<table class="table-hover table-borderless table-condensed table-responsive" align="center">
+												<tbody>
+													<tr>
+														<td colspan="2">
+															Módulo resiliente retrocalculado (Mr) psi
+															<div style="text-align: center;">
+																<button  id="btnEnable" onclick="Habilitar()" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-warning btn-radius btn-sm">Ingresar FWD</button>
+															</div>
+															<!-- Ventana emergente -->
+															<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%; position: absolute;" >
+																<div  class="modal-dialog modal-dialog-centered" role="document"   >
+																	<div class="modal-content col-md-12" >
+
+																		<div class="modal-header">
+																			<h3 style="text-align: center"><b>Deflexiones y distancias</b></h3>
+																		</div>
+																		<div class="modal-body" >
+																			<form>
+																				<table class=" table-borderless table-hover table-bordered table-condensed" id="tabladef" align="center">
+																					<tbody align="center">
+																						<!-- Deflexion 1 -->
+																						<tr>
+																							<td style="width: 40px">
+																								Def-1
+																							</td>
+																							<td>
+																								<input class="form-control form-control-sm validar" id="deflexion1" placeholder="Ingrese valor" type="text" step="0.00001">
+																							</td>
+																							<td align="center">
+																								in
+																							</td>
+																							<td style="width: 45px">
+																								Dist-1
+																							</td>
+																							<td>
+																								<input class="form-control form-control-sm validar" id="distancia1" placeholder="Ingrese valor" type="text">
+																							</td>
+																							<td align="center">
+																								in
+																							</td>
+																						</tr>
+																						<!-- Deflexion 2 -->
+																						<tr>
+																							<td>
+																								Def-2
+																							</td>
+																							<td>
+																								<input class="form-control form-control-sm validar" id="deflexion2" placeholder="Ingrese valor" type="text" step="0.00001">
+																							</td>
+																							<td align="center">
+																								in
+																							</td>
+																							<td>
+																								Dist-2
+																							</td>
+																							<td>
+																								<input class="form-control form-control-sm validar" id="distancia2" placeholder="Ingrese valor" type="text">
+																							</td>
+																							<td align="center">
+																								in
+																							</td>
+																						</tr>
+																						<!-- Deflexion 3 -->
+																						<tr>
+																							<td>
+																								Def-3
+																							</td>
+																							<td>
+																								<input class="form-control form-control-sm validar" id="deflexion3" placeholder="Ingrese valor" type="text" step="0.00001">
+																							</td>
+																							<td align="center">
+																								in
+																							</td>
+																							<td>
+																								Dist-3	
+																							</td>
+																							<td>
+																								<input class="form-control form-control-sm validar" id="distancia3" placeholder="Ingrese valor" type="text">
+																							</td>
+																							<td align="center">
+																								in
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</form>
+																			<button class="btn btn-warning btn-radius btn-sm" style="visibility:visible; display:inline-block;" align="right" type="button" data-dismiss="modal" onclick="DeflexionesDistancias(),BulboTension()">
+																				Guardar
+																			</button>
+																		</div>
+
+																	</div>
+																</div>
+															</div>
+														</td>
+														<td align="center" colspan="2">
+															<input class="form-control form-control-sm validar" id="moduloResRetro" onkeyup="LimpiarCampoDef()" step="0.01" style="display: inline" type="text" placeholder="Ingrese valor">
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															Presión aplicada por el plato de carga (p) psi
+														</td>
+														<td align="center" colspan="2">
+															<input class="form-control form-control-sm " disabled="" id="presionPlato" type="text"/>
+														</td>
+
+													</tr>
+													<tr>
+														<td colspan="2">
+															Factor de corrección
+															<a id="anclaTrafico" style="display: inline-block; padding-left: 0.7em;" data-toggle="tab" href="#tab3default" onclick="AnclaFactorTem()"><span class="fa fa-arrow-circle-right" style="color: #00457E"></span></a> 
+														</td>
+														<td colspan="3">
+															<input class="form-control form-control-sm " disabled="" id="FactorCorrec" type="text">
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															d0 corregido (in)
+														</td>
+														<td align="center" colspan="2">
+															<input class="form-control form-control-sm " disabled="" id="totalD0Cor" type="text">
+														</td>
+
+													</tr>
+													<tr>
+														<td colspan="2">
+															Ep/Mr
+															<a id="anclaFuturo" style="display: inline-block; padding-left: 0.7em;" data-toggle="tab" href="#tab4default" onclick="AnclaRelacionEp()"><span class="fa fa-arrow-circle-right" style="color: #00457E"></span></a>
+														</td>
+														<td colspan="3">
+															<input class="form-control form-control-sm " disabled="" id="totalEpMr" name="" type="text">
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															Módulo efectivo de todas las capas del pavimento (Ep) psi
+														</td>
+														<td align="center" colspan="2">
+															<input class="form-control form-control-sm " disabled="" id="totalModEfectivoPav" step="0.01" style="display: inline" type="text">
+														</td>
+
+													</tr>
+													<tr>
+														<td colspan="2">
+															Factor "C" de corrección del módulo resiliente retrocalculado
+														</td>
+														<td colspan="3">
+															<input class="form-control form-control-sm validar" id="factorc" placeholder="Ingrese el Numero...." type="text" value="0.3333333333">
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															Módulo resiliente efectivo de la subrasante (psi)
+														</td>
+														<td colspan="3">
+															<input class="form-control form-control-sm " disabled="false" id="totalModResEfectivo" name="" type="text">
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															Cálculo SN estructural futuro
+															<a id="anclaSNestruc" style="display: inline-block; padding-left: 0.7em;" data-toggle="tab" href="#tab5default" onclick="AnclaNomograma()"><span class="fa fa-arrow-circle-right" style="color: #00457E"></span></a>
+														</td>
+														<td colspan="3">
+															<input class="form-control form-control-sm " disabled="" id="totalSN" name="" type="text"/>
+														</td>
+													</tr>
+													<tr style="display: none" id="tablabulbo">
+														<td colspan="2">
+															Radio de bulbo de tensión
+														</td>
+														<td colspan="3">
+															<input class="form-control form-control-sm validar" disabled="" id="bulbo" name="" style="display: none" type="text">
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+
+
+											<!-- Ventanas emergentes -->
+											<!-- Botones -->
+
+											<!-- METODO NDT VENTANAS EMERGENTE // BOTON-->
+											<div style="display: inline-block;">
+												<button id="botonNDT" style="border-radius: 5px;background-color: rgba(0, 69, 126, 0.5);font-size: 10px;visibility: hidden;float: right;margin-left: 150px;" type="button" class="btn btn-primary center-block" data-toggle="modal" data-target="#exampleModalCenter1">NDT</button>
+											</div>
+											<!-- METODO NDT VENTANAS EMERGENTE // METODO-->
+											<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="margin-right: 100%; position: absolute; overflow: auto;">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3 style="text-align: center"><b>Método NDT</b> <a id="anclaFuturo" style="display: inline-block; padding-left: 0.7em;" data-toggle="tab" href="#tab8default" onclick="AnclaMetodoNDT()"><span class="fa fa-arrow-circle-right" style="color: #00457E"></span></a></h3>
+														</div>
+														<div class="modal-body" style="text-align: center">
+															<table class=" table-borderless table-hover table-bordered table-condensed" align="center">
+																<tbody align="center">
+																	<tr>
+																		<td>
+																			SNef =
+																		</td>
+																		<td>
+																			<input name="" disabled="" style="width: 90px;" type="text" id="snefNDT" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Coeficiente estructural carpeta asfáltica
+																		</td>
+																		<td>
+																			<input name="" disabled="" style="width: 90px;" type="text" id="coefEstrucCarpAsNDT" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Espesor sobrecarpeta "D"
+																		</td>
+																		<td>
+																			<input name="" disabled=""  style="width: 90px;" type="text" id="espFinalNDT" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Espesor sobrecarpeta "D" redondeado
+																		</td>
+																		<td>
+																			<input name="" disabled=""  style="width: 90px;" type="text" id="RedonNdt" />
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div class="modal-footer">
+
+															<button id="btnCalcularNDT" class="btn btn-primary" style="border-radius: 5px; background-color: #FFCE4F;color: black;" onclick="CalcularNDT(),comprobarMetodosActPro()" type="button">Calcular</button>
+															<button id="btnCalcularNDT1" class="" style="border-radius: 5px; background-color: #FFCE4F;color: black;display: none" onclick="CalcularNDT()" type="button">Calcular</button>
+															<button class="btn btn-primary" style="border-radius: 5px; background-color: #FFCE4F;color: black; display: inline; margin-bottom: 5px"  type="button" data-dismiss="modal" aria-label="Close">Salir</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- FIN METODO NDT -->
+
+
+											<!-- METODO FACTOR CONDICION // BOTON -->
+											<div style="display: inline-block;">
+												<button id="botonFactor"  style="border-radius: 5px; background-color: #7fa1be; font-size: 10px;visibility: hidden; float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">Factor Condición</button>
+											</div>
+											<!-- METODO FACTOR CONDICION // METODO -->
+											<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="margin-right: 100%; position: absolute; overflow: auto;">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<a name="redtabla"></a>
+															<h3 style="text-align: center"><b>Método Factor Condición</b><a id="anclaFuturo" style="display: inline-block; padding-left: 0.7em;" data-toggle="tab" href="#tab6default" onclick="AnclaTablaFactor()"><span class="fa fa-arrow-circle-right" style="color: #00457E"></span></a></h3>
+														</div>
+														<div class="modal-body" style="text-align: center">
+															<table class=" table-borderless table-hover table-bordered table-condensed" width="100%">
+																<tbody>
+																	<tr>
+																		<td>
+																			Concreto asfáltico
+																			<select id="cmbConcretoFactor" onchange="ControlAsfal()" style="width: 100%;">
+																				<option value="selec">
+																					<h6>Seleccione....</h6>
+																				</option>
+																				<option value="0">
+																					Muy poca piel de cocodrilo y/o fisuras transversales
+																				</option>
+																				<option value="1">
+																					<10% de piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="2">
+																					>10% de piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="3">
+																					>10% de piel de cocodrilo de severidad media
+																				</option>
+																				<option value="4">
+																					>10% de piel de cocodrilo de alta severidad
+																				</option>
+																			</select>
+																		</td>
+																		<td>
+																			Coeficiente
+																			<br>
+																			<input id="coefEstrucCarpAs" placeholder="Ingrese valor"  step="0.01" style="width: 90px;"  type="text" value="">
+																			<a href="#profileModal" data-toggle="modal"><span class="fa fa-question-circle"></span></a>
+																		</td>
+
+																	</tr>
+																	<tr>
+																		<!-- Base Estabilizada -->
+																		<td>
+																			<h7 id="tituloBaseFactor">
+																			</h7>
+																			<select id="cmbEstabilizadaFactor" onchange="Esta()" style="width: 100%;  display: none">
+																				<option value="selec">
+																					<h6>
+																						Seleccione....
+																					</h6>
+																				</option>
+																				<option value="0">
+																					Muy poca piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="1">
+																					"<"10% de piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="2">
+																					>10% de piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="3">
+																					>10% de piel de cocodrilo de severidad media
+																				</option>
+																				<option value="4">
+																					>10% de piel de cocodrilo de alta severidad
+																				</option>
+																			</select>
+																			<!--Subbase Granular-->
+																			<select id="cmbGranularFactor" onchange="Sub()" style="width: 100%;  display: none">
+																				<option value="selec">
+																					<h6>
+																						Seleccione....
+																					</h6>
+																				</option>
+																				<option value="0">
+																					Sin evidencia de bombeo, degradación o contaminación por finos
+																				</option>
+																				<option value="1">
+																					Alguna evidencia de bombeo, degradación o contaminación por finos.
+																				</option>
+																			</select>
+																		</td>
+																		<td>
+																			<input id="coefBaseCem" placeholder="Ingrese valor"  step="0.01" style=" display: none; width: 90px;" type="text" value="">
+																			<a class="ayudaE" href="#profileModal2" data-toggle="modal" style="display: none"><span class="fa fa-question-circle"></span></a>
+																			<!--Subbase Granular-->
+																			<input id="coefBaseGra" placeholder="Ingrese valor"  step="0.01" style="display: none; width: 90px;" type="text" value="">
+																			<a class="ayudaG" id="ayudagranu" href="#profileModal1" data-toggle="modal" style="display: none"><span class="fa fa-question-circle"></span></a>
+																		</td>
+																	</tr>
+																	<tr id="tablacomboSub" style="display: none;">
+																		<td>
+																			Subbase
+																			<select id="cmbSubGranularFactor" style="width: 100%" onchange="subGranular ()" >
+																				<option value="">
+																					<h6>
+																						Seleccione....
+																					</h6>
+																				</option>
+																				<option value="0">
+																					Sin evidencia de bombeo, degradación o contaminación por finos
+																				</option>
+																				<option value="1">
+																					Alguna evidencia de bombeo, degradación o contaminación por finos.
+																				</option>
+																			</select>
+																		</td>
+																		<td>
+																			<input id="coefSubBase"  step="0.01"  type="text" value="" style="width: 90px;">
+																			<a class="ayudaG1" href="#profileModal1" data-toggle="modal" ><span class="fa fa-question-circle"></span></a>
+																		</td>
+																	</tr>
+																	<tr id="tablacomboMej" style="display: none;">
+																		<td>
+																			Mejoramiento
+																		</td>
+																		<td>
+																			<input name="" id="coefMaterial" style=" width: 90px;" type="text">
+																		</td>
+																	</tr>
+
+																	<tr>
+																		<td>
+																			SNef
+																		</td>
+																		<td>
+																			<input type="text" disabled="" id="snefFactorCondi"  style="width: 90px">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Coeficiente estructural carpeta asfáltica
+																		</td>
+																		<td>
+																			<input name="" disabled=""  style="width: 90px;" type="text" id="coefEstrucCarpAsFactor" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Espesor sobrecarpeta "D"
+																		</td>
+																		<td>
+																			<input name="" disabled=""  style="width: 90px;" type="text" id="espFinalFactor" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Espesor sobrecarpeta "D" redondeado
+																		</td>
+																		<td>
+																			<input name="" disabled=""  style="width: 90px;" type="text" id="RedonFactor" />
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div class="modal-footer">
+															<button id="botonFC" class="btn btn-primary" style="border-radius: 5px; background-color: #FFCE4F;color: black;" onclick="CalcularFactorCondicion(),comprobarMetodosActPro()" type="button">Calcular</button>
+															<button id="botonFC1" class="btn btn-primary" style="border-radius: 5px; background-color: #FFCE4F;color: black; display: none;" onclick="CalcularFactorCondicion()" type="button">Calcular</button>
+															<button class="btn btn-primary" style="border-radius: 5px; background-color: #FFCE4F;color: black; display: inline; margin-bottom: 5px"  type="button" data-dismiss="modal" aria-label="Close">Salir</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- FIN METODO Factor Condicion -->
+
+											<!-- METODO VIDA REMANENTE VENTANAS EMERGENTE // BOTON-->
+											<div style="display: inline-block ">
+												<button id="botonVida"  style="border-radius: 5px; background-color: #7fa1be; font-size: 10px;visibility: hidden;float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3">Vida Remanente</button>
+											</div>
+											<!-- METODO VIDA REMANENTE VENTANAS EMERGENTE // METODO-->
+											<div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="margin-right: 100%; position: absolute; ">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3 style="text-align: center"><b>Método Vida Remanente</b><a id="anclaFuturo" style="display: inline-block; padding-left: 0.7em;" data-toggle="tab" href="#tab7default" onclick="AnclaMetodoVida()"><span class="fa fa-arrow-circle-right" style="color: #00457E"></span></a></h3>
+														</div>
+														<div class="modal-body" style="text-align: center; height: 280px; width: 100%; overflow-y: auto;" >
+															<table class=" table-borderless table-hover table-bordered table-condensed" >
+																<tbody>
+																	<tr>
+																		<td>
+																			Nro. ESAL´s inicial (Vehículos)
+																		</td>
+																		<td>
+																			<input id="nroInicial" placeholder="Ingrese valor" style="width: 90px;" type="text">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Concreto asfáltico
+																			<select id="cmbConcretoVida" onchange="ControlAsfal1()" style="width: 100%;">
+																				<option value="selec">
+																					<h6>
+																						Seleccione....
+																					</h6>
+																				</option>
+																				<option value="0">
+																					Muy poca piel de cocodrilo y/o fisuras transversales
+																				</option>
+																				<option value="1">
+																					<10% de piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="2">
+																					>10% de piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="3">
+																					>10% de piel de cocodrilo de severidad media
+																				</option>
+																				<option value="4">
+																					>10% de piel de cocodrilo de alta severidad
+																				</option>
+																			</select>
+																		</td>
+																		<td >
+																			Coeficiente
+																			<br>
+																			<input id="coefEstrucCarpAs1" placeholder="Ingrese valor"   step="0.01" style=" width: 90px;" type="text" value="">
+																			<a href="#profileModal" data-toggle="modal"><span class="fa fa-question-circle"></span></a>
+																		</td>
+																	</tr>
+																	<tr>
+																		<!-- Base Estabilizada  -->
+																		<td>
+																			<h7 id="tituloBaseVidaRema"></h7>
+																			<select id="cmbEstabilizadaVidaRema" onchange="Esta1()" style="width: 100%;  display: none">
+																				<option value="selec">
+																					<h6>
+																						Seleccione....
+																					</h6>
+																				</option>
+																				<option value="0">
+																					Muy poca piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="1">
+																					"<"10% de piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="2">
+																					>10% de piel de cocodrilo de baja severidad
+																				</option>
+																				<option value="3">
+																					>10% de piel de cocodrilo de severidad media
+																				</option>
+																				<option value="4">
+																					>10% de piel de cocodrilo de alta severidad
+																				</option>
+																			</select>
+																			<!--Subbase Granular-->
+																			<select id="cmbGranularVidaRema" onchange="Sub1()" style="width: 100%;  display: none">
+																				<option value="selec">
+																					<h6>
+																						Seleccione....
+																					</h6>
+																				</option>
+																				<option value="0">
+																					Sin evidencia de bombeo, degradación o contaminación por finos
+																				</option>
+																				<option value="1">
+																					Alguna evidencia de bombeo, degradación o contaminación por finos.
+																				</option>
+																			</select>
+																		</td>
+																		<td >
+																			<!--Base estabilizada-->
+																			<input id="coefBaseCem1" placeholder="Ingrese valor"  step="0.01"  style="display: none; width: 90px" type="text" >
+																			<a class="ayudaE" href="#profileModal2" data-toggle="modal" style="display: none"><span class="fa fa-question-circle"></span></a>
+																			<!--Subbase Granular-->
+																			<input id="coefBaseGra1" placeholder="Ingrese valor"  step="0.01" style="display: none; width: 90px" type="text" >
+																			<a class="ayudaG" id="ayudaGraVida" href="#profileModal1" data-toggle="modal" style="display: none"><span class="fa fa-question-circle"></span></a>
+																		</td>
+																	</tr>
+																	<tr id="tablacomboSub1" style="display: none">
+																		<td>
+																			Subbase
+																			<select id="cmbSubGranularVida" onchange="subGranular1()" style="width: 100%;" >
+																				<option value="">
+																					<h6>
+																						Seleccione....
+																					</h6>
+																				</option>
+																				<option value="0">
+																					Sin evidencia de bombeo, degradación o contaminación por finos
+																				</option>
+																				<option value="1">
+																					Alguna evidencia de bombeo, degradación o contaminación por finos.
+																				</option>
+																			</select>
+																		</td>
+																		<td >
+																			<input id="coefSubBase1"  step="0.01" style=" width: 90px" type="text" value="">
+																			<a class="ayudaG1" href="#profileModal1" data-toggle="modal" ><span class="fa fa-question-circle"></span></a>
+																		</td>
+																	</tr>
+																	<tr id="tablacomboMej1" style="display: none">
+																		<td>
+																			Mejoramiento
+																		</td>
+																		<td >
+																			<input style="width: 90px; " id="coefMaterial1"   name="" type="text">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Valor SN0
+																		</td>
+																		<td >
+																			<input style="width: 90px"  id="sn0Remanente" name="" disabled="" type="text">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Confiabilidad
+																		</td>
+																		<td >
+																			<input style="width: 90px"  disabled="" name="" type="text" value="50">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Zr
+																		</td>
+																		<td>
+																			<input style="width: 90px" id="zrRemanente"  disabled="" name="" type="text" value="0">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Desviación estándar
+																		</td>
+																		<td>
+																			<input style="width: 90px" id="desvRemanente" placeholder="Ingrese valor"  name="" type="text" value="0.45">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Δ PSI
+																		</td>
+																		<td>
+																			<input style="width: 90px" id="psiRemanente"  disabled="" name="" type="text" value="2.7"/>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Nro. ESAL´s N1,5
+																		</td>
+																		<td>
+																			<input style="width: 90px"  disabled="" id="totalW15" name="" type="text" >
+
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			%Vida remanente (RL)
+																		</td>
+																		<td>
+																			<input style="width: 90px"   type="text" disabled=""  name="" id="RL">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			CF
+																		</td>
+																		<td>
+																			<input style="width: 90px"  type="text" disabled=""  name="" id="totalCF">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			SNef
+																		</td>
+																		<td>
+																			<input style="width: 90px"  type="text" disabled=""  name="" id="snefVidaRemanente">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Coeficiente estructural carpeta asfáltica
+																		</td>
+																		<td>
+																			<input  name="" disabled=""  style="width: 90px;" type="text" id="coefEstrucCarpAsVida" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td >
+																			Espesor sobrecarpeta "D"
+																		</td>
+																		<td>
+																			<input  name="" disabled=""  style="width: 90px;" type="text" id="espFinalVida" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			Espesor sobrecarpeta "D" redondeado
+																		</td>
+																		<td>
+																			<input name="" disabled=""  style="width: 90px;" type="text" id="RedonVida" />
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div class="modal-footer">
+
+															<button id="botonVR" class="btn btn-primary" style="border-radius: 5px; background-color: #FFCE4F;color: black;" onclick="CalcularVidaRemanente(),comprobarMetodosActPro()" type="button">Calcular</button>
+															<button id="botonVR1" class="btn btn-primary" style="border-radius: 5px; background-color: #FFCE4F;color: black; display: none;" onclick="CalcularVidaRemanente()" type="button">Calcular</button>
+															<button class="btn btn-primary" style="border-radius: 5px; background-color: #FFCE4F;color: black; display: inline; margin-bottom: 5px"  type="button" data-dismiss="modal" aria-label="Close">Salir</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- FIN METODO NDT -->
+											<button id="imp2" class="btn btn-warning btn-radius btn-sm botonImprimir2" style="margin-left: 170px; visibility:hidden;" type="button" onclick="printDiv2()"><span class="icon-file-text2">
+
+											</span>Imprimir
+											<span class="tippf6">
+												<section class="sct-content">
+													<p>Obtener el reporte completo luego de revisar</p>
+													<p>todo el contenido de gráficas y procedimientos</p>
+												</section>
+
+											</span>
+										</button>
+										<button class="btn btn-warning btn-radius btn-sm"  data-toggle="tab" href="#tab2default"  style="visibility: hidden; " id="btnProce" align="right" type="button" onclick="EpMr1(),loadGraphSN(),Procedimiento(),GranularGra(),CementorGra(), SNefNDT1(),Gracf(),VentanaCoefDrena();lanzarGraficas()" >
+											Procedimiento
+										</button><br>
+										<!-- PASAR A PROCEDIMIENTO // BOTON -->
+										
+										<!-- PASAR A PROCEDIMIENTO -->
+										<div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="margin-right: 100%; position: absolute; overflow: auto;">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<h3 style="text-align: center"><b>Importante!</b> <a id="anclaFuturo" style="display: inline-block; padding-left: 0.7em;" data-toggle="tab" href="#tab8default" onclick="AnclaMetodoNDT()"><span class="fa fa-arrow-circle-right" style="color: #00457E"></span></a></h3>
+													</div>
+													<div class="modal-body" style="text-align: center">
+														El usuario puede guiarse desde un procedimiento a su resultado y viceversa al dar clic en las flechas de sus títulos
+
+													</div>
+													
+												</div>
+											</div>
+										</div>
+										<!-- FIN DEL PASO A PROCEDIMIENTO -->
+
+										<!-- Ventana ayuda coeficiente carpeta asfaltica -->
+										<div class="modal fade " id="profileModal"  data-backdrop="static" aria-hidden="true" style="display: none; position: absolute; left: 0%;  top: 0%; ">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content" >
+													<div class="modal-body" align="center">
+														<button type="button" class="close" data-dismiss="modal" data-target="#profileModal">×</button>
+														<table class="table table-hover table-bordered table-condensed table-responsive" style="width: 80%;">
+															<tbody>
+																<tr>
+																	<td>
+																		Muy poca piel y/o fisuras transversales de baja severidad
+																	</td>
+																	<td style="width: 64px">
+																		0.35 - 0.40
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		< 10% de piel de cocodrilo de baja severidad y/o
+																		<br>
+																		< 5% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td>
+																		0.25 - 0.35
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		> 10% de piel de cocodrilo de baja severidad y/o
+																		<br>
+																		< 10% de piel de cocodrilo de severidad media y/o
+																		<br>
+																		5-10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td>
+																		0.20 - 0.30
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		> 10% de piel de cocodrilo de baja severidad y/o
+																		<br>
+																		< 10% de piel de cocodrilo de severidad media y/o
+																		<br>
+																		> 10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td>
+																		0.14 - 0.20
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		> 10% de piel de cocodrilo de alta severidad y/o
+																		<br>
+																		> 10% de fisuras transversales de alta severidad.
+																	</td>
+																	<td>
+																		0.20 - 0.35
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div> 
+										<!-- Ventana ayuda coeficiente base granular -->
+										<div class="modal fade " id="profileModal1"  data-backdrop="static" aria-hidden="true" style="display: none; position: absolute; left: 0%;  top: 0%;">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content" >
+													<div class="modal-body" align="center">
+														<button type="button" class="close" data-dismiss="modal" data-target="#profileModal1">×</button>
+														<table class="table table-hover table-bordered table-condensed table-responsive" style="width: 80%;">
+															<tbody>
+																<tr>
+																	<td rowspan="2" colspan="1" align="center"  style="text-align: center;">Base o subbase granular</td>
+																	<td>
+																		Sin evidencia de bombeo, degradación o contaminación por finos. 
+																	</td>
+																	<td style="width: 64px">
+																		0.10 - 0.14
+																	</td>
+																</tr>
+																<tr>	
+																	<td>
+																		Alguna evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td>
+																		0.00 - 0.10
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div> 
+										<!-- Ventana ayuda base tratada con cemento -->
+										<div class="modal fade " id="profileModal2"  data-backdrop="static" aria-hidden="true" style="display: none; position: absolute; left: 0%;  top: 0%; ">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content" >
+													<div class="modal-body" align="center">
+														<button type="button" class="close" data-dismiss="modal" data-target="#profileModal2">×</button>
+														<table class="table table-hover table-bordered table-condensed table-responsive" style="width: 100%;">
+															<tbody>
+																<tr>
+																	<th rowspan="6" colspan="1" align="center"  align="center" style="text-align: center;">Base estabilizada</th>
+																</tr>
+																<tr>
+																	<td>
+																		Muy poca piel de cocodrilo y/o fisuras transversales de baja severidad. 
+																	</td>
+																	<td style="width: 64px">
+																		0.20 - 0.35
+																	</td>
+																</tr>
+																<tr>	
+																	<td>
+																		< 10% de piel de cocodrilo de baja severidad y/o
+																		<br>
+																		< 5% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td>
+																		0.15 - 0.25
+																	</td>
+																</tr>
+																<tr>	
+																	<td>
+																		> 10% de piel de cocodrilo de baja severidad y/o
+																		<br>
+																		< 10% de piel de cocodrilo de severidad media y/o
+																		<br>
+																		5 - 10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td>
+																		0.15 - 0.20
+																	</td>
+																</tr>
+																<tr>	
+																	<td>
+																		> 10% de piel de cocodrilo de severidad media y/o
+																		<br>
+																		< 10% de piel de cocodrilo de alta severidad  y/o
+																		<br>
+																		> 10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td>
+																		0.10 - 0.20
+																	</td>
+																</tr>
+																<tr>	
+																	<td>
+																		> 10% de piel de cocodrilo de alta severidad y/o
+																		<br>
+																		> 10% de fisuras transversales alta severidad.
+																	</td>
+																	<td>
+																		0.08 - 0.15
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</form>
+
+			</div>
+
+			<!-- IMPRESION FORMATO GRAFICAS -->
+			<div id="recibeCaratula" style="margin-bottom: 0px;display: none; ">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+
+				<h3 style="text-align: center">Laboratorio virtual de Pavimentos</h3>
+				<h3 style="text-align: center">Reporte de cálculo de espesores de capas para la rehabilitación de pavimentos flexibles por el método AASHTO 1998
+				</h3>
+				
+			</div>
+			<div id="recibeRenuncia" style="margin-bottom: 0px;display: none; ">
+				<section>
+					<p style=" font-weight: bold">Renuncia</p>
+					<p style=" text-align : justify;">El software de diseño de espesores de capas para la rehabilitación de pavimentos flexibles por el método AASHTO 1998 (Versión BETA) se difunde bajo el patrocinio del Grupo de Investigaciín de Ingeniería Vial de la Titulación de Ingeniería Civil, en interés de mejorar el aprendizaje de diseño sobreespesores de pavimentos flexibles. La Universidad Técnica Particular de Loja no asume ninguna responsabilidad por su contenido o uso. Este documento no constituye un estándar, especificación o regulación, pues únicamente tiene fines académicos; así los nombres de los elaboradores pueden aparecer en este software solo porque se consideran esenciales para el objetivo de este.
+					</p>
+				</section>
+			</div>
+			<div id="recibetituloproy" style="margin-bottom: 0px;display: none; ">
+				<h3 align="center" >ESTIMACIÓN DE ESPESORES DE CAPAS PARA LA REHABILITACIÓN DE PAVIMENTOS FLEXIBLES POR EL MÉTODO AASHTO 1998</h3>
+			</div>
+			<div id="recibeDatos" style="margin-bottom: 0px;display: none; ">
+				<h4 ¿>Datos del proyecto:</h4>
+				<table border="1"  style="width: 100%">
+					<tbody>
+						<tr>
+							<td style="width: 600px; font-size: 17px">
+								<p id="recibetxtnom"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 17px">
+								<p id="recibetxtubi"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 17px" >
+								<p id="recibetxtruta"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 17px" >
+								<p id="recibetxttra"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 17px" >
+								<p id="recibetxtdise"></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="inicioMetodoNDT" style="margin-bottom: 0px;display: none; ">
+				<h3>Método de ensayo no destructivo (NDT)</h3>
+				<h4 >Datos generales:</h4>
+			</div>
+			<div id="recibeDatosGenerales"  style="margin-bottom: 0px;display: none; ">
+				<!-- TABLA DATOS GENERALES -->
+				<table border="1" class="table-responsive  table-hover  table-condensed table-editable" style="width: 100%;" >
+					<tbody>
+						
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeTotalEsp"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibebase"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeserviInicial"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeserviFinal"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeIndiceServ"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeDesvEstan"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeEsalsF"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibetemp"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibecarga"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeplatcar"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeDefcentro"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeconf"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibezr"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeModRes"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibepresionplato"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeFactorCorr"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeDCorre"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeTotalEp"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeModEfecCapas"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p> Factor “C” del módulo resiliente efectivo de la subrasante: 0.333333333</p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeModEfecSubra"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibeCalcSnFut"></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- FIN -- TABLA DATOS GENERALES -->
+			</div>
+			<div id="recibeMetodoNDT" style="margin-bottom: 0px;display: none; ">
+				<h4 >Desarrollo del método:</h4>
+				<!-- BULBOO -->
+				<!-- SI AGREGAN DEFLEXIONES -->
+				<p align="justify">Para el cálculo del método de ensayo no destructivo (NDT) es importante tomar en cuenta los siguientes parámetros: módulo resiliente efectivo de la subrasante (Mre), módulo efectivo de todas las capas del pavimento (Ep) y el espesor efectivo del pavimento. Se define como espesor efectivo del pavimento a la diferencia entre el espesor de todas las capas que conforman el pavimento y el espesor fresado del pavimento.</p>
+				<section id="CampoDeBulbo" style="display: none">
+					<p align="justify">Una vez ingresadas las deflexiones y distancias de los ensayos realizados, se escoge aquella que cumple la siguiente condición: “r ≥ 0.7ae”; es decir que la distancia de la deflexión sea mayor al 70% del radio de bulbo de tensiones que se genera, tal como se indica a continuación:</p>
+					<p align="center">r ≥ 0.7ae</p>
+					<p align="center" id="recibeformulavalidarT"></p>
+					<p align="center" id="recibeformulaTotvalidarT"></p>
+					<p align="center" id="recibeformulaBulbo"></p>
+					<p align="justify">Luego calculamos el módulo resiliente retrocalculado con la siguiente fórmula</p>
+					<p align="center">Mr = (0.24 * P) / (dr * r)</p>
+					<p align="justify">Siendo, "P" la carga, "dr" es la deflexión y "r" la distancia que cumple la condición de la AASHTO 1998.</p>
+					<p align="center" id="recibeformMr"></p>
+					<p align="center" id="recibeformMrTot"></p>
+					<p align="justify" id="recibedefdistrabajada"></p>
+				</section>
+				<!-- FIN DE BULBOO -->
+				<!-- PRESION -->
+				<p align="justify">Se calcula primeramente la presión aplicada por el centro de carga:</p>
+				<p align="center">p = P / (π * a^2)</p>
+				<p align="center" id="recibeformulaPres"></p>
+				<p align="center" id="recibeformulaPres1"></p>
+				<p align="justify" id="recibedescriPres"></p>
+				<!-- FIN PRESION -->
+				<!-- GRAFICA GRANULAR O TRADA CON CEMENTO -->
+				<section id="recibeContieneG" style="display: none;">
+					<img id="recibeGraficaBaseG" width="100%" >
+				</section>
+				<section  id="recibeContieneC" style="display: none;">
+					<img id="recibeGraficaBaseC" width="100%" align="center" >
+				</section>
+				<p align="center">Figura 1. Factor de corrección para base granular o tratada con cemento</p>
+				<p id="recibetextFig" align="justify"></p>
+				<p align="center">d0 corregido = deflexión al centro de carga * factor de corrección</p>
+				<p align="center" id="recibeformulad0Corr"></p>
+				<p align="center" id="recibeformulad0Corr1"></p>
+				<p align="justify">Luego se calcula la relación Ep/Mr con la Figura 2. Para ello, en primer lugar se debe calcular el valor (Mr * d0 corregido) / P, donde P es la carga aplicada en milésimas de pulgadas; tal como se muestra a continuación:</p>
+				<p id="recibeformulaEpMrps1" align="center"></p>
+				<p id="recibeformulaEpMrps2" align="center"></p>
+				<p id="recibeformulaEpMrps3" align="center"></p>
+				<p id="recibeformulaEpMrps4" align="justify"></p>
+				<!-- Grafica Ep/MR -->
+				<img id="recibeGrafRelacion" width="100%">
+				<p align="center">Figura 2. Obtención de la relación Ep/Mr</p>
+				<p align="justify">Sin embargo, dicha relación Ep/Mr se la puede calcular matemáticamente como se indica a continuación, para ello se debe despejar el término Ep/Mr de la expresión indicada.</p>
+				<img src="images/d0corregido.png" width="100%">
+				<p align="justify" id="recibeD0"></p>
+				<p align="justify" id="recibeA"></p>
+				<p align="justify" id="recibeB"></p>
+				<p align="justify" id="recibeC"></p>
+				<p align="justify" id="recibeD"></p>
+				<p align="justify">Despejando la relación Ep/Mr de la ecuación anterior se obtiene lo siguiente:</p>
+				<p align="center" id="recibeEpMr"></p>
+				<p align="justify" id="recibedescriEpMr2"></p>
+				<!-- EP -->
+				<p align="center" >Ep = (Ep/Mr)*Mr</p>
+				<p align="center" id="recibeEp"></p>
+				<p align="center" id="recibeEp2"></p>
+				<p align="justify">El módulo resiliente debe ser corregido para que sea equivalente al probado en el laboratorio de la AASHTO 1998. Para ello se procede a multiplicar el módulo resiliente retrocalculado por una constante cuyo nombre es factor “C”.</p>
+				<p align="center">Mre= Mr * factor “C”</p>
+				<p align="center" id="recibeModResEfectivo"></p>
+				<p align="center" id="recibeTotalModResEfectivo"></p>
+				<p align="justify" id="recibeTextModRes"></p>
+				<ul>
+					<li><p align="justify" id="recibeEsalsF1"></p></li>
+					<li><p id="recibeconf1"></p></li>
+					<li><p id="recibezr1"></p></li>
+					<li><p id="recibeDesvEstan1"></p></li>
+					<li><p id="recibeIndiceServ1"></p></li>
+					<li><p id="reciberesiEfec"></p></li>
+				</ul>
+				<p align="justify">Este SNfuturo se puede obtener de dos formas: utilizando una ecuación o mediante un ábaco. En el primer caso la ecuación es la siguiente:</p>
+				<img width="100%" src="images/esalsFinal.png">
+				<p align="justify">Reemplazando los valores se tiene:</p>
+				<p align="justify" id="recibeW18"></p>
+				<p align="justify" id="recibeWA"></p>
+				<p align="justify" id="recibeWB"></p>
+				<p align="justify" id="recibeWC"></p>
+				<p align="justify" id="recibeWD"></p>
+				<p align="justify" id="recibeSN"></p>
+				<!-- GRAFICO SN FUTURO -->
+				<img id="recibeGrafNomogra" width="100%">
+				<p align="center">Figura 3. Obtención del SN futuro</p>
+				<h4>Resultados del método:</h4>
+				<p align="justify">Previo al cálculo del espesor de la nueva capa se debe calcular matemáticamente el número estructural efectivo (SNef) con la siguiente fórmula, donde "D" es el espesor efectivo del pavimento previo y "Ep" el módulo efectivo de las capas del pavimento, calculado previamente.</p>
+				<p align="center">SNef = 0.045 * D * (Ep)^1/3</p>
+				<p align="center" id="recibeSnefNDT"></p>
+				<p align="center" id="recibeTotalSnefNDT"></p>
+				<!-- GRAFICA -->
+				<p align="justify" id="recibedescrsnefNDT1"></p>
+				<img id="recibeultimagrafica" width="100%">
+				<p align="center">Figura 4. Obtención del SNef método NDT</p>
+				<p align="justify" id="recibemodelastica"></p>
+				<img id="recibeGraficaModElas">
+				<p align="center">Figura 5. Gráfica para el cálculo del coeficiente estructural de la nueva carpeta asfáltica</p>
+				<p align="justify" id="recibedescrsnefNDT2"></p>
+				<p align="center">D = (SN futuro – SNef) / a</p>
+				<p align="center" id="recibeDNDT"></p>
+				<p align="center" id="recibeTotalDNDT"></p>
+				<p align="center" id="recibeTotalDNDTRedon"></p>
+			</div>
+			<!-- *********************METODO FACTOR CONDICION******************** -->
+			<div id="inicioMetodoFact" style="margin-bottom: 0px;display: none; ">
+				<h4 >Método Factor Condición</h4>
+			</div>
+			<div id="recibeDatosFactor" style="margin-bottom: 0px;display: none; ">
+				<table border="1" class="table-responsive  table-hover  table-condensed table-editable" style="width: 100%" >
+					<tbody>
+						
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeconcreFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibebaseFact"></p>
+							</td>
+						</tr>
+						<tr id="tablaSubbaseFact" >
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibesubbaseFact"></p>
+							</td>
+						</tr>
+						<tr id="tablaMaterFact">
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibematerialFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeserviInicialFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeserviFinalFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeIndiceServFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeDesvEstanFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeEsalsFFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeconf2"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibezrFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibemodresefecFact"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibecalcsnFact"></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="recibedesarrolloFact" style="margin-bottom: 0px;display: none; ">
+				<h4>Desarrollo del método:</h4>
+				<p align="justify">Para el cálculo del método Factor Condición es importante tomar en cuenta los siguientes parámetros: módulo resiliente efectivo de la subrasante (Mre), SNfuturo, los coeficientes de drenaje (m) y estructurales (a) de las capas que conforman el pavimento previo (e) y el espesor efectivo del pavimento. </p>
+				<p align="justify">Primeramente, el módulo resiliente debe ser corregido para que sea equivalente al probado en el laboratorio de la AASHTO 1998. Para ello se procede a multiplicar el módulo resiliente retrocalculado por una constante cuyo nombre es factor “C”.</p>
+				<p align="center">Mre= Mr * factor “C”</p>
+				<p align="center" id="recibeModResEfectivo1"></p>
+				<p align="center" id="recibeTotalModResEfectivo1"></p>
+				<p align="justify" id="recibeTextModRes1"></p>
+				<ul>
+					<li>
+						<p align="justify" id="recibeEsalsFFact2"></p>
+					</li>
+					<li>
+						<p id="recibeconf3"></p>
+					</li>
+					<li>
+						<p id="recibezrFact2"></p>
+					</li>
+					<li>
+						<p id="recibeDesvEstanFact2"></p>
+					</li>
+					<li>
+						<p id="recibeIndiceServFact2"></p>
+					</li>
+					<li>
+						<p id="recibemodresefecFact2"></p>
+					</li>
+				</ul>
+				<p align="justify">Este SNfuturo se puede obtener de dos formas: utilizando una ecuación o mediante un ábaco. En el primer caso la ecuación es la siguiente:</p>
+
+				<img align="center" style="width: 100%" src="images/esalsFinal.png">
+				<p align="center" id="recibeW181"></p>
+				<p align="justify" id="recibeWA1"></p>
+				<p align="justify" id="recibeWB1"></p>
+				<p align="justify" id="recibeWC1"></p>
+				<p align="justify" id="recibeWD1"></p>
+				<p align="justify" id="recibeSN1"></p>
+				
+			</div>
+			<div id="recibeGrafMetodoFactCondi" style="margin-bottom: 0px;display: none; ">
+				<!-- GRAFICO SN FUTURO revisar dos SN -->
+				<img id="recibeGrafNomogra1" width="100%">
+				<p align="center">Figura 6. Obtención del SN futuro.</p>
+			</div>
+			<div id="recibeMetodoFactCondi" style="margin-bottom: 0px;display: none; ">	
+				<h4>Resultado del método:</h4>
+				<p align="justify">Se debe calcular el número estructural efectivo (SNef) previo a la estimación de la sobrecarpeta. Para ello se deben obtener los coeficientes de drenaje y los coeficientes estructurales de cada capa. Para el cálculo del coeficiente de drenaje se utiliza la Tabla 1, en la que se ha sombreado la fila y columna correspondientes a los datos del drenaje y saturación de las capas de pavimento. En el caso de que existan valores intermedios de porcentaje de saturación se los puede interpolar. En este caso el coeficiente de drenaje es:</p>
+				<!-- Fin Modificar -->
+			</div>
+			<div style="display: none" id="recibeTabla1y2">
+				<p  align="center">Tabla 1. Rango del valor escogido para los coeficientes de drenaje acorde a las capas del pavimento.</p>
+			</div>
+			<div style="display: none;" id="recibemedioTablas">
+				<p align="justify">Para el uso de los coeficientes estructurales se usa la Tabla 2. En ella se ha sombreado las filas y columnas correspondientes a las capas existentes del pavimento. Además se han sombreado las filas y columnas correspondientes al material, condición de superficie y rango de coeficiente estructural de cada capa.</p>
+			</div>
+			<!-- CONTINUACION METODO FACTOR CONDICION -->
+			<div id="recibeMetodoFactCondi1" style="margin-bottom: 0px;display: none; ">
+				<p align="justify" >Con los coeficientes de drenaje y estructurales, se procede a calcular matemáticamente el SNef:</p>
+				<p align="center">SNef = (ec*a)+(e1*a1*m1)+(e2*a2*m2)+(e3*a3*m3)</p>
+				<p id="recibeSnefFactor" align="center"></p>
+				<p id="recibeTotalSnefFactor" align="center"></p>
+				<section id="tablaSubaseMetFac">
+						<p id="recibecoefSubbaseFact"></p>
+				</section>
+				<section id="tablaMaterialMetFac">
+						<p id="recibecoefmaterialFact"></p>
+				</section>
+				<p align="justify" id="recibemodelastica1"></p>
+				<br> </br>
+				<img id="recibeGraficaModElas1">
+				<p align="center">Figura 7. Gráfica para el cálculo del coeficiente estructural de la nueva carpeta asfáltica</p>
+				<p align="justify" id="recibeDescripMet"></p>
+				<p align="center">D= (SN futuro – SNef) / a</p>
+				<p align="center" id="recibeDFactor"></p>
+				<p align="center" id="recibeTotalDFactor"></p>
+				<p align="center" id="recibeTotalDFactorRedon"></p>
+			</div>
+			<!-- ********************METODO VIDA REMANENTE*********************** -->
+			<div id="InicioMetodoVida" style="margin-bottom: 0px;display: none; ">
+				<h4>Método Vida Remanente</h4>
+			</div>
+			<div id="recibeMetodoVidaRemante" style="margin-bottom: 0px;display: none">
+				<table border="1" class="table-responsive  table-hover  table-condensed table-editable" style="width: 100%" >
+					<tbody>
+						
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeconcreVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibebaseVida"></p>
+							</td>
+						</tr>
+						<tr id="tablaSubbaseVida" >
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibesubbaseVida"></p>
+							</td>
+						</tr>
+						<tr id="tablaMaterVida">
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibematerialVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeserviInicialVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeserviFinalVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeIndiceServVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeDesvEstanVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeEsalsFVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeEsalsIVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibeconf5"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px" >
+								<p id="recibezrVida1"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibemodresefecVida"></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 600px; font-size: 18px">
+								<p id="recibecalcsnVida"></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+			<div id="recibeDesarroVida" style="margin-bottom: 0px;display: none">
+				<h4>Desarrollo del Método:</h4>
+				<p align="justify">Para el cálculo del método Vida Remanente es importante tomar en cuenta los siguientes parámetros: módulo resiliente efectivo de la subrasante (Mre), SNfuturo, los coeficientes de drenaje (m) y estructurales (a) de las capas que conforman el pavimento previo (e) y el espesor efectivo del pavimento. </p>
+				<p align="justify">El módulo resiliente debe ser corregido para que sea equivalente al probado en el laboratorio de la AASHTO 1998. Para ello se procede a multiplicar el módulo resiliente retrocalculado por una constante cuyo nombre es factor “C”.</p>
+				<p align="center">Mre= Mr * factor “C”</p>
+				<p align="center" id="recibeModResEfectivo2"></p>
+				<p align="center" id="recibeTotalModResEfectivo2"></p>
+				<p align="justify" id="recibeTextModRes2"></p>
+				<ul>
+					<li>
+						<p align="justify" id="recibeEsalsFVida2"></p>
+					</li>
+					<li>
+						<p id="recibeconf4"></p>
+					</li>
+					<li>
+						<p id="recibezrVida"></p>
+					</li>
+					<li>
+						<p id="recibeDesvEstanVida2"></p>
+					</li>
+					<li>
+						<p id="recibeIndiceServVida2"></p>
+					</li>
+					<li>
+						<p id="recibemodresefecVida2"></p>
+					</li>
+				</ul>
+				<p align="justify">Este SNfuturo se puede obtener de dos formas: utilizando una ecuación o mediante un ábaco. En el primer caso la ecuación es la siguiente:</p>
+				<img align="center" style="width: 100%" src="images/esalsFinal.png">
+				<p align="center" id="recibeW182"></p>
+				<p align="justify" id="recibeWA2"></p>
+				<p align="justify" id="recibeWB2"></p>
+				<p align="justify" id="recibeWC2"></p>
+				<p align="justify" id="recibeWD2"></p>
+				<p align="justify" id="recibeSN2"></p>
+			</div>
+			<div id="recibeMetodoVidaRema" style="margin-bottom: 0px;display: none; ">
+				<img id="recibeGrafNomogra2" width="100%">
+				<p align="center">Figura 8. Obtención del SN futuro.</p>
+			</div>
+			<div id="recibeMetodoVidaRema1" style="margin-bottom: 0px;display: none; ">
+				<h4>Resultados del método</h4>
+				<p align="justify">Se debe calcular el número estructural efectivo (SN0) previo a la estimación de la sobrecarpeta. Para ello se deben obtener los coeficientes de drenaje y los coeficientes estructurales de cada capa. Para el cálculo del coeficiente de drenaje se utiliza la Tabla 3, en la que se ha sombreado la fila y columna correspondientes a los datos del drenaje y saturación de las capas de pavimento. En el caso de que existan valores intermedios de porcentaje de saturación se los puede interpolar. En este caso el coeficiente de drenaje es:</p>
+				<!-- Modificar Vida -->	
+				<p align="center">Tabla 3. Rango del valor escogido para los coeficientes de drenaje acorde a las capas del pavimento</p>
+			</div>
+			<div style="display: none" id="recibeMedioTablas2">
+			<p align="justify">Para el uso de los coeficientes estructurales se usa la Tabla 4. En ella se ha sombreado las filas y columnas correspondientes a las capas existentes del pavimento. Además se han sombreado las filas y columnas correspondientes al material, condición de superficie y rango de coeficiente estructural de cada capa del pavimento previo.</p>
+				
+			</div>
+			<div style="display: none" id="recibecontVida">
+				<p align="justify" >Con los coeficientes de drenaje y estructurales, se procede a calcular matemáticamente el SN0:</p>
+				<p align="center">SN0 = (ec*a)+(e1*a1*m1)+(e2*a2*m2)+(e3*a3*m3)</p>
+				<p id="recibeSnefVida" align="center"></p>
+				<p id="recibeTotalSnefVida" align="center"></p>
+				<p id="recibecapertaAsVida"></p>
+				<section id="tablaSubaseMetVida">
+					<p id="recibecoefSubbaseVida"></p>
+				</section>
+				<section id="tablaMaterialMetVida">
+					<p id="recibecoefmaterialVida"></p>
+				</section>
+				<!-- Fin Modificar -->
+				<p align="justify">Ya obtenido el SN0, es necesario corregir ese valor con el factor condición (CF) del método, para lo cual se calcula el Nro. ESAL´s 1,5 con el cual el pavimento llegará al colapso; esto se lo realiza con los datos siguientes:</p>
+				<ul>
+					<li>
+						<p>Confiabilidad: 50 %</p>
+					</li>
+					<li>
+						<p>Desviación normal (Zr): 0 </p>
+					</li>
+					<li>
+						<p id="recibeDesvEstanVida3"></p>
+					</li>
+					
+					<li>
+						<p id="recibeIndiceServVida2">Índice de serviciabilidad (Δpsi): 2.7</p>
+					</li>
+					<li>
+						<p id="recibeModEfecSubra2"></p>
+					</li>
+					<li>
+						<p id="recibesnVida"></p>
+					</li>
+				</ul>
+				<p>Los cuales son reemplazados en la siguiente ecuación</p>
+				<img align="center" src="images/esals15.png" width="100%">
+				<p align="justify" id="recibeWA15"></p>
+				<p align="justify" id="recibeWB15"></p>
+				<p align="justify" id="recibeWC15"></p>
+				<p align="justify" id="recibeWD15"></p>
+				<p align="justify" id="recibeW15"></p>
+				<p align="justify" id="recibeTotalW15"></p>
+				
+				<p align="justify" id="recibedescnesal"></p>
+				<p align="center">%RL= 100 * (1 – (Nro. ESAL´s Inicial / Nro. ESAL´s 1,5 ))  </p>
+				<p align="center" id="recibeRl"></p>
+				<p align="center" id="recibeTotalRl"></p>
+				<p align="justify" id="recibeDescripCF"></p>
+				<img align="center" id="recibeGraficaCF" width="100%">
+				<p align="center">Figura 9. Obtención del valor CF para el método vida remanente</p>
+				<p align="justify" id="recibeDescripCf2"></p>
+				<h4>Resultado del método:</h4>
+				<p align="justify" id="recibeDescriSnefVida1"></p>
+				<p align="center">SNef = SN0 * CF</p>
+				<p align="center" id="recibeSnefVidaRema"></p>
+				<p align="center" id="recibeTotalSnefVidaRema"></p>
+				<p align="justify" id="recibemodelastica2"></p>
+				<img id="recibeGraficaModElas2">
+				<p align="center">Figura 10. Gráfica para el cálculo del coeficiente estructural de la nueva carpeta asfáltica</p>
+				<p align="justify" id="recibeDescripVidaR"></p>
+				<p align="center">D= (SN futuro – SNef) / a</p>
+				<p align="center" id="recibeDVida"></p>
+				<p align="center" id="recibeTotalDVida"></p>
+				<p align="center" id="recibeTotalDVidaRedon"></p>
+			</div>
+
+			<!-- FIN IMPRESION -->
+
+
+
+
+
+			<!-- REPORTE 2 -->
+			<div id="recibeCaratula2" style="  margin-bottom: 0px;display: none; ">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+
+				<h2 style="text-align: center;font-size: 18px" >Laboratorio virtual de Pavimentos</h2>
+				<h2 style="text-align: center;font-size: 20px">Reporte de cálculo de espesores de capas para la rehabilitación de pavimentos flexibles por el método AASHTO 1998
+				</h2>
+			</div>
+			<div id="recibetituloProy2" style="  margin-bottom: 0px;display: none; ">
+				<h1 align="center" >ESTIMACIÓN DE ESPESORES DE CAPAS EN LA REHABILITACIÓN DE PAVIMENTOS FLEXIBLES POR EL MÉTODO AASHTO 1998</h1>
+			</div>
+			<div id="inicioMetodoNDT2" style="  margin-bottom: 0px;display: none; ">
+				<h3>Método de ensayo no destructivo (NDT)</h3>
+			</div>
+			<div id="resultadoNDT" style="  margin-bottom: 0px;display: none; ">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resultados:</p>
+				<table border="1" class="table-responsive  table-hover  table-condensed table-editable" style="width: 100%" >
+					<tr>
+						<td>
+							<p id="recibersSnefNDT"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersCoefEsNDT"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersEspDNDT"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersEspDNDTRedon"></p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="resultadoFactor" style="margin-bottom: 0px;display: none; ">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resultados:</p>
+				<table border="1" class="table-responsive  table-hover  table-condensed table-editable" style="width: 100%" >
+					<tr>
+						<td>
+							<p id="recibersSnefFactor"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersCoefEsFactor"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersEspDFactor"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersEspDFactorRedon"></p>
+						</td>
+					</tr>
+				</table>
+
+				
+			</div>
+			<div id="resultadoVida" style="margin-bottom: 0px;display: none; ">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resultados:</p>
+				<table border="1" class="table-responsive  table-hover  table-condensed table-editable" style="width: 100%" >
+					<tr>
+						<td>
+							<p id="recibersSnCero"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersEsalunocin"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersRl"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersCf"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersSnefVida"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersCoefEsVida"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersEspDVida"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="recibersEspDVidaRedon"></p>
+						</td>
+					</tr>
+				</table>
+
+				
+			</div>
+
+			
+		</div>
+	</div>
+</div>
+<div class="container col-md-7" id="contenedorTres" style="overflow: scroll; height:650px; visibility:hidden; display:none;">
+	<div class="panel panel-default">
+		<div class="panel-heading" style="text-align: center; padding-top: 17px; padding-bottom: 3px; background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);">
+			<p style="font-size: 14px;  color: white;padding-top: 5px;">GRÁFICAS Y PROCEDIMIENTOS</p>
+		</div>
+		<div class="panel-body">
+			<button id="salir" class="btn btn-warning btn-radius btn-sm botonSalir" type="button" style="float: right;" onclick="VariablesDeEntrada()">
+				Salir X
+				<span class="tippf7">
+					<section class="sct-content">
+						<p>Permite regresar a la ventana principal</p>
+					</section>
+				</span>
+
+			</button>
+			<button id="imp1"  class="btn btn-warning btn-radius btn-sm botonImprimir1" style=" display:none;" type="button" onclick="printDiv()" >
+				<span class="icon-file-text2"></span>  Imprimir
+				<span class="tippf5">
+					<section class="sct-content">
+						<p>Obtener el reporte completo luego de revisar</p>
+						<p>todo el contenido de gráficas y procedimientos</p>
+					</section>
+				</span>
+			</button>
+		<form id="formCargasPuntuales">
+			<div class="panel with-nav-tabs">
+				<div class="panel-heading">
+					<ul class="nav nav-pills">
+						<li id="navCoefDrena" class="active">
+							<a id="menuCoefDrena" style="font-size: 12px;" onclick="redirec()"  data-toggle="tab" href="#tab2default">
+								Coeficiente de drenaje
+							</a>
+						</li>
+						<li id="navFacTemperatura" class="myclass">
+							<a id="menuFacTemperatura" style="font-size: 12px;" onclick="redirecCap()" data-toggle="tab" href="#tab3default">
+								Factor ajuste por temperatura
+							</a>
+						</li>
+						<li id="navEpMr" class="myclass">
+							<a id="menuEpMr" style="font-size: 12px;" onclick="redirecCap()" data-toggle="tab" href="#tab4default">
+								Relación Ep/Mr
+							</a>
+						</li>
+						<li id="navSnFuturo" class="myclass">
+							<a id="menuSnFuturo" style="font-size: 12px;" onclick="redirecCap()" data-toggle="tab" href="#tab5default">
+								Nomograma SN futuro
+							</a>
+						</li>
+						<li id="navCoefEstructural" class="myclass">
+							<a id="menuCoefEstructural" style="font-size: 12px;" onclick="redirecTabla()" data-toggle="tab" href="#tab6default">
+								Tabla de coeficientes estructurales
+							</a>
+						</li>
+						<li id="navVidaRemanante" class="myclass">
+							<a id="menuVidaRemanante" style="font-size: 12px;" onclick="redirecMvida()" data-toggle="tab" href="#tab7default">CF método vida remanente</a>
+						</li>
+						<li id="navNDT" class="myclass">
+							<a id="menuNDT" style="font-size: 12px;" onclick="redirecMndt()" data-toggle="tab" href="#tab8default" > SNef método NDT</a>
+						</li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div  align="left" class="tab-pane fade row flex-row " id="tab2default">
+							<div class="panel panel-default">
+								<div class="panel-heading" id="cabecera">Coeficiente de drenaje</div>
+								<div class="panel-body" id="tablaCoefienteDrenaBase">
+
+									<div class="panel panel-default">
+										<div class="panel-heading" style="text-align: center;background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);">
+
+
+											<a style="display: inline-block; padding-right: 0.7em;"  onclick="AnclaBase()"><span class="fa fa-arrow-circle-left" href="#condicion1" data-toggle="tab"></span></a>
+
+											<p id="titulotablaBase" style="display: inline-block; font-size: 12px;text-align:  center;color: white;margin-bottom: 5px;">Base</p>
+										</div>
+										<div   class="panel-body">
+											<p id="validoBase" style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para los métodos Factor condición y Vida remanente.</strong></p>
+													<p  align="justify" id="RetitulotablaBas" style="display: none">Base:</p>
+											<table  border="1" id="tabla-drenaje" align="center" class=" table-hover table-responsive table-bordered table-condensed">
+												<thead>
+													<tr>
+														<tr>
+															<th rowspan="2">
+																Calidad de drenaje
+															</th>
+															<th colspan="4">
+																Porcentaje de tiempo anual en que la estructura del pavimento está expuesta a niveles cercanos a saturación
+															</th>
+														</tr>
+														<tr align="center">
+															<td class="Por_01">
+																<strong> <1% </strong>
+															</td>
+															<td class="Por_15">
+																<strong>1-5% </strong>
+															</td>
+															<td class="Por_525">
+																<strong>5-25% </strong>
+															</td>
+															<td class="Por_25">
+																<strong>>25% </strong>
+															</td>
+														</tr>
+													</thead>
+
+													<tr align="center" id="Cal_Excelente">
+
+														<td>
+															Excelente
+														</td>
+														<td class="Por_01">
+															1.40-1.35
+														</td>
+
+														<td class="Por_15">
+															1.35-1.30
+														</td>
+
+														<td class="Por_525">
+															1.30-1.20
+														</td>
+														<td class="Por_25">
+															1.20
+														</td>
+													</tr>
+													<tr align="center" id="Cal_Buena">
+														<td>
+															Buena
+														</td>
+														<td class="Por_01">
+															1.35-1.25
+														</td>
+														<td class="Por_15">
+															1.25-1.15
+														</td>
+														<td class="Por_525">
+															1.15-1.00
+														</td>
+														<td class="Por_25">
+															1
+														</td>
+													</tr>
+													<tr align="center" id="Cal_Aceptable">
+														<td>
+															Regular
+														</td>
+														<td class="Por_01">
+															1.25-1.15
+														</td>
+														<td class="Por_15">
+															1.15-1.05
+														</td>
+														<td class="Por_525">
+															1.00-0.80
+														</td>
+														<td class="Por_25">
+															0.80
+														</td>
+													</tr>
+													<tr align="center" id="Cal_Pobre">
+														<td>
+															Pobre
+														</td>
+														<td class="Por_01">
+															1.15-1.05
+														</td>
+														<td class="Por_15">
+															1.05-0.80
+														</td>
+														<td class="Por_525">
+															0.80-0.60
+														</td>
+														<td class="Por_25">
+															0.60
+														</td>
+													</tr>
+													<tr align="center" id="Cal_Muypobre">
+														<td>
+															Malo
+														</td>
+														<td class="Por_01">
+															1.05-0.95
+														</td>
+														<td class="Por_15">
+															0.95-0.75
+														</td>
+														<td class="Por_525">
+															0.75-0.40
+														</td>
+														<td class="Por_25">
+															0.40
+														</td>
+													</tr>
+												</table>
+												<br>
+												<div  style="padding-left: 5px;padding-right: 5px;display: inline;" >
+
+													<p id="descripTablaBase" style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;">Con el rango indicado en la tabla se efectuó una interpolación entre los porcentajes de tiempo de exposición de la estructura del pavimento a nivel de humedad próximos a la saturación y el coeficiente de drenaje</p>
+													<!-- FORMULAS -->
+													<p align="center"  style="font-family: Arial, Helvetica, sans-serif;font-size: 12px;" id="Op1"></p>
+													<p align="center" style="font-family: Arial, Helvetica, sans-serif;font-size: 12px;" id="ResOp1"></p>
+												</div>
+											</div>
+										</div>
+
+										<!-- TABLA 2 SUBBASE -->
+										<div class="container" id="TablaSub" style="display: none">
+											<div class="panel panel-default">
+												<div class="panel-heading" style="text-align: center;background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);">
+
+
+													<a style="display: inline-block; padding-right: 0.7em;" onclick="AnclaSubBase()"><span class="fa fa-arrow-circle-left" href="#condicion2" data-toggle="tab"></span></a>
+													<p id="titulotablasubBase" style="display: inline-block; font-size: 12px;text-align:  center;color: white;margin-bottom: 5px;">SubBase</p>
+												</div>
+												<div  class="panel-body">
+													<p id="validosubBase" style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para los métodos Factor condición y Vida remanente.</strong></p>
+													<p  align="justify" id="RetitulotablaSub" style="display: none">SubBase:</p>
+													<table id="tabla-drenaje1" align="center" class=" table-hover table-responsive table-bordered table-condensed">
+														<thead>
+															<tr>
+																<tr>
+																	<th rowspan="2">
+																		Calidad de drenaje
+																	</th>
+																	<th colspan="4">
+																		Porcentaje de tiempo anual en que la estructura del pavimento está expuesta a niveles cercanos a saturación
+																	</th>
+																</tr>
+																<tr align="center">
+																	<td class="Por_011">
+																		<strong><1% </strong>
+																	</td>
+																	<td class="Por_155">
+																		<strong>1-5% </strong>
+																	</td>
+																	<td class="Por_5255">
+																		<strong>5-25% </strong>
+																	</td>
+																	<td class="Por_255">
+																		<strong>>25% </strong>
+																	</td>
+																</tr>
+															</thead>
+
+															<tr align="center" id="Cal_Excelente1">
+
+																<td>
+																	Excelente
+																</td>
+																<td class="Por_011">
+																	1.40-1.35
+																</td>
+
+																<td class="Por_155">
+																	1.35-1.30
+																</td>
+
+																<td class="Por_5255">
+																	1.30-1.20
+																</td>
+																<td class="Por_255">
+																	1.20
+																</td>
+															</tr>
+															<tr align="center" id="Cal_Buena1">
+																<td>
+																	Buena
+																</td>
+																<td class="Por_011">
+																	1.35-1.25
+																</td>
+																<td class="Por_155">
+																	1.25-1.15
+																</td>
+																<td class="Por_5255">
+																	1.15-1.00
+																</td>
+																<td class="Por_255">
+																	1
+																</td>
+															</tr>
+															<tr align="center" id="Cal_Aceptable1">
+																<td>
+																	Regular
+																</td>
+																<td class="Por_011">
+																	1.25-1.15
+																</td>
+																<td class="Por_155">
+																	1.15-1.05
+																</td>
+																<td class="Por_5255">
+																	1,00-0,80
+																</td>
+																<td class="Por_255">
+																	0.80
+																</td>
+															</tr>
+															<tr align="center" id="Cal_Pobre1">
+																<td>
+																	Pobre
+																</td>
+																<td class="Por_011">
+																	1.15-1.05
+																</td>
+																<td class="Por_155">
+																	1.05-0.80
+																</td>
+																<td class="Por_5255">
+																	0.80-0.60
+																</td>
+																<td class="Por_255">
+																	0.60
+																</td>
+															</tr>
+															<tr align="center" id="Cal_Muypobre1">
+																<td>
+																	Malo
+																</td>
+																<td class="Por_011">
+																	1.05-0.95
+																</td>
+																<td class="Por_155">
+																	0.95-0.75
+																</td>
+																<td class="Por_5255">
+																	0.75-0.40
+																</td>
+																<td class="Por_255">
+																	0.40
+																</td>
+															</tr>
+														</table><br>
+														<div  style="padding-left: 5px;padding-right: 5px;display: inline;" >
+															
+															<p id="descripTablaSubBase" style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;">Con el rango indicado en la tabla se efectuó una interpolación entre los porcentajes de tiempo de exposición de la estructura del pavimento a nivel de humedad próximos a la saturación y el coeficiente de drenaje</p>
+															<!-- FORMULAS -->
+															<p align="center" style="font-family: Arial, Helvetica, sans-serif;font-size: 12px;" id="Op2"></p>
+															<p align="center" style="font-family: Arial, Helvetica, sans-serif;font-size: 12px;" id="ResOp2"></p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- FIN DE LA TABLA 2 SUBBASE -->
+
+											<!-- TABLA 3 MATERIAL -->
+											<div class="container" id="TablaMaterial" style="display: none">
+												<div class="panel panel-default">
+													<div class="panel-heading" style="text-align: center;background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);">
+														
+														<a style="display: inline-block; padding-right: 0.7em;"  onclick="AnclaMatMej()"><span class="fa fa-arrow-circle-left" href="#condicion3" data-toggle="tab"></span></a>
+
+
+														<p id="titulotablaMaterial" style="display: inline-block; font-size: 12px;text-align:  center;color: white;margin-bottom: 5px;">Material de mejoramiento</p>
+													</div>
+													<div  class="panel-body">
+														<p id="validoMaterial" style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para los métodos Factor condición y Vida remanente.</strong></p>
+														<p  align="justify" id="RetitulotablaMat" style="display: none">Material de mejoramiento:</p>
+														<table id="tabla-drenaje2" align="center" class=" table-hover table-responsive table-bordered table-condensed">
+															<thead>
+																<tr>
+																	<tr>
+																		<th rowspan="2">
+																			Calidad de drenaje
+																		</th>
+																		<th colspan="4">
+																			Porcentaje de tiempo anual en que la estructura del pavimento está expuesta a niveles cercanos a saturación
+																		</th>
+																	</tr>
+																	<tr align="center">
+																		<td class="Por_0111">
+																			<strong><1% </strong>
+																		</td>
+																		<td class="Por_1555">
+																			<strong>1-5% </strong>
+																		</td>
+																		<td class="Por_52555">
+																			<strong>5-25% </strong>
+																		</td>
+																		<td class="Por_2555">
+																			<strong>>25% </strong>
+																		</td>
+																	</tr>
+																</thead>
+
+																<tr align="center" id="Cal_Excelente2">
+
+																	<td>
+																		Excelente
+																	</td>
+																	<td class="Por_0111">
+																		1.40-1.35
+																	</td>
+
+																	<td class="Por_1555">
+																		1.35-1.30
+																	</td>
+
+																	<td class="Por_52555">
+																		1.30-1.20
+																	</td>
+																	<td class="Por_2555">
+																		1.20
+																	</td>
+																</tr>
+																<tr align="center" id="Cal_Buena2">
+																	<td>
+																		Buena
+																	</td>
+																	<td class="Por_0111">
+																		1.35-1.25
+																	</td>
+																	<td class="Por_1555">
+																		1.25-1.15
+																	</td>
+																	<td class="Por_52555">
+																		1.15-1.00
+																	</td>
+																	<td class="Por_2555">
+																		1
+																	</td>
+																</tr>
+																<tr align="center" id="Cal_Aceptable2">
+																	<td>
+																		Regular
+																	</td>
+																	<td class="Por_0111">
+																		1.25-1.15
+																	</td>
+																	<td class="Por_1555">
+																		1.15-1.05
+																	</td>
+																	<td class="Por_52555">
+																		1.00-0.80
+																	</td>
+																	<td class="Por_2555">
+																		0.8
+																	</td>
+																</tr>
+																<tr align="center" id="Cal_Pobre2">
+																	<td>
+																		Pobre
+																	</td>
+																	<td class="Por_0111">
+																		1.15-1.05
+																	</td>
+																	<td class="Por_1555">
+																		1.05-0.80
+																	</td>
+																	<td class="Por_52555">
+																		0.80-0.60
+																	</td>
+																	<td class="Por_2555">
+																		0.60
+																	</td>
+																</tr>
+																<tr align="center" id="Cal_Muypobre2">
+																	<td>
+																		Malo
+																	</td>
+																	<td class="Por_0111">
+																		1.05-0.95
+																	</td>
+																	<td class="Por_1555">
+																		0.95-0.75
+																	</td>
+																	<td class="Por_52555">
+																		0.75-0.40
+																	</td>
+																	<td class="Por_2555">
+																		0.40
+																	</td>
+																</tr>
+															</table><br>
+															<div  style="padding-left: 5px;padding-right: 5px;display: inline;" >
+
+																<p id="descripTablaMaterial" style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;">Con el rango indicado en la tabla se efectuó una interpolación entre los porcentajes de tiempo de exposición de la estructura del pavimento a nivel de humedad próximos a la saturación y el coeficiente de drenaje</p>
+																<!-- FORMULAS -->
+																<p align="center" style="font-family: Arial, Helvetica, sans-serif;font-size: 12px;" id="Op3"></p>
+
+																<p align="center" style="font-family: Arial, Helvetica, sans-serif;font-size: 12px;" id="ResOp3"></p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- FIN TABLA 3 MATERIAL  -->
+											</div>
+										</div>
+									</div>
+									<div align="left" class="tab-pane fade row flex-row" id="tab3default">
+										<div class="panel panel-default">
+											<div class="panel-heading" id="cabecera">
+												<a style="display: inline-block; padding-right: 0.7em;" href="#datosTraficoEntorno"><span class="fa fa-arrow-circle-left"></span></a>
+												<p style="display: inline-block; font-size: 12px;text-align:  center;color: white;margin-bottom: 5px;" id="nombreFactor"></p>
+											</div>
+											<div class="panel-body">
+												<!--BASE GRANULAR-->
+												<div id="downgranular" style="display: none; position: absolute; margin-left: 75%; margin-top: 50%;">
+													<button type="button" class="btn btn-danger" style="border-radius: 6px;" onclick="imgGranular();">
+														<a id="descargagranular" download="granular.jpg" href="#" style="font-size: 1.4em; color: white;">Descargar</a>
+													</button>
+												</div>
+												<div align="center" id="divgraficaGranular" style="display:none; ">
+													<canvas  width="625px" height="400px" id="graficaGranular"></canvas>
+													<canvas style="display: none"  width="625px" height="400px" id="chart_moduloElastico"></canvas>
+												</div>
+
+												<!--BASE TRATADA CON CEMENTO-->
+												<div id="downcemento" style="display: none; position: absolute; margin-left: 75%; margin-top: 50%;">
+													<button type="button" class="btn btn-danger" style="border-radius: 6px;" onclick="imgCemento();">
+														<a id="descargacemento" download="cemento.jpg" href="#" style="font-size: 1.4em; color: white;" >Descargar</a>
+													</button>
+												</div>
+												<div align="center" id="divgraficaCemento" style="display:none; ">
+													<canvas  width="625px" height="400px" id="graficaCemento"></canvas>
+												</div>
+												<p style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para la corrección de la deflexión central de acuerdo al tipo de base.</strong></p>
+											</div>
+										</div>
+									</div>
+									<div align="left" class="tab-pane fade row flex-row" id="tab4default">
+										<div class="panel panel-default">
+											<div class="panel-heading" id="cabecera">
+												<a style="display: inline-block; padding-right: 0.7em;" href="#capacidadEstructuralFutura"><span class="fa fa-arrow-circle-left"></span></a>
+												Nomograma de la relación Ep/Mr
+											</div>
+											<div class="panel-body">
+												<div id="downEpMr" style="display: block; position: absolute; margin-left: 75%;margin-top: 50%;">
+													<button type="button" class="btn btn-danger" style="border-radius: 6px;"  onclick="imgEpMr();">
+														<a id="descargaEpMr" download="EpMr.jpg" href="#" style="font-size: 1.4em; color: white;" >Descargar</a>
+													</button>
+												</div>
+												<div align="center" style="width: 100%">
+													<canvas width="625px" height="400px" id="CFS"></canvas>
+												</div>
+												<p style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para el método NDT.</strong></p>
+											</div>
+										</div>
+									</div>
+									<div align="left" class="tab-pane fade row flex-row" id="tab5default">
+										<div class="panel panel-default">
+											<div class="panel-heading" id="cabecera">
+												<a style="display: inline-block; padding-right: 0.7em;" href="#capacidadEstructuralFutura"><span class="fa fa-arrow-circle-left"></span></a>
+												Nomograma SN Futuro
+											</div>
+											<div class="panel-body">
+												<div id="downSN" style="display: block; position: absolute;margin-top: 47%;">
+													<button type="button" class="btn btn-danger" style="border-radius: 6px;"  onclick="imgSn();">
+														<a id="descargaSN" download="SnFuturo.jpg" href="#" style="font-size: 1.4em; color: white;" >Descargar</a>
+													</button>
+												</div>
+												<div align="center" >
+													<canvas width="625px" height="400px" id="chartSNfuturo" > </canvas>
+												</div>
+												<p style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para los métodos Factor condición y Vida remanente.</strong></p> 
+											</div>
+										</div>
+									</div>
+									<div align="left" class="tab-pane fade row flex-row" id="tab6default">
+										<div class="panel panel-default">
+											<div class="panel-heading" id="cabecera">
+												Coeficientes Estructurales
+											</div>
+											<div class="panel-body">
+												<div id="tablaMetodoFactor" class="panel panel-default">
+													<p id="tabla4" style="display: none;" >Tabla 2. Rango de los valores escogidos para los coeficientes estructurales acorde a la capa del pavimento para el método Factor Condición.</p>
+													<div class="panel-heading" style="text-align: center;background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);">
+														<a style="display: inline-block; padding-right: 0.7em;" data-toggle="modal" data-target="#exampleModalCenter2"><span class="fa fa-arrow-circle-left"></span></a>
+														<p id="titulotablaFact" style="display: inline-block; font-size: 12px;text-align:  center;color: white;margin-bottom: 5px;">Método Factor Condición</p>
+													</div>
+													<div id="tablaFactorCondicion" class="panel-body">
+														<!-- TABLA METODO FACTOR CONDICON -->
+														<p id="validoFactor" style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para el método factor condición.</strong></p>
+														<table  class=" table-hover table-responsive  table-bordered table-condensed" align="center">
+															<tbody>
+																<tr>
+																	<th align="center">Material</th>
+																	<th align="center">Condición de superficie</th>
+																	<th align="center">Coeficiente (a)</th>
+																</tr>
+																<tr>
+																	<th rowspan="5" align="center" id="TituConcreto1"  >Concreto asfáltico</th>
+																	<td id="TituConcreto11">Muy poca piel de cocodrilo y/o fisuras transversales de baja severidad.</td>
+																	<td id="TituConcreto111" align="center">0.35 – 0.40</td>
+
+																</tr>
+																<tr>
+																	<td id="TituConcreto22"><10% de piel de cocodrilo de baja severidad y/o
+																		<5% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="TituConcreto222" align="center">0.25 – 0.35</td>
+
+																</tr>
+																<tr>
+																	<td id="TituConcreto33">>10% de piel de cocodrilo de baja severidad y/o
+																		<10% de piel de cocodrilo de severidad media y/o
+																		5-10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="TituConcreto333" align="center">0.20 – 0.30</td>
+
+																</tr>
+																<tr>
+																	<td id="TituConcreto44">>10% de piel de cocodrilo de severidad media y/o
+																		<10% de piel de cocodrilo de alta severidad y/o
+																		>10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="TituConcreto444" align="center">0.14 – 0.20</td>
+
+																</tr>
+																<tr>
+																	<td id="TituConcreto55">>10% de piel de cocodrilo de alta severidad y/o
+																		>10% de fisuras transversales de alta severidad.
+																	</td>
+																	<td id="TituConcreto555" align="center">0.20 – 0.35</td>
+
+																</tr>
+																<!--BASE ESTABILIZADA-->
+																<tr>
+																	<th id="TituBaseEstab1" align="center" rowspan="5">Base estabilizada</th>
+																	<td id="TituBaseEstab11">Muy poca piel de cocodrilo y/o fisuras transversales de baja severidad.
+																	</td>
+																	<td id="TituBaseEstab111" align="center">0.20 – 0.35</td>
+
+																</tr>
+																<tr>
+																	<td id="TituBaseEstab22"><10% de piel de cocodrilo de baja severidad y/o
+																		<5% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="TituBaseEstab222" align="center">0.15 – 0.25</td>
+
+																</tr>
+																<tr>
+																	<td id="TituBaseEstab33">>10% de piel de cocodrilo de baja severidad y/o
+																		<10% de piel de cocodrilo de severidad media y/0
+																		5-10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="TituBaseEstab333" align="center">0.15 – 0.20</td>
+
+																</tr>
+																<tr>
+																	<td id="TituBaseEstab44">>10% de piel de cocodrilo de severidad media y/o
+																		<10% de piel de cocodrilo de alta severidad y/0
+																		>10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="TituBaseEstab444" align="center">0.10 – 0.20</td>
+
+																</tr>
+																<tr>
+																	<td id="TituBaseEstab55">>10% de piel de cocodrilo de alta severidad y/0
+																		>10% de fisuras transversales de alta severidad.
+																	</td>
+																	<td id="TituBaseEstab555" align="center">0.08 – 0.15</td>
+
+																</tr>
+																<!--Base Granular-->
+																<tr>
+																	<th id="TituBaseSubyGranu1" align="center" rowspan="2">Base granular</th>
+																	<td id="TituBaseSubyGranu11">Sin evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td id="TituBaseSubyGranu111" align="center">0.10 – 0.14</td>
+
+																</tr>
+																<tr>
+																	<td id="TituBaseSubyGranu22" >Alguna evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td id="TituBaseSubyGranu222" align="center">0.00 – 0.10</td>
+
+																</tr>
+																<!--SubBase Granular-->
+																<tr>
+																	<th id="TituSubyGranu1" align="center" rowspan="2">Subbase </th>
+																	<td id="TituSubyGranu11">Sin evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td id="TituSubyGranu111" align="center">0.10 – 0.14</td>
+
+																</tr>
+																<tr>
+																	<td id="TituSubyGranu22" >Alguna evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td id="TituSubyGranu222" align="center">0.00 – 0.10</td>
+
+																</tr>
+															</tbody>
+														</table>
+														<!-- FIN TABLA -->
+
+													</div>
+												</div>
+												<div id="tablaMetodoVida" class="panel panel-default">
+														<p id="tabla5" style="display: none;" align="center">Tabla 4. Rango de los valores escogidos para los coeficientes estructurales acorde a la capa del pavimento para el método Vida Remanente.</p>
+													<div class="panel-heading" style="text-align: center;background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);">
+														<a style="display: inline-block; padding-right: 0.7em;" data-toggle="modal" data-target="#exampleModalCenter3"><span class="fa fa-arrow-circle-left"></span></a>
+														<p id="titulotablaVida" style="display: inline-block; font-size: 12px;text-align:  center;color: white;margin-bottom: 5px;">Método Vida Remanente</p>
+													</div>
+													<div class="panel-body">
+														<!-- TABLA METODO VIDA REMANENTE -->
+														<p id="validoVida" style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para el método vida remanente.</strong></p>
+														<table class=" table-hover table-responsive  table-bordered table-condensed" align="center">
+															<tbody>
+																<tr>
+																	<th align="center">Material</th>
+																	<th align="center">Condición de superficie</th>
+																	<th align="center">Coeficiente (a)</th>
+																</tr>
+																<tr>
+																	<th rowspan="5" align="center" id="1TituConcreto11"  >Concreto asfáltico</th>
+																	<td id="1TituConcreto111">Muy poca piel de cocodrilo y/o fisuras transversales de baja severidad.</td>
+																	<td id="1TituConcreto1111" align="center">0.35 – 0.40</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituConcreto222"><10% de piel de cocodrilo de baja severidad y/o
+																		<5% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="1TituConcreto2222" align="center">0.25 – 0.35</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituConcreto333">>10% de piel de cocodrilo de baja severidad y/o
+																		<10% de piel de cocodrilo de severidad media y/o
+																		5-10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="1TituConcreto3333" align="center">0.20 – 0.30</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituConcreto444">>10% de piel de cocodrilo de severidad media y/o
+																		<10% de piel de cocodrilo de alta severidad y/o
+																		>10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="1TituConcreto4444" align="center">0.14 – 0.20</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituConcreto555">>10% de piel de cocodrilo de alta severidad y/o
+																		>10% de fisuras transversales de alta severidad.
+																	</td>
+																	<td id="1TituConcreto5555" align="center">0.20 – 0.35</td>
+
+																</tr>
+																<!--BASE ESTABILIZADA-->
+																<tr>
+																	<th id="1TituBaseEstab11" align="center" rowspan="5">Base estabilizada</th>
+																	<td id="1TituBaseEstab111">Muy poca piel de cocodrilo y/o fisuras transversales de baja severidad.
+																	</td>
+																	<td id="1TituBaseEstab1111" align="center">0.20 – 0.35</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituBaseEstab222"><10% de piel de cocodrilo de baja severidad y/o
+																		<5% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="1TituBaseEstab2222" align="center">0.15 – 0.25</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituBaseEstab333">>10% de piel de cocodrilo de baja severidad y/o
+																		<10% de piel de cocodrilo de severidad media y/0
+																		5-10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="1TituBaseEstab3333" align="center">0.15 – 0.20</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituBaseEstab444">>10% de piel de cocodrilo de severidad media y/o
+																		<10% de piel de cocodrilo de alta severidad y/0
+																		>10% de fisuras transversales de media y alta severidad.
+																	</td>
+																	<td id="1TituBaseEstab4444" align="center">0.10 – 0.20</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituBaseEstab555">>10% de piel de cocodrilo de alta severidad y/0
+																		>10% de fisuras transversales de alta severidad.
+																	</td>
+																	<td id="1TituBaseEstab5555" align="center">0.08 – 0.15</td>
+
+																</tr>
+																<!--Base Granular-->
+																<tr>
+																	<th id="1TituBaseSubyGranu11" align="center" rowspan="2">Base granular</th>
+																	<td id="1TituBaseSubyGranu111">Sin evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td id="1TituBaseSubyGranu1111" align="center">0.10 – 0.14</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituBaseSubyGranu222" >Alguna evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td id="1TituBaseSubyGranu2222" align="center">0.00 – 0.10</td>
+
+																</tr>
+																<!--SubBase Granular-->
+																<tr>
+																	<th id="1TituSubyGranu11" align="center" rowspan="2">Subbase </th>
+																	<td id="1TituSubyGranu111">Sin evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td id="1TituSubyGranu1111" align="center">0.10 – 0.14</td>
+
+																</tr>
+																<tr>
+																	<td id="1TituSubyGranu222" >Alguna evidencia de bombeo, degradación o contaminación por finos.
+																	</td>
+																	<td id="1TituSubyGranu2222" align="center">0.00 – 0.10</td>
+
+																</tr>
+															</tbody>
+														</table>
+														<!-- FIN TABLA -->
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div align="left" class="tab-pane fade row flex-row" id="tab7default">
+										<div class="panel panel-default">
+											<div class="panel-heading" id="cabecera">
+												<a style="display: inline-block; padding-right: 0.7em;" data-toggle="modal" data-target="#exampleModalCenter3"><span class="fa fa-arrow-circle-left"></span></a>
+												Nomograma del valor CF
+											</div>
+											<div class="panel-body">
+												<div id="downCF" style="display: block; position: absolute; margin-left: 75%;margin-top: 47%;">
+													<button type="button" class="btn btn-danger" style="border-radius: 6px;margin-top: 25px" onclick="imgCf();">
+														<a id="descargaCF" download="CF.jpg" href="#" style="font-size: 1.4em; color: white;" >Descargar</a>
+													</button>
+												</div>
+												<div align="center" style="width: 100%">
+													<canvas width="625px" height="400px" id="CF"></canvas>
+												</div>
+												<p style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para el método vida remanente.</strong></p>
+											</div>
+										</div>
+									</div>
+									<div align="left" class="tab-pane fade row flex-row" id="tab8default">
+										<div class="panel panel-default">
+											<div class="panel-heading" id="cabecera">
+												<a style="display: inline-block; padding-right: 0.7em;" data-toggle="modal" data-target="#exampleModalCenter1"><span class="fa fa-arrow-circle-left"></span></a>
+												Nomograma para la obtención del SNef por el método NDT
+											</div>
+											<div class="panel-body" >
+												<div id="downndt" style="display: block; position: absolute; margin-left: 75%;margin-top: 45%;">
+													<button type="button" class="btn btn-danger" style="border-radius: 6px;" onclick="imgNdt();">
+														<a id="descargandt" download="ndt.jpg" href="#" style="font-size: 1.4em; color: white;" >Descargar</a>
+													</button>
+												</div>
+												<div align="center" style="width: 100%">
+													<canvas width="625px" height="400px" id="Ult"></canvas>
+												</div>
+												<p style="font-family: Arial, Helvetica, sans-serif;text-align: justify;font-size: 12px;"><strong> Válido para el método NDT.</strong></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div>
+			</body>
+
+			</html>

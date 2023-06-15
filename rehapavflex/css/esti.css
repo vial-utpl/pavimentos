@@ -1,0 +1,17 @@
+
+#cabecera{
+	background: #00457E;
+    border-bottom: 1px solid #ddd;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 3px;
+    height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+strong{
+	font-weight: 700;
+}

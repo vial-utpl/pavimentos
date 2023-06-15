@@ -1,0 +1,50 @@
+﻿.celdasTramos {
+    font-size: 10px;
+}
+
+
+
+
+
+
+.table-borderless tbody tr td,
+.table-borderless tbody tr th,
+.table-borderless thead tr th,
+.table-borderless thead tr td,
+.table-borderless tfoot tr th,
+.table-borderless tfoot tr td {
+    border: none;
+}
+
+
+
+.border {
+    background-color:#fff;
+    color:#000;
+    padding:10px;
+    border:1px solid #4C7ED1;
+    font-size: 12px;
+}
+
+.border tr:first-child td {
+    border-top: 1px solid #4C7ED1;
+}
+
+/*Tamaño de inputs en tramos*/
+textarea {
+    width: 60px;
+    height: 40px;
+}
+
+/*zoom a imagenes*/
+.espacioImagen {
+    position: relative;
+}
+.zoom-btn {
+    font-size: 2rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+

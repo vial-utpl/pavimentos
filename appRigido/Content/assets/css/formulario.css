@@ -1,0 +1,79 @@
+﻿*{
+    border:0;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background: #ccc;
+}
+
+#contenedor{
+    background: #ccc;
+    height: 1050px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+
+header, footer, #configuracion, #resultado{
+    background: #ccc;
+    height:50px;
+}
+
+#configuracion{
+    background:#ccc;
+    height: 230px;
+    text-align:center;
+    vertical-align:central;
+    
+}
+
+#configuracion #datos_iniciales{
+    background:#999;
+    width: 10%;
+    height: 170px;
+    display:inline-block;
+    vertical-align: top;
+    text-align:left;
+}
+
+#configuracion #datos_iniciales2{
+    background:#999;
+    width: 30%;
+    height: 200px;
+    display:inline-block;
+    vertical-align: top;
+    text-align:center;
+}
+
+#configuracion #datos_iniciales3{
+    background:  #999;
+    width: 58%;
+    height: 100px;
+    display:inline-block;
+    vertical-align: top;
+    text-align:left;
+}
+
+
+#resultado{
+    background: #808080;
+    height: 300px;
+}
+
+footer{
+    background: #ff6a00;
+    height: 10px;
+}
+
+.etiqueta{
+    width: 50px;
+    text-align:right;
+}
+
+
+
+

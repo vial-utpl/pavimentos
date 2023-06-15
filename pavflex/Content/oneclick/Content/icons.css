@@ -1,0 +1,1041 @@
+
+.fa-arrow-circle-right {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    position: relative;
+}
+
+.fa-arrow-circle-left {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    position: relative;
+}
+#fa-arrow-circle-right-exp {
+    color: #00457E;
+    font-size: 14px;
+    position: relative;
+}
+
+#fa-arrow-circle-left-exp {
+    color: #00457E;
+    font-size: 14px;
+    position: relative;
+}
+
+.fa-question-circle {
+    color: #00457E;
+    font-size: 17px;
+    position: relative;
+    cursor: help;
+}
+
+.fa-file-text {
+    color: rgb(255, 255, 255);    
+    
+}
+.fa-close {
+    color: rgb(255, 255, 255);    
+    
+}
+
+
+
+.fa-question-circle .tip-content {
+    display: none;
+    position: absolute;
+    top: 5px;
+    /* - top padding */
+    left: 250px;
+    width: 190px;
+    margin-top: 189px;
+    margin-left: 50px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    z-index: 1;
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    border-radius: 5px;
+}
+
+
+.fa-question-circle .tip-content .sct-content {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+
+.fa-question-circle .tip-content:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 0;
+    height: 0;
+    margin-top: -9px ;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #00457E transparent transparent;
+    
+}
+
+.fa-question-circle:hover .tip-content {
+    display: flex;
+    left: -20px;
+    top: -228px;
+    opacity: 1;
+}
+
+.fa-question-circle .tippf {
+    display: none;
+    position: absolute;
+    top: 0px;
+    /* - top padding */
+    left: 250px;
+    width: 190px;
+    margin-top: 189px;
+    margin-left: 50px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    z-index: 1;
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    border-radius: 5px;
+}
+
+
+.fa-question-circle .tippf .sct-content {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+
+.fa-question-circle .tippf:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 0;
+    height: 0;
+    margin-top: -9px ;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #00457E transparent transparent;
+    
+}
+
+.fa-question-circle:hover .tippf {
+    display: flex;
+    left: -20px;
+    top: -228px;
+    opacity: 1;
+}
+
+.fa-question-circle .tip1 {
+    display: none;
+    position: absolute;
+    top: 0px;
+    /* - top padding */
+    left: 0px;
+    height: auto;
+    width: 280px;
+    margin-left: -274px;
+    margin-top: 143px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.fa-question-circle .tip1 .sct1 {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.fa-question-circle .tip1 .table1 {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+}
+
+.fa-question-circle .tip1:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 368px;
+    width: 0;
+    height: 0;
+    margin-top: -7.5px;
+    margin-left: -86px;
+    border-left: 9px solid #00457E;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.fa-question-circle:hover .tip1 {
+    display: flex;
+    left: -20px;
+    top: -212px;
+    opacity: 1;
+}
+
+.fa-question-circle .tip2 {
+    display: none;
+    position: absolute;
+    top: 0px;
+    /* - top padding */
+    left: -230px;
+    width: 450px;
+   margin-left: -193px;
+    
+    margin-top: -30px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.fa-question-circle .tip2 .sct2 {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+
+.fa-question-circle .tip2:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 132px;
+    left: 135px;
+    width: 0;
+    height: 0;
+    
+    margin-top: 33px ;
+    margin-left: 75px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #00457E transparent transparent transparent;
+}
+
+.fa-question-circle:hover .tip2 {
+    display: flex;
+    left: -20px;
+        top: -147px;
+    opacity: 1;
+}
+
+.fa-question-circle .tip3 {
+    display: none;
+    position: absolute;
+    top: 0px;
+    /* - top padding */
+    left: 200px;
+    width: 450px;
+    margin-left: -442px;
+    margin-top: 69px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.fa-question-circle .tip3 .sct3 {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.fa-question-circle .tip3:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 265px;
+    width: 0;
+    height: 0;
+    margin-top: -4.5px;
+    margin-left: 188px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid #00457E;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.fa-question-circle:hover .tip3 {
+    display: flex;
+    left: -20px;
+    top: -147px;
+    opacity: 1;
+}
+
+
+.fa-question-circle .tip4 {
+    display: none;
+    position: absolute;
+    
+    /* - top padding */
+    left: 250px;
+    width: 175px;
+    margin-left: -170px;
+    margin-top: 108px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.fa-question-circle .tip4 .sct4 {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.fa-question-circle .tip4:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 265px;
+    width: 0;
+    height: 0;
+    margin-top: -9px;
+    margin-left: -87px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid #00457E;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.fa-question-circle:hover .tip4 {
+    display: flex;
+    left: -20px;
+    top: -147px;
+    opacity: 1;
+}
+
+.liBtnEjemplo .tipBtnEjemplo {
+    display: none;
+    position: absolute;
+    top: 0px;
+    /* - top padding */
+    left: 200px;
+    width: auto;
+    height: auto;
+    margin-left: -350px;
+    margin-top: 97px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.liBtnEjemplo .tipBtnEjemplo .sctEjemplo {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.liBtnEjemplo .tipBtnEjemplo:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 128px;
+    
+    margin-top: -9px;
+    margin-left: 230px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid #00457E;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.liBtnEjemplo:hover .tipBtnEjemplo {
+    display: flex;
+    left: -20px;
+    top: -98px;
+    opacity: 1;
+}
+
+
+.liBtnClcESALS .tipBtnClcESALS {
+    display: none;
+    position: absolute;
+    top: 0px;
+    /* - top padding */
+    left: 200px;
+    width: auto;
+    height: auto;
+    margin-left: -140px;
+    margin-top: 125px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.liBtnClcESALS .tipBtnClcESALS .sctClcESALS {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.liBtnClcESALS .tipBtnClcESALS:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 128px;
+    
+    margin-top: -9px;
+    margin-left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid #00457E;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.liBtnClcESALS:hover .tipReporteUsuario {
+    display: flex;
+    left: -20px;
+    top: -98px;
+    opacity: 1;
+}
+
+
+
+.liReporteUsuario .tipReporteUsuario {
+    display: none;
+    position: absolute;
+    top: 0px;
+    /* - top padding */
+    left: 200px;
+    width: auto;
+    height: auto;
+    margin-left: -232px;
+    margin-top: 105px;
+    /* width + left/right padding */
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 4px #00457E;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.liReporteUsuario .tipReporteUsuario .sctReporteUsuario {
+    border: 1px solid;
+    border-color: rgb(124, 124, 124);
+    border-radius: 5px;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.liReporteUsuario .tipReporteUsuario:before {
+    display: flex;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 128px;
+    
+    margin-top: -25px;
+    margin-left: 112px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid #00457E;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.liReporteUsuario:hover .tipReporteUsuario {
+    display: flex;
+    left: -20px;
+    top: -98px;
+    opacity: 1;
+}
+input[type=text] {
+    text-align: right;
+    
+}
+
+#tituloContenedorPrincipal {
+    background: #00457E;
+    border-bottom: 1px solid #ddd;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 3px;
+    height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#contenedorPrincipalFlexible {
+    border-radius: 5px;
+    border-left: 1.5px solid #ddd;
+    border-right: 1.5px solid #ddd;
+    border-top: 0.5px solid #ddd;
+    border-bottom: 0.5px solid #ddd;
+    box-shadow: 0 0 5px #ddd;
+    padding: 0px;
+}
+
+#contenedorSecundarioFlexible {
+    border-radius: 5px;
+    border-left: 0.5px solid #ddd;
+    border-right: 0.5px solid #ddd;
+    border-top: 0.5px solid #ddd;
+    border-bottom: 0.5px solid #ddd;
+    box-shadow: 0 0 5px #ddd;
+    padding: 0px;
+}
+
+#tituloContenedorSecundario {
+    background: rgb(64, 142, 206);
+    border-bottom: 1px solid #ddd;
+    color: white;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 3px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+#tituloPrincipal {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    text-transform: uppercase;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);
+    border-radius: 2px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#tituloSecundario {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    text-transform: uppercase;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(to bottom right, rgba(0, 69, 126, 0.501) 10%, #00457E 90%);
+    border-radius: 2px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#myModal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#myModal .modal-body {
+    height: 600px;
+    overflow-y: auto;
+    width:100%;
+}
+
+#myModal .modal-dialog {
+    position: fixed;
+    width: 60%;
+    top: 0;
+    bottom: 0;
+    right:70%;
+    left: 18.5%;
+}
+#myModal_aviso_anclas {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#myModal_aviso_anclas .modal-body {
+    height: 130px;
+    overflow-y: auto;
+    width: 450px;
+}
+
+#myModal_aviso_anclas .modal-dialog {
+    position: fixed;
+    
+    width: 450px;
+    top: 250px;
+    bottom: 0;
+    right: 20%;
+    left: 30%;
+}
+
+#FlotaVehiculo td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+    font-family: Arial;
+    
+}
+#FlotaVehiculo th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+    font-family: Arial;
+}
+
+#diseñoEconomico_td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#parametrosESALS td {
+    vertical-align: middle;
+    text-align: left;
+    padding: 0px;
+    font-family: Arial;
+}
+#tabla_factor_Equivalencia td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+
+#tabla_factor_Equivalencia th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+#proceso_clc_espesor th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#espesor_min th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#espesor_min td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#proceso_clc_espesor p {
+    font-size: 10px;
+}
+#recal_espesores p {
+    font-size: 10px;
+}
+
+#proceso_cls_SN th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#proceso_cls_SN .formato_ecuacion_SN {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#proceso_cls_SN p {
+    font-size: 12px;
+}
+
+#tablafacEquivalencia td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tablafacEquivalencia th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#trafico th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+#trafico h6 {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+    
+}
+
+#trafico td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 3px;
+}
+
+#table_confiabilidad select {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: right;
+    padding: 0px;
+}
+
+#FlotaVehiculo input[type=text] {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+
+#trafico input[type=text] {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tipconfia {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+}
+
+#tabla_pi td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_pi th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_pi {
+    color: rgb(0, 0, 0);
+}
+#tabla_pf td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_pf th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_pf {
+    color: rgb(0, 0, 0);
+}
+
+#tabla_desvestEstandar td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_desvestEstandar th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_desvestEstandar {
+    color: rgb(0, 0, 0);
+}
+
+#tabla_confiabilidad td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_confiabilidad th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+
+
+#tabla_confiabilidad {
+    color: rgb(0, 0, 0);
+}
+
+#tabla_drenaje_base td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_drenaje_base th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+
+
+#tabla_drenaje_base {
+    color: rgb(0, 0, 0);
+    font-size: 10.5 px;
+}
+#tabla_drenaje_base_ayuda td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_drenaje_base_ayuda th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+
+
+#tabla_drenaje_base_ayuda {
+    color: rgb(0, 0, 0);
+}
+#tabla_drenaje_subbase_ayuda td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_drenaje_subbase_ayuda th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+
+
+#tabla_drenaje_subbase_ayuda {
+    color: rgb(0, 0, 0);
+}
+
+#tabla_drenaje_subbase {
+    color: rgb(0, 0, 0);
+    font-size: 10.5 px;
+}
+
+#proceso_interpo_drenaje_base .style_drenaje_base {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+    font-size: 10.5 px;
+}
+#proceso_interpo_drenaje_base {
+    font-size: 10.5 px;
+}
+#proceso_interpo_drenaje_subbase {
+    font-size: 10.5 px;
+}
+#proceso_interpo_drenaje_subbase .style_drenaje_subbase {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_drenaje_subbase td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+#tabla_drenaje_subbase th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+
+.aj {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.ar {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.cg {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.cf {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.ci {
+    padding-top: 0px;
+    padding-bottom: 9px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.ch {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+html,
+body {
+    margin: auto;
+    padding: auto;
+    height: 100%;
+    width: 100%;
+    
+}
+
+
+
+#formpavimentoFlexible {
+    height: 100%;
+    width: 100%;
+    font-family: Arial
+}
+
+.nav-pills>li>a {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#tab1 .nav-pills {
+    height: 15px;
+}
+
+#carpetaasfaltica .caracteristica_asfalto {
+    padding-left: 20px
+}
+
+#subrasante .caracteristicas_subrasante {
+    padding-left: 20px
+}
+
+#boton-control1 {
+    background-color:  rgb(212, 211, 255);
+    vertical-align: middle;
+    text-align: center;
+
+}
+
+
+
+#tituloContenedorPrincipal .btnEjemplo1 {
+    height: 20px;
+    line-height: 20px;
+}
+
+a:link {color:rgb(5, 111, 197);}
+a:visited {color:#ffffff;}
+a:active {color:#ffffff;}
+a:hover {color:#ffffff;}
+
+.fa-chevron-right {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+}
+
+#detalle_proceso {
+    color: rgb(255, 255, 255);
+    background-color: #f0ad4e;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 2px #eea236 solid;
+    text-align: center;
+    
+
+}

@@ -1,0 +1,2837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta charset=utf-8"/>
+
+<head>
+    <title>PAVIMENTO RÍGIDO</title>
+
+    <!--Librerias de terceros (validadas)-->
+    <script src="./js/plugins/jquery-3.1.1.min.js"></script>
+    <script src="./js/plugins/bootstrap.min.js"></script>
+    <script src="./js/plugins/jquery.validate.min.js"></script>
+    <script src="./js/plugins/messages_es.min.js"></script>
+    <script src="./js/plugins/autoNumeric.min.js"></script>
+
+    <!--Librerias propias-->
+    <script src="./js/app.js"></script>
+    <script src="./js/newtonrigido.js"></script>
+    <script src="./js/EquivalenciaCarga.js"></script>
+    <script src="./js/Trafico.js"></script>
+    <script src="./js/Chart.js"></script>
+    <script src="./js/chartjs-plugin-datalabels.js"></script>
+    <script src="./js/ejemplo.js"></script>
+    <script src="./js/printReport.js"></script>
+
+    <script src="./js/chartjs-plugin-datalabels.js"></script>
+    <script src="./js/FileSaver.js"></script>
+
+
+    <!-- Estilos -->
+    <link href="./Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./Content/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="./Content/css/estilos.css" rel="stylesheet" />
+    <link href="./Content/css/backend.css" rel="stylesheet" />
+    <link href="./Content/css/main.css" rel="stylesheet" />
+    <link href="./Content/css/skins.css" rel="stylesheet" />
+
+    <script src="./js/graficas/subBaseGranular.js"></script>
+    <script src="./js/graficas/subBaseCemento.js"></script>
+    <script src="./js/graficas/subBaseBituminoso.js"></script>
+
+    <script src="./js/graficas/moduloReaccionCompuestoK.js"></script>
+    <script src="./js/graficas/fundacionRigidaK.js"></script>
+    <script src="./js/graficas/perdidaSoporteK.js"></script>
+
+    <script src="./js/graficas/espesorFinalD.js"></script>
+
+    <script src="./js/calcec.js"></script>
+
+    <script src="./js/drenajesubbase.js"></script>
+    <script src="./js/trazofundacionRigida.js"></script>
+</head>
+
+<body>
+    <!--llamar al codigo de las graficas con el id 
+        
+            <div class="text-center" style="height: 500px; widows: 500px;">
+                <canvas id="fundacionRigidaK" width="400" height="400"></canvas>
+        </div>                
+        -->
+    <!--Formulario Principal
+        runat establecido con el valor server.
+        Este atributo permite hacer referencia al formulario y los controles de la página
+        mediante programación en código del servidor.
+    -->
+    <div id="pavimentoRigido">
+        <!-- CONTENEDOR GENERAL -->
+
+        <div class="row-offcanvas row-offcanvas-left">
+			<form id="frmGeneral">
+
+				<aside>
+					<!-- CONTENEDOR VARIABLES -->
+					<section class="content">
+						<div class="row">
+							<div class="col-md-12">
+
+								<div id="panelPrimario" class="panel-group col-md-12" style="margin-bottom: 0px;">
+									<div class="panel panel-primary" style="border-bottom: none;">
+
+										<div id="tituloapp" class="panel-heading">
+											<h4 class="panel-title text-center ">Estimación de espesores de capas de pavimentos rígidos por el método AASHTO 1998</h4>
+										</div>
+
+										<div id="div-ingreso-datos" class="panel-body">
+											<div class="row">
+												<div class="col-md-12">
+
+													<div class="panel with-nav-tabs">
+														<div align="right" style="margin-right: 12px;float: right;">
+															<ul class="nav nav-pills navbar-right">
+																<li>
+																	<div class="btnRigidoEjemplo">
+																		<span class="tipBtnRigidoEjemplo">
+																			<section class="sctEjemplo">
+																				<p style="font-size: 11px; width: 350px; height: 15px; vertical-align: middle">Al dar clic se cargarán valores predeterminados de entrada </p>
+
+																			</section>
+																		</span>
+																		<input type="button" id="ejemplo" value="Cargar ejemplo" class="btn btn-warning btn-radius btn-sm btnEjemplo1" />
+																	</div>
+																</li>
+																<li>
+																	<input id="clcd" type="button" value=Calcular class="btn btn-warning btn-radius btn-sm">
+																</li>
+															</ul>
+														</div>
+														<!-- UBICAR -->
+
+														<div class="panel-heading" id="tabinicial">
+															<ul class="nav nav-pills myTab1" id="myTab1">
+																<li id="tabinicial1" class="active">
+																	<a href="#inf-proyecto" data-toggle="tab">Datos del proyecto</a>
+																</li>
+																<li id="tabinicial2" class="tabinicial2">
+																	<a href="#variablesentrada" data-toggle="tab">Variables de entrada</a>
+																</li>
+															</ul>
+														</div>
+
+														<div id="variables" class="panel-body">
+															<div class="tab-content">
+																<div class="tab-pane fade in active row flex-row" id="inf-proyecto">
+
+
+																	<!--Información del proyecto-->
+																	<div id="contenedor1" class="panel panel-default">
+																		<div id="contenedor2" class="panel-heading">
+																			<strong>Información del proyecto</strong>
+																		</div>
+
+																		<div class="panel-body">
+																			<a id="proyectoInfo">
+																				<table>
+																					<thead>
+																						<th>
+																							<td>
+
+																							</td>
+																						</th>
+
+																					</thead>
+																					<tbody>
+																						<tr>
+																							<td style="width: 250px;">
+																								Nombre del proyecto:
+																							</td>
+																							<td style="width: 650px;">
+																								<input id="datoNombre" maxlength="90" class="form-control form-control-sm" type="text" style="text-align: left">
+																							</td>
+																						</tr>
+																						<tr>
+																							<td style="width: 250px;">
+																								Ubicación del proyecto:
+																							</td>
+																							<td style="width: 650px;">
+																								<input id="datoUbicacion" maxlength="90" class="form-control form-control-sm" type="text" style="text-align: left">
+																							</td>
+																						</tr>
+																						<tr>
+																							<td style="width: 250px;">
+																								Ruta:
+																							</td>
+																							<td style="width: 650px;">
+																								<input id="datoRuta" maxlength="90" class="form-control form-control-sm" type="text" style="text-align: left">
+																							</td>
+																						</tr>
+																						<tr>
+																							<td style="width: 250px;">
+																								Tramo:
+																							</td>
+																							<td style="width: 650px;">
+																								<input id="datoTramo" maxlength="90" class="form-control form-control-sm" type="text" style="text-align: left">
+																							</td>
+																						</tr>
+
+																						<tr>
+																							<td style="width: 250px;">
+																								Diseñador:
+																							</td>
+																							<td style="width: 650px;">
+																								<input id="datoDisenador" maxlength="90" class="form-control form-control-sm" type="text" style="text-align: left">
+																							</td>
+																						</tr>
+
+																					</tbody>
+
+																				</table>
+																				<table>
+																					<tr>
+																						<td style="width: 250px;">
+																							&nbsp;&nbsp;
+																						</td>
+																						<td style="width: 950px;">
+																							&nbsp;&nbsp;
+																						</td>
+																						<td>
+																							&nbsp;&nbsp;
+																						</td>
+																						<td style="align-content: left">
+																							<input align="right" id="Continuar_rigido" type="button" value="Continuar" class="btn btn-warning btn-radius btn-sm">
+																						</td>
+																					</tr>
+																				</table>
+																			</a>
+																		</div>
+																	</div>
+																</div>
+																<div class="tab-pane fade row flex-row" id="variablesentrada" action=""> 
+
+																	<!--Parámetros de diseño-->
+																	<div id="contenedor1" class="panel panel-default" style="height: auto;">
+																		<div id="contenedor2" class="panel-heading">
+																			<strong>Parámetros de diseño</strong>
+																		</div>
+																		<div class="panel-body">
+																			<!--Estructura de pavimento-->
+																			<div class="col-md-3 dis-col-3" style="height: 165px;">
+																				<div id="contenedor11" class="panel panel-default">
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Estructura del pavimento</strong>
+																					</div>
+																					<div style="height: 145px;" class="panel-body">
+																						<h6 style="font-size: 10.5px;" class="text-center">
+																							Seleccionar material de subbase
+																						</h6>
+
+																						<div class="form-group">
+																							<label for="materialsbs" class="control-label col-md-4">Subbase </label>
+																							<div style="font-size: 10px;" class="col-md-8">
+																								<select name="materialsbs" id="materialsbs" class="required" style="border:none; width:140px  text-align=rigth;" onchange="materialsubbase()">
+																									<option value="">(Seleccione material)</option>
+																									<option value="gra">granular</option>
+																									<option value="cem">tratada con cemento</option>
+																									<option value="bit">tratada con asfalto</option>
+																								</select>
+																							</div>
+																						</div>
+
+																						<table style="font-size: 9.5px; color:white" id="selecmateriales" width="90%" align='center'>
+																							<tbody>
+																								<tr>
+																									<td style="border:1px solid; border-color: rgb(255, 255, 255); background:rgb(116, 113, 113); color: white; padding-left: 5px;">
+																										Losa de concreto
+																									</td>
+																								</tr>
+																								<tr class="anadirbs" id="bs" name="Base">
+																									<td id="subbasematerial" style="border: 1px solid; border-color: rgb(255, 255, 255); background:rgb(240, 194, 95); padding-left: 5px;">
+																										Subbase
+																									</td>
+																								</tr>
+																								<tr>
+																									<td style="border: 1px solid; border-color: rgb(255, 255, 255); background:rgb(202, 94, 6); padding-left: 5px;">
+																										Subrasante
+																									</td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																				</div>
+																			</div>
+																			<!--END Estructura de pavimento-->
+
+																			<!--Serviciabilidad-->
+																			<div class="col-md-3 dis-col-3" style="height: 165px;">
+																				<section id="contenedor11" class="panel panel-default">
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Serviciabilidad</strong>
+																					</div>
+																					<div style="font-size: 10px; height: 145px;" class="panel-body form-horizontal" width="100%" align='center'>
+																							<table style="font-size: 10px">
+																								<tr>
+																									<td>
+																											Inicial - pi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																									</td>
+																									<td>
+																											<input class="form-control form-control-sm numeric2 required" type='text' name='pinicial' id='pinicial' placeholder="Ingrese valor"
+																											onkeyup="serviciabilidadrig()">
+																									</td>
+																									<td>
+																											&nbsp;&nbsp;&nbsp;
+																										</td>
+																									<td>
+																											<span id="fa-question-circle " class="fa fa-question-circle helpData">
+
+																													<span class="tip-pi">
+																														<section class="sct-pi">
+				
+															  
+																																<p style="text-align:center; font-size: 12px; font-weight: bold; font-family: Arial">
+																																		Serviciabilidad inicial (pi)
+																																	</p>
+																																	<hr>
+																															<table id="tabla_pi_rigid" style="font-size: 11px; font-family: Arial" border="1"  class="table-responsive table-borderless table-hover table-bordered table-condensed table-editable">
+																																<thead>
+																																<tr>
+																																	<th colspan="2" style="width: 180px">
+																																		Valores recomendados
+																																	</th>
+																																</tr>
+																															</thead>
+																															<tbody>
+																																<tr>
+																																	<td>
+																																		Pavimento rígido
+																																	</td>
+																																	<td>
+																																		4.50
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td>
+																																		Pavimento flexible
+																																	</td>
+																																	<td>
+																																		4.20
+																																	</td>
+																																</tr>
+																															</tbody>
+																															</table>
+																														</section>
+				
+																													</span>
+																												</span>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																											Final - pf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																									</td>
+																									<td>
+																											<input class="form-control form-control-sm numeric2 required" type='text' name='pfinal' id='pfinal' placeholder="Ingrese valor" onkeyup="serviciabilidadrig(); copyPfRigid()">
+																									</td>
+																									<td>
+																											&nbsp;&nbsp;&nbsp;
+																										</td>
+																										<td>
+																												<span id="fa-question-circle " class="fa fa-question-circle helpData">
+
+																														<span class="tip-pf">
+																															<section class="sct-pf">
+					
+																																	<p style="text-align:center; font-size: 12px; font-weight: bold; font-family: Arial">
+																																			Serviciabilidad final (pf)
+																																		</p>
+																																		<hr>
+																																<table id="tabla_pi_rigid" style="font-size: 11px; font-family: Arial" border="1"  class="table-responsive table-borderless table-hover table-bordered table-condensed table-editable">
+																																	<thead>
+																																	<tr>
+																																		<th colspan="2" style="width: 180px">
+																																			Valores recomendados
+																																		</th>
+																																	</tr>
+																																</thead>
+																																<tbody>
+																																	<tr>
+																																		<td>
+																																			Autopistas y vías principales 
+																																		</td>
+																																		<td>
+																																			2.50
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td>
+																																			Vías secundarias
+																																		</td>
+																																		<td>
+																																			2.00
+																																		</td>
+																																	</tr>
+																																</tbody>
+																																</table>
+																															</section>
+					
+																														</span>
+																													</span>
+																										</td>
+																								</tr>
+																								<tr>
+																									<td>Índice - Δpsi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+																									<td>
+																											<input name='deltapsi' id='deltapsi' class="form-control form-control-sm required" type='text'  disabled='true'>
+																									</td>
+																									<td>
+																											&nbsp;&nbsp;&nbsp;
+																										</td>
+																										
+																								</tr>
+																							</table>
+																						
+																						
+																						
+
+																					</div>
+																				</section>
+																			</div>
+																			<!--END Serviciabilidad-->
+
+																			<!-- CONFIABILIDAD-->
+
+																			<div class="col-md-3 dis-col-3" style="height: 165px;">
+																				<div id="contenedor11" class=" panel panel-default">
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Confiabilidad y Desviación estándar</strong>
+																					</div>
+
+																					<div style="font-size: 10px; height: 145px;" class="panel-body">
+																						<div id="form_confiabilidad" class="form-group">
+																							<table >
+																								<tr>
+																									<td>
+																										Factor de confiabilidad
+																									</td>
+																									<td>
+																										<select name="factorc" id="factorc" class="form-control required" onchange="factorconfia()">
+																											<option>Confiabilidad - R (%)</option>
+																											<option value="-0.000">50%</option>
+																											<option value="-0.253">60%</option>
+																											<option value="-0.524">70%</option>
+																											<option value="-0.841">80%</option>
+																											<option value="-1.037">85%</option>
+																											<option value="-1.282">90%</option>
+																											<option value="-1.340">91%</option>
+																											<option value="-1.405">92%</option>
+																											<option value="-1.476">93%</option>
+																											<option value="-1.555">94%</option>
+																											<option value="-1.645">95%</option>
+																											<option value="-1.751">96%</option>
+																											<option value="-1.881">97%</option>
+																											<option value="-2.054">98%</option>
+																											<option value="-2.327">99%</option>
+																											<option value="-3.090">99.9%</option>
+																											<option value="-3.750">99.99%</option>
+																										</select>
+																									</td>
+																									<td>
+																											&nbsp;&nbsp;&nbsp;
+																									</td>
+																									<td>
+																											<span id="fa-question-circle " class="fa fa-question-circle helpData">
+																													<span class="tip-R">
+																														<section class="sct-R">
+																															<p style="text-align:center; font-size: 12px; font-weight: bold; font-family: Arial">
+																																Confiabilidad
+																															</p>
+																															<hr>
+																															<table style="font-size: 11px; font-family: Arial" border="1" cellspacing=0 class="table-responsive table-borderless table-hover table-bordered table-condensed table-editable" id="tabla_confiabilidad_rigid">
+																																<thead>
+								
+																																	<tr>
+																																		<th rowspan="2">
+																																				Clasificación vial                                                                                                                          
+																																		</th>
+																																		<th colspan="2">
+																																				Niveles de confiabilidad
+																																		</th>
+																																	</tr>
+																																	<tr>
+																																		<td>
+																																				Urbana (%)
+																																		   
+																																		</td>
+																																		<td>
+																																				Rural (%)
+																																		   
+																																		</td>
+																																	</tr>
+																																</thead>
+																																<tbody>
+																																	<tr>
+																																		<td>
+																																				Autopistas
+																																				interestatales
+																																				y otras
+																																			
+																																		</td>
+																																		<td >
+																																				85 - 99.9
+																																			
+																																		</td>
+																																		<td >
+																																				80 - 99.9
+																																			
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td>
+																																				Arterias
+																																				principales
+																																			
+																																		</td>
+																																		<td >
+																																				80 - 99
+																																			
+																																		</td>
+																																		<td >
+																																				75 - 95
+																																			
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td>
+																																				Colectoras
+																																				de tránsitos
+																																			
+																																		</td>
+																																		<td >
+																																				80 - 95
+																																			
+																																		</td>
+																																		<td>
+																																				75 - 95
+																																			
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td>
+																																				Carreteras
+																																				locales
+																																			
+																																		</td>
+																																		<td>50 - 80
+																																			
+																																		</td>
+																																		<td>
+																																				50 - 80
+																																			
+																																		</td>
+																																	</tr>
+								
+								
+																																</tbody>
+																															</table>
+																														</section>
+																													</span>
+																												</span>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td style="width:150px">
+																										Desviación normal estándar - Zr
+																									</td>
+																									<td>
+																										<input id="desvest" name="desvest" class="form-control form-control-sm" type="text" disabled='true'>
+																										<div style="display:none">
+																											<input id="procentajeconfiabilidad" class="form-control form-control-sm" type="text" disabled='true'>
+																										</div>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																										<br>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																										Desviación estándar - So
+																									</td>
+
+																									<td>
+																										<input id="destandar" name="destandar" class="form-control form-control-sm numeric2 required" type="text" placeholder="Ingrese valor">
+																									</td>
+																									<td>
+																											&nbsp;&nbsp;&nbsp;
+																									</td>
+																									<td>
+																											<span id="fa-question-circle " class="fa fa-question-circle helpData">
+																													<span class="tip-So">
+																														<section class="sct-So">
+																																<p style="text-align:center; font-size: 12px; font-weight: bold; font-family: Arial">
+																																		Desviación estándar
+																																	</p>
+																																	<hr>
+																															<table id="tabla_desvestEstandar_rigid" style="font-size: 11px; font-family: Arial" border="1"  class="table-responsive table-borderless table-hover table-bordered table-condensed table-editable">
+																																<thead>
+																																<tr>
+																																	<th colspan="2" style="width: 180px">
+																																		Valores recomendados
+																																	</th>
+																																</tr>
+																															</thead>
+																															<tbody>
+																																<tr>
+																																	<td>
+																																		Pavimento rígido
+																																	</td>
+																																	<td>
+																																		0.35
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td>
+																																		Pavimento flexible
+																																	</td>
+																																	<td>
+																																		0.45
+																																	</td>
+																																</tr>
+																															</tbody>
+																															</table>
+																															
+				
+				
+																														</section>
+																													</span>
+																												</span>
+																									</td>
+																								</tr>
+																							</table>
+
+
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<!-- END CONFIABILIDAD-->
+
+																			<!--Tráfico-->
+																			<div class="col-md-3 dis-col-3" >
+																				<div id="contenedor11" class=" panel panel-default mk" style="height: 165px;">
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Parámetro de tráfico</strong>
+																						<a id="parametroTrafico" href="#resultadosTrafico">
+																							<span id="fa-arrow-circle-right" class="fa fa-arrow-circle-right right-proceso-rigid" style="color:white"></span>
+																						</a>
+
+																					</div>
+
+																					<div  class="panel-body mk1" style="height: 145px;">
+																						<section style="font-size: 10px;" class="col-md-12">
+
+																							<table width="100%" align='center'>
+																								<tr>
+																									<td>Número de ejes equivalentes
+																										(ESAL´S)
+																									</td>
+																									<td>
+																										&nbsp;&nbsp;
+																									</td>
+																									<td>
+																										<input id="numeroejesequi" name="numeroejesequi" class="form-control form-control-sm numeric2 numeroejesequi required"  type="text" placeholder="Ingrese valor">
+																									</td>
+
+																								</tr>
+																								<tr>
+																									<td>
+																										<br>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+
+																									</td>
+																									<td></td>
+																									<td>
+																										<div align="right">
+																											<input id="calcesals" type="button" value=Calcular class="btn btn-warning btn-radius btn-sm" data-toggle="modal" data-target="#myModalvehiculos">
+																										</div>
+																									</td>
+
+																								</tr>
+																							</table>
+																							<br>
+
+
+																						</section>
+																					</div>
+																				</div>
+																			</div>
+																			<!--END Tráfico-->
+																			<div class="col-md-3 dis-col-3" style="height: 0px;"> </div>
+																			<div class="col-md-3 dis-col-3" style="height: 0px;"> </div>
+																			<div class="col-md-3 dis-col-3" style="height: 0px;"> </div>
+
+																		</div>
+																	</div>
+																	<!--END parámetros de diseño-->
+
+																	<!--Parámetros de Subbase-->
+																	<div id="contenedor1" class="panel panel-default col-md-6 dis-col-6">
+																		<div id="contenedor2" class="panel-heading">
+																			<strong>Parámetros de Subbase</strong>
+																		</div>
+																		<div style="font-size: 10px;" class="panel-body fila-2-principal_reducida">
+
+
+																			<!--Parámetros mecánicos de Subbase-->
+																			<div class="col-md-6 basepadd dis-col-6 base_contenedor">
+																				<section id="contenedor11" class="panel panel-default">
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Propiedades mecánicas de la capa</strong>
+																						<a id="parametroSubbase" href="#grafica-sbs-granular">
+																							<span id="fa-arrow-circle-right" class="fa fa-arrow-circle-right right-proceso-rigid" style="color:white"></span>
+																						</a>
+																					</div>
+
+																					<div class="panel-body fila-2-secundario_reducida" width="100%" align='left'>
+																						<section id="propmecanicas-subbase">
+																							<div id="tipomaterialsubbase">
+																								<div id="materialsubbasegranular" class="tip-mat-basegra">
+																									<div action="radio" id="subbasepropmaterial">
+																										<input type="radio" value="subbaseCBR" name="subbasepropmaterial" id="subbaseCBR">
+																										<label for="subbaseCBR">CBR</label>&nbsp;&nbsp;&nbsp;
+																										<input type="radio" value="subbasevalor-r" name="subbasepropmaterial" id="subbasevalor-r">
+																										<label for="subbasevalor-r">Valor-R</label>&nbsp;&nbsp;&nbsp;
+																										<input type="radio" value="subbasetriaxal-texas" name="subbasepropmaterial" id="subbasetriaxal-texas">
+																										<label for="subbasetriaxal-texas">Triaxal de Texas</label>
+																										<br>
+																									</div>
+																								</div>
+																								<div id="materialsubbasecemento" class="tip-mat-base cem">
+																								   
+																									<div action="radio" id="subbase">
+																										<input type="radio" value="subbaseRCNC" name="subbasepropmaterial" id="subbaseRCNC">
+																										<label for="subbaseRCNC">Resistencia a la compresión
+																											no confinada</label>&nbsp;&nbsp;&nbsp;
+																										<br>
+																									</div>
+																								</div>
+																								<div id="materialsubbasebituminoso" class="tip-mat-base bit">
+																									<div action="radio" id="subbase">
+																										<input type="radio" value="subbaseEM" name="subbasepropmaterial" id="subbaseEM">
+																										<label for="subbaseEM">Estabilidad de Marshall</label>&nbsp;&nbsp;&nbsp;
+																										<br>
+																									</div>
+																								</div>
+																							</div>
+
+																							<table class="table-responsive" width="100%" align='center'>
+																								<tr id="subbase-crc-tr">
+																									<td id="subbase-crc-td" style="width:185px">(Seleccionar propiedad)</td>
+																									<td>
+																										<input id='subbase-crc' name="subbase-crc" class="form-control form-control-sm numeric2 required" type='text'  placeholder="Ingrese valor" onchange="parametrossubbase(); loadGraph2(); loadGraph4(); calcularyprofundidadrigida(); datosgraf()">
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Coeficiente estructural - a<SUB>2</SUB></td>
+																									<td>
+																										<input class="form-control form-control-sm" type='text' name='subbasea2' id='subbasea2' disabled='true' onchange="loadGraph2();">
+																									</td>
+																								</tr>
+
+																								<tr>
+																									<td>Módulo resiliente de subbase - Mb (psi)</td>
+																									<td>
+																										<input class="form-control form-control-sm" type='text' name='subbaseMb' id='subbaseMb' disabled='true'>
+																									</td>
+																									<td>
+																										&nbsp;&nbsp;&nbsp;
+																									</td>
+
+																								</tr>
+																								<tr id="dat-subbase-graftr">
+																									<td>
+																										<input type="text" id="dat-subbase-graf">
+																										<input type="text" id="dat-subbase-grafi">
+
+																									</td>
+																								</tr>
+																							</table>
+																						</section>
+																					</div>
+																				</section>
+																			</div>
+																			<div class="col-md-6 basepadd dis-col-6 base_contenedor">
+																				<div id="contenedor11" class="panel panel-default height-drenaje">
+																					<div id="contenedor21" class="panel-heading">
+
+																						<strong>Drenaje</strong>
+																						<a id="parametroDrenaje" href="#resultadoDrenaje">
+																							<span id="fa-arrow-circle-right" class="fa fa-arrow-circle-right right-proceso-rigid" style="color:white"></span>
+																						</a>
+																					</div>
+																					<div class="panel-body height-drenaje-body fila-2-secundario_reducida">
+
+																						<!--DRENAJE SUBBASE-->
+																						<section id="parametrosdrenaje">
+
+																							<div id="drenajesubbase">
+																								<table width="100%" align='center'>
+																									<tr title="Calidad del drenaje">
+																										<td style="width:220px;"> Calidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+																										<td style="width:210px;">
+																											<select id="calidaddrenaje" name="calidaddrenaje" class="form-control required" onchange="calcdrenajesubbase();">
+																												<option>(Seleccione)</option>
+																												<option>Excelente (2 horas)</option>
+																												<option>Buena ( 1 día)</option>
+																												<option>Aceptable (1 semana)</option>
+																												<option>Pobre (1 mes)</option>
+																												<option>Muy pobre (el agua no drena)</option>
+																											</select>
+																										</td>
+																										<td>
+																												&nbsp;&nbsp;&nbsp;
+																											</td>
+																											<td>
+																													<span id="fa-question-circle " class="fa fa-question-circle helpData">
+																															<span class="tip-drenaje">
+																																<section class="sct-drenaje">
+																																	<p style="text-align:center; font-size: 12px; font-weight: bold; font-family: Arial">
+																																		Drenaje
+																																	</p>
+				
+																																	<hr>
+																																	<table id="tabla_drenaje_base_rigid_ayuda" style="font-size: 11px; font-family: Arial" border="1" cellspacing=0 class="table-responsive table-borderless table-hover table-bordered table-condensed table-editable">
+																																		<thead>
+																																			<tr>
+																																				<th rowspan="2" style="width:200px;">
+																																					Calidad del drenaje (tiempo para remoción del agua)
+																																				</th>
+																																				<th colspan="4">
+																																					% de tiempo de exposición de la estructura del pavimento a nivel de humedad próximos a la saturación
+																																				</th>
+																																			</tr>
+																																			<tr>
+																																				<th  style="width:150px;">
+																																					0 - 1
+																																				</th>
+																																				<th  style="width:150px;">
+																																					1 - 5
+																																				</th>
+																																				<th  style="width:150px;">
+																																					5 - 25
+																																				</th>
+																																				<th  style="width:150px;">
+																																					> 25
+																																				</th>
+																																			</tr>
+																																		</thead>
+																																		<tbody style="vertical-align: middle; text-align: center;">                                                                                       
+												
+																																				<tr >
+
+																																						<td style="width:120px;">
+																																							Excelente (2 horas)
+																																						</td>
+																																						<td  style="width:25px;">
+																																							1.25 - 1.20
+																																						</td>
+														
+																																						<td style="width:25px;">
+																																							1.20 - 1.15
+																																						</td>
+														
+																																						<td style="width:25px;">
+																																							1.15 - 1.10
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.10
+																																						</td>
+																																					</tr>
+																																					<tr >
+																																						<td style="width:120px;">
+																																							Buena ( 1 día)
+																																						</td>
+																																						<td  style="width:25px;">
+																																							1.20 - 1.15
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.15 - 1.10
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.10 - 1.00
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.00
+																																						</td>
+																																					</tr>
+																																					<tr >
+																																						<td style="width:120px;">
+																																							Aceptable (1 semana)
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.15 - 1.10
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.10 - 1.00
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.00 - 0.90
+																																						</td>
+																																						<td style="width:25px;">
+																																							0.90
+																																						</td>
+																																					</tr>
+																																					<tr >
+																																						<td style="width:120px;">
+																																							Pobre (1 mes)
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.10 - 1.00
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.00 - 0.90
+																																						</td>
+																																						<td style="width:25px;">
+																																							0.90 - 0.80
+																																						</td>
+																																						<td style="width:25px;">
+																																							0.80
+																																						</td>
+																																					</tr>
+																																					<tr >
+																																						<td style="width:120px;">
+																																							Muy pobre (el agua no drena)
+																																						</td>
+																																						<td style="width:25px;">
+																																							1.00 - 0.90
+																																						</td>
+																																						<td style="width:25px;">
+																																							0.90 - 0.80
+																																						</td>
+																																						<td style="width:25px;">
+																																							0.80 - 0.70
+																																						</td>
+																																						<td style="width:25px;">
+																																							0.70
+																																						</td>
+																																					</tr>
+																																	</tbody>
+												
+																																	</table>
+				
+				
+																																</section>
+																															</span>
+																														</span>
+																											</td>
+
+
+
+																									</tr>
+
+																									<tr>
+																										<td style="width:220px;">Porcentaje de exposición (%)
+																											
+																										</td>
+																										<td style="width:210px;">
+																											<input class="form-control form-control-sm numeric2" type='text' name='subbasehumedad' id='subbasehumedad' placeholder="Ingrese valor"
+																												onkeyup="calcdrenajesubbase()">
+																										</td>
+																									</tr>
+																									<tr>
+																										<td style="width:220px;">
+																											Coeficiente de drenaje - m<SUB>2</SUB></td>
+																										<td style="width:210px;">
+																											<input class="form-control form-control-sm" type='text' name='subbasem2' id='subbasem2' disabled='true'>
+																										</td>
+																									</tr>
+																								</table>
+																							</div>
+																						</section>
+
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+
+																	</div>
+																	<!--END Parámetros de SubBase-->
+
+																	<!--Coeficiente de transferencia-->
+																	<div id="contenedor1" class="panel panel-default col-md-3 dis-col-3 coef_J">
+																		<div id="contenedor2" class="panel-heading">
+																			<strong>Coeficiente de transferencia de carga</strong>
+																		</div>
+																		<div class="panel-body form-horizontal coef_J_body fila-2-principal_reducida" style="font-size: 10px;" >
+																			<div id="contenedor11" class="panel panel-default">
+																				<div id="contenedor21" class="panel-heading">
+																					<strong>Parámetros</strong>
+																				</div>
+																				<div class="panel-body height-drenaje-body fila-2-secundario_reducida">
+																					<div class="col-md-12">
+																						<div class="form-group">
+																							<table width="100%" align='center'>
+																								<tr>
+																									<td style="width:120px">
+																										Tipo de berma
+																									</td>
+																									<td>
+																										<select name="tipoberma" id="tipoberma" class="form-control required"  onchange="transfcarga()">
+																											<option>(Seleccione)</option>
+																											<option value="concreto">De concreto</option>
+																											<option value="asfalto">De asfálto</option>
+																										</select>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																										Dispositivos de carga
+																									</td>
+																									<td>
+																										<select name="dispcarga" id="dispcarga" class="form-control required" onchange="transfcarga()">
+																											<option>(Seleccione)</option>
+																											<option value="si">Si</option>
+																											<option value="no">No</option>
+																										</select>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																										Tipo de pavimento
+																									</td>
+																									<td>
+																										<select name="tipopavimento" id="tipopavimento" class="form-control required" onchange="transfcarga()">
+																											<option>(Seleccione)</option>
+																											<option value="no reforzado">No reforzado o reforzado con juntas</option>
+																											<option value="reforzado">Reforzado continuo</option>
+																										</select>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																										&nbsp;&nbsp;
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																										Rango
+																									</td>
+																									<td>
+																										<input class="form-control form-control-sm" type="text" id="tcrango" disabled='true'>
+
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																										Valor
+																									</td>
+																									<td>
+																										<input class="form-control form-control-sm numeric2" type="text" id="tcvalor">
+
+																									</td>
+																								</tr>
+																							</table>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			
+																			
+																		</div>
+																	</div>
+																	<!--END transferencia de carga-->
+
+																	<!--Losa de hormigón -->
+																	<div id="contenedor1" class="panel panel-default col-md-3 dis-col-3 coef_J">
+																		<div id="contenedor2" class="panel-heading">
+																			<strong>Losa de hormigón</strong>
+																		</div>
+																		<div class="panel-body coef_J_body fila-2-principal_reducida" style="font-size: 10px;" >
+																			<div id="contenedor11" class="panel panel-default">
+																				<div id="contenedor21" class="panel-heading">
+																					<strong>Parámetros</strong>
+																				</div>
+																				<div class="panel-body fila-2-secundario_reducida">
+																					
+																						<table width="100%" align='center'>
+																							<tr>
+																								<td style="width:205px">Tipo de agregado
+																								</td>
+																								<td style="padding:0px; width: 85px">
+																									<select  name="tipoagregado" id="tipoagregado" class="form-control required" onchange="modelastico()">
+																										<option>(Seleccione)</option>
+																										<option value="Grueso-ígneo">Grueso-ígneo</option>
+																										<option value="Grueso-metamórfico">Grueso-metamórfico</option>
+																										<option value="Grueso-sedimentario">Grueso-sedimentario</option>
+																										<option value="Sin información">Sin información</option>
+																									</select>
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>Resistencia a la compresión - f'c (kg/cm<sup>2</sup>)  
+																								</td>
+																								<td >
+																									<input name="fc" id="fc" class="form-control form-control-sm numeric2 required" type="text" id="fc" onchange="modelastico()">
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>Módulo elástico del concreto - Ec (psi)
+																								</td>
+																								<td>
+																									<input class="form-control form-control-sm" type="text" disabled='true' id="Ec">
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>
+																									<br>
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>Módulo de rotura - Sc 
+																								</td>
+																								<td>
+																									<input name="Sc" id="Sc" class="form-control form-control-sm numeric2 required" type="text" >
+																								</td>
+																							</tr>
+																							
+																						</table>
+																					
+																				</div>
+																			</div>
+																		
+																			
+
+																		</div>
+																	</div>
+																	<!--END Carpeta de hormigón-->
+
+
+																	<!--Subrasante-->
+
+																	<div id="contenedor1" class="panel panel-default col-md-9 dis-col-9 col-subrasante" style="height: auto;">
+																		<div id="contenedor2" class="panel-heading">
+																			<strong>Parámetros de Subrasante</strong>
+																		</div>
+																		<div style="font-size: 10px;" class="panel-body fila-2-principal">
+
+																			<!--Efecto fundación rígida-->
+																			<div class="mrpadd col-md-4  dis-col-4" style="height: 230px;">
+																				<div id="contenedor11" class="panel panel-default" style="height: 110px; ">
+
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Módulo resiliente</strong>
+																					</div>
+																					<div class="panel-body" style="height: 90px;">
+																						<section id="moduloressubrasante">
+																							<div class="col-md-12">
+																								<table width="100%" align='center'>
+																									<tr id="subrasantetr">
+																										<td id="subrasantetd" style="width:130px">CBR (%)</td>
+																										<td>
+																											<input name='datosubrasante' id='datosubrasante' class="form-control form-control-sm numeric2 required" type='text' placeholder="Ingrese valor" onchange="calcmoduloresiliente(); loadGraph4();  calcularyprofundidadrigida(); datosgraf()">
+																										</td>
+																										<tr>
+																											<td>Módulo resiliente - Mr (psi)
+																											</td>
+																											<td>
+																												<input class="form-control form-control-sm numeric2" type='text' name='Modulor' id='Modulor' placeholder="Ingrese valor"
+																													onkeyup="calcmoduloresiliente1(); loadGraph4(); ">
+																											</td>
+
+																										</tr>
+																									</tr>
+																								</table>
+																							</div>
+
+																						</section>
+																					</div>
+
+																				</div>
+
+																				<div id="contenedor11" class="panel panel-default" style=" height: 110px;" width="90%" align='center'>
+																					<div id="contenedor1" class="panel panel-default col-md-12 cuadro_autor" >
+																						<br>    
+																						<div id="cuadro_autor" class="panel-body" style="height: 85.5px">
+																								<p>
+																									<strong>Descripción:</strong> Diseño de pavimentos
+																									rígidos
+																								</p>
+																								<p>
+																									<strong>Autores:</strong> Garcia, Y.; Quiñones, S.;
+																									Lalangui, Y.
+																								</p>
+																							</div>
+																						</div>
+																				</div>
+																			</div>
+
+																			<!--Modulo de reaacion K-->
+																			<div class="mrpadd col-md-4  dis-col-4" style="height: 230px;">
+																				<div id="contenedor11" class="panel panel-default" style="height: 220px;">
+																					<!--Módulo de reacción-->
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Módulo de reacción K</strong>
+																						<a id="parametroK" href="#ReaccionCompuestoK">
+																							<span id="fa-arrow-circle-right" class="fa fa-arrow-circle-right right-proceso-rigid" style="color:white"></span>
+																						</a>
+																					</div>
+																					<div id="mreaccionsubrasante" class="panel-body col-md-12 dis-col-12" style="height: 200px;" width="100%" align='center'>
+																						
+																								<table>
+																									<tr id="espesorsubbasetr">
+																										<td id="espesorsubbasetd" style="width:150px">Espesor de subbase (pulg)
+																										</td>
+																										<td>
+																											<input name='espesorsubbase' id='espesorsubbase' class="form-control form-control-sm integer required" type='text' placeholder="Ingrese valor" onchange="loadGraph4(); copyk(); finalk(); loadGraph6(); calcularyprofundidadrigida(); datosgraf(); loadGraph9();">
+																										</td>
+																										<td style="display:none">
+																											<input class="form-control form-control-sm" type='text' id='espesorsubbasegraf' disabled='true'>
+																										</td>
+																									</tr>
+																									<tr id="moduloreacciontr">
+																										<td id="moduloreacciontd">Módulo resiliente de - Mr (psi)
+																										</td>
+																										<td>
+																											<input class="form-control form-control-sm" type='text' id='moduloresiliente' onchange="loadGraph4()" disabled='true'>
+																										</td>
+																										<td style="display:none">
+																											<input class="form-control form-control-sm" type='text' id='moduloresilientegraf' disabled='true'>
+																										</td>
+																										<td style="display:none">
+																											<input class="form-control form-control-sm" type='text' id='lt' disabled='true'>
+																										</td>
+																									</tr>
+																									<tr id="modulorsubbasetr">
+																										<td id="modulorsubbasetd">Módulo resiliente - Mb (psi)</td>
+																										<td>
+																											<input class="form-control form-control-sm" type='text' id='moduloresilientesubbase' onchange="loadGraph4()" disabled='true'>
+																										</td>
+																										<td style="display:none">
+																											<input class="form-control form-control-sm" type='text' id='moduloresilientesubbasegraf' disabled='true'>
+																											<input class="form-control form-control-sm" type='text' id='moduloresilientesubbasegrafrevisar' disabled='true'>
+																										</td>
+																									</tr>
+																									<tr>
+																										<td>Módulo de reacción - K (pci)
+																										</td>
+																										<td>
+																											<input class="form-control form-control-sm" type='text' name='kredondeado' id='kredondeado' disabled='true'>
+																										</td>
+																										<td style="display:none">
+																											<input class="form-control form-control-sm" type='text' name='ksubrasante' id='ksubrasante' disabled='true'>
+																										</td>
+																									</tr>
+
+																								</table>
+																								<br>
+																								<input type="checkbox" name="funrigida" id="funrigida">Considerar profundidad del subsuelo de una fundación rigida&nbsp;&nbsp;&nbsp;
+
+																								<input style="display:none" class="form-control form-control-sm" type='text' id='mrx' disabled='true'>
+
+																								<input style="display:none" class="form-control form-control-sm" type="text" id="usoK" disabled='true'>
+																								<input style="display:none" class="form-control form-control-sm" type="text" id="kfinal" disabled='true'>
+																								<br>
+																							
+																						
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<!--Factor de perdida de soporte-->
+																			<div class="mrpadd col-md-4  dis-col-4 height-fac-PS" style="height: 230px;">
+																				<div id="contenedor11" class="panel panel-default fundaRigida" style=" height: 85px;" width="90%" align='center'>
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Efecto fundación rígida</strong>
+																						<a id="parametroFundacionRigida" href="#fundacioRigida">
+																							<span id="fa-arrow-circle-right" class="fa fa-arrow-circle-right right-proceso-rigid" style="color:white"></span>
+																						</a>
+																					</div>
+																				
+																					<div class="panel-body" style="height: 65px;">
+																				
+																						
+																				
+																							<table width="100%" align='center'>
+																								<tr id="trprofunrigida">
+																									<td style="width:150px">
+																										Profundidad de fundación (pies)
+																									</td>
+																									<td>
+																										<input class="form-control form-control-sm" type='text' id='profrigida' placeholder="Ingrese valor" disabled='true' onchange="calcularyprofundidadrigida(); datosgraf(); loadGraph9(); copyk(); loadGraph6(); finalk()">
+																									</td>
+																								</tr>
+																								<tr id="trKfr">
+																									<td>Módulo de reacción (Kfr)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+																									<td>
+																										<input class="form-control form-control-sm" type='text' name='kfrsubrasante' id='kfrsubrasante' disabled='true'>
+																									</td>
+																								</tr>
+																							</table>
+																							<input style="display:none" class="form-control form-control-sm" type="text" id='profunrigiday'>
+																							<input style="display:none" class="form-control form-control-sm" type='text' id='kfrx' disabled='true'>
+																				
+																						
+																					</div>
+																				</div>
+																			
+																				<div id="contenedor11" class="panel panel-default" style="height: 135px;" width="90%" align='center'>
+																					<div id="contenedor21" class="panel-heading">
+																						<strong>Factor de pérdida de soporte</strong>
+																						<a id="parametroPerdidaSoporte" href="#perdidasorporte">
+																							<span id="fa-arrow-circle-right" class="fa fa-arrow-circle-right right-proceso-rigid" style="color:white"></span>
+																						</a>
+																					</div>
+
+																					<div class="panel-body col-md-12 dis-col-12" style="height: 115px;">
+																						
+
+																						<table>
+																							<tr>
+																								<td style="width: 150px">
+																									Tipo de Subbase&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																								</td>
+																								<td>
+																									<select name="materialsubbase1" id="materialsubbase1" class="form-control required" onchange="perdidasorporte(); loadGraph6(); finalk()">
+																										<option></option>
+																										<option>Bases granulares tratadas con cemento</option>
+																										<option>Sub-bases tratadas con cemento</option>
+																										<option>Bases asfálticas</option>
+																										<option>Sub-bases estabiliadas con asfalto</option>
+																										<option>Estabilización con cal</option>
+																										<option>Materiales granulares sin tratar</option>
+																										<option>Suelos finos y sub-rasantes naturales</option>
+																									</select>
+																								</td>
+																							</tr>
+
+																							<tr>
+																								<td>
+																									Pérdida de soporte rango&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																								</td>
+																								<td>
+																									<input class="form-control form-control-sm" type="text" id="tiposbrango" disabled='true'>
+																								</td>
+
+																							</tr>
+																							<tr>
+																								<td>
+																									Pérdida de soporte (L)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																								</td>
+																								<td>
+																									<input name="valorLsoporte" id="valorLsoporte" class="form-control form-control-sm numeric2 required" type="text" onchange="loadGraph6()" </td>
+																									<td style="display:none">
+																										<input class="form-control form-control-sm" type="text" id="ly">
+																									</td>
+																							</tr>
+
+																							<tr>
+																								<td>Módulo de reacción (Kcorr)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																								</td>
+																								<td>
+																									<input class="form-control form-control-sm" type="text" name='Kcorr' id='Kcorr' disabled='true'>
+																								</td>
+																							</tr>
+																						</table>
+																					</div>
+																				</div>
+																			</div>
+
+
+																		</div>
+
+																	</div>
+																	<!--Resultados-->
+																	<div class="panel panel-default col-md-3 dis-col-3" style="padding:0px; ">
+																			<!--poner botones de procedimientos e imprimir-->
+																		<div id="contenedor1" class="panel panel-default col-md-12" style="height: 134px">
+																			<div id="contenedor2" class="panel-heading">
+																				<strong>Resultados</strong>
+																				<a id="parametroResultados" href="#EspesorFinal">
+																					<span id="fa-arrow-circle-right" class="fa fa-arrow-circle-right right-proceso-rigid" style="color:white"></span>
+																				</a>
+																			</div>
+																			<div style="font-size: 10px;" class="panel-body" >
+																				<!--ESPESOR-->
+																				<div style="height: 93.5px">
+																				<table id="espesorigido" width="100%" align='center'>
+																					<tr>
+																						<td>
+																							Espesor de losa de concreto (in)
+																						</td>
+																						<td>
+																							<input type="text" id="d" disabled="disabled">
+																						</td>
+																					</tr>
+																					<tr>
+																						<td>
+																							Espesor de losa redondeado (in)
+																						</td>
+																						<td>
+																							<input type="text" id="dr" disabled="disabled">
+																						</td>
+																					</tr>
+																					<tr style="display:none">
+																						<td>
+																							<input type="text" id="valorxk">
+																						</td>
+																					</tr>
+																					<tr style="display:none">
+																						<td>
+																							<input type="text" id="ecy">
+																						</td>
+																					</tr>
+
+																				</table>
+																			</div>
+																				<!--END ESPESOR-->
+																			</div>
+																		</div>
+																		<div id="contenedor1" class="panel panel-default col-md-12" style="height: 130px">
+																			<div class="col-md-12 cuadro_autor" style="text-align: center; vertical-align: middle; font-family: arial; height: 129px">
+																				<br><br>
+																				
+																				<input id="btnPaso" style="display:none" type="button" value="Procedimiento" class="btn btn-warning btn-radius btn-sm ">
+																				<button id="reporte" style="display:none" type="button" class="btn btn-warning btn-radius btn-sm" onclick="imprimir1()">
+																					<i class="fa fa-file-text"></i>&nbsp;Imprimir </button>
+		
+																			</div>
+																		</div>
+																		
+																	</div>
+																	<!--END Resultados-->
+																	<div>
+																		<div id="myModal_aviso_rigid_anclas" class="modal fade col-md-12" role="dialog">
+																			<div class="modal-dialog" id="myModal_anclas">
+		
+																				<!-- Modal content-->
+																				<div class="modal-content">
+																					<div class="modal-header">
+																						<button id="closeModal" type="button" class="close" data-dismiss="modal">&times;</button>
+																					<h4 style="text-align:center;" class="modal-title"><strong> Importante!</strong></h4>
+																					</div>
+																					<div class="modal-body">
+																						<p style="font-family: Arial; font-size: 15px; text-align: justify">El usuario puede ubicar el procedimiento correspondiente a los parámetros de entrada dando clic en el siguiente icono, <span id="fa-arrow-circle-right-rigid" class="fa fa-arrow-circle-right right-proceso"></span> y viceversa puede ubicar los parámetros de entrada de cada procedimiento dando clic en este icono <span style="text-align: left" id="fa-arrow-circle-left-rigid" class="fa fa-arrow-circle-left"></span>. </p>
+																					   
+		
+																						
+		
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!--END Subrasante-->
+																	
+
+
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<div id="div-paso-paso" class="col-md-12" style="display: none">
+									<div class="panel-group" style="margin-bottom: 0px;">
+										<div class="panel panel-primary" style="border-bottom: none;">
+											<div id="procedimientos" class="panel-heading">
+												<h4 class="panel-title text-center">GRÁFICAS Y PROCEDIMIENTOS</h4>
+											</div>
+
+											<div id="pestanas" class="panel-body">
+												<div class="row">
+
+													<!--PESTAÑAS-->
+													<div class="col-md-12">
+														<div class="panel with-nav-tabs">
+															<div class="col-md-12" style="text-align: right; font-family: arial">
+																<ul class="nav nav-pills navbar-right">
+																	<li>
+																		<div class="liReporteUsuario">
+
+																			<button id="reporteUsuario" type="button" class="btn btn-warning btn-radius btn-sm " onclick="imprimir()">
+																				<i class="fa fa-file-text"></i> &nbsp;Imprimir</button>
+
+																		</div>
+																	</li>
+																	<li>
+																		<div>
+																						
+																				<button id="salirProcedimientos" type="button" class="btn btn-warning btn-radius btn-sm "  >Salir&nbsp;<i class="fa fa-close"></i>  </button>
+																					
+																		</div>
+																	</li>  
+																</ul>
+															</div>
+
+															<div class="panel-heading">
+																<ul class="nav nav-pills" id="myTab">
+
+																	<li class="active" id="tabTrafico">
+																		<a href="#tabEjesEquivalentes" data-toggle="tab">Tráfico</a>
+																	</li>
+																	<li id="tabSubbase" class="tabSubbase">
+																		<a href="#grafsubbaseGranular" data-toggle="tab">Subbase</a>
+																	</li>
+																	<li id="tabDrenaje" class="tab3">
+																		<a href="#drenaje" data-toggle="tab">Drenaje</a>
+																	</li>
+																	<li id="tabK" class="tabK">
+																		<a href="#moduloSubrasante" data-toggle="tab">Módulo reacción subrasante</a>
+																	</li>
+																	<li id="tabFundacionRigida" class="tabFundacionRigida">
+																		<a href="#efectfundacionrigida" data-toggle="tab">Efecto fundación rígida</a>
+																	</li>
+																	<li id="tabPerdidaSoporte" class="tabPerdidaSoporte">
+																		<a href="#moduloKCORR" data-toggle="tab">Factor pérdida soporte</a>
+																	</li>
+																	<li id="tabEspesorFinal" class="tabEspesorFinal">
+																		<a href="#espesorhormigon" data-toggle="tab">Espesor</a>
+																	</li>
+
+																</ul>
+															</div>
+
+															<div id="paso-paso" class="panel-body">
+																<div class="tab-content">
+																	<!--DATOS DE EJES EQUIVALENTES-->
+																	<div class="tab-pane fade in active row flex-row " id="tabEjesEquivalentes">
+																		<div id="contenedor1" class="panel panel-default resultados">
+																			<a href="#parametroTrafico">
+																				<div id="contenedor2" class="panel-heading">																				
+																					<span style="text-align: left" id="fa-arrow-circle-left"  class="fa fa-arrow-circle-left" style="color:white"></span>&nbsp;&nbsp;&nbsp;
+																					<strong>Cálculo del número de ejes equivalentes ESAL´S</strong>
+																				</div>
+																		    </a>
+
+																			<!-- TABLA CALCULO EJES EQUIVALENTES-->
+																			<div id="resultadosTrafico" class="panel-body" style="background: rgba(255,255,255,1)">
+
+																				    <section>
+																						<div class="tab-content">
+																							<p id="noCalcula_ESALS" style="text-align: center; display:none">No se ha realizado ningun cálculo</p>
+																							<table style="display:none; color:black" id="esalsTabla" border="1" cellspacing=0 class="table table-borderless table-hover table-responsive table-bordered table-condensed table-editable datosESALS ">
+																								<thead>
+																									<tr>
+
+																										<th rowspan="2">
+																												Tipo de vehículo
+																										
+																										</th>
+																										<th colspan="4">
+																												Configuración de ejes
+																											
+																										</th>
+																										<th colspan="4">
+																												Peso por eje
+																											
+																										</th>
+																										<th rowspan="2">
+																												% de vehículos
+																											
+																										</th>
+																										<th colspan="4">
+																												Factor de equivalencia de carga
+																										</th>
+																										<th rowspan="2">
+																												Factor camión
+																											
+																										</th>
+																										<th rowspan="2">
+																												ESAL'S
+																											</th>
+																									</tr>
+																									<tr>
+																										<td>
+																												Eje 1
+																										</td>
+																										<td>
+																												Eje 2
+																										</td>
+																										<td>
+																												Eje 3
+																										</td>
+																										<td>
+																												Eje 4
+																										</td>
+																										<td>
+																												Eje 1
+																										</td>
+																										<td>
+																												Eje 2
+																										</td>
+																										<td>
+																												Eje 3
+																										</td>
+																										<td>
+																												Eje 4
+																										</td>
+																										<td>
+																												Eje 1
+																										</td>
+																										<td>
+																												Eje 2
+																										</td>
+																										<td>
+																												Eje 3
+																										</td>
+																										<td>
+																												Eje 4
+																										</td>
+																									</tr>
+
+
+																								</thead>
+																								<tbody>
+																								</tbody>
+																								<tfoot>
+																									<tr>
+																										<td colspan="15">
+																											Σ ESAL´S
+																										</td>
+																										<td id="suma_esals_rigid">
+
+																										</td>
+																									</tr>
+
+																								</tfoot>
+																							</table>
+																							
+																							<br>
+																							<label style="display:none">Número de Ejes Equivalentes</label>
+																							<input style="display:none" class="numeroejesequi" type="text" disabled="false">
+																						</div>
+																					</section>
+																						<!--Para mostrar tabla de quivalencias-->
+																					<section>
+																						<div id="resultadoequivalencia" class="tab-content col-md-12" style="color:black">
+																						</div>
+																					</section>
+																			</div>
+																		</div>
+																	</div>
+																	<!--END DATOS DE EJES EQUIVALENTES-->
+
+																	<!-- DRENAJE-->
+																	<div align="center" class="tab-pane fade row flex-row" id="drenaje">
+																		<!--Coeficientes de drenaje-->
+																		<div id="contenedor1" class="panel panel-default resultados">
+																			<div id="contenedor2" class="panel-heading">
+																				<a href="#parametroDrenaje">
+																					<span style="text-align: left" id="fa-arrow-circle-left"  class="fa fa-arrow-circle-left" style="color:white"></span>&nbsp;&nbsp;&nbsp;
+																				</a>
+																				<strong>Coeficiente de drenaje</strong>
+																			</div>
+
+																			<div class="panel-body">
+																				<div class="col-md-12" id="dbs" style="padding-bottom: 15px;">
+																					<div id="contenedor11" class="panel panel-default">
+																						<a id="resultadoDrenaje" href="#adrenajebase">
+																							<div id="contenedor21" class="panel-heading">
+																								<strong>Subbase</strong>
+																							</div>
+																						</a>
+
+																						<div class="panel-body" id="print_drenaje_Subbase_rigid" style="background: rgba(255,255,255,1)">
+																							<table id="tabla-drenaje" border="1" cellspacing=0 class="table-responsive table-borderless table-hover table-bordered table-condensed table-editable" >
+																								<thead>
+																									<tr>
+																										<th rowspan="2" style="width:120px;">
+																											Calidad del drenaje (tiempo para remoción del agua)
+																										</th>
+																										<th colspan="4">
+																											% de tiempo de exposición de la estructura del pavimento a nivel de humedad próximos a la saturación
+																										</th>
+																									</tr>
+																									<tr>
+																										<th class="Por_01" style="width:25px;">
+																											0 - 1
+																										</th>
+																										<th class="Por_15" style="width:25px;">
+																											1 - 5
+																										</th>
+																										<th class="Por_525" style="width:25px;">
+																											5 - 25
+																										</th>
+																										<th class="Por_25" style="width:25px;">
+																											> 25
+																										</th>
+																									</tr>
+																								</thead>
+																								<tbody style="vertical-align: middle; text-align: center;"> 
+																									<tr id="Cal_Excelente">
+
+																										<td style="width:120px;">
+																											Excelente (2 horas)
+																										</td>
+																										<td class="Por_01" style="width:25px;">
+																											1.25 - 1.20
+																										</td>
+		
+																										<td class="Por_15" style="width:25px;">
+																											1.20 - 1.15
+																										</td>
+		
+																										<td class="Por_525" style="width:25px;">
+																											1.15 - 1.10
+																										</td>
+																										<td class="Por_25" style="width:25px;">
+																											1.10
+																										</td>
+																									</tr>
+																									<tr id="Cal_Buena">
+																										<td style="width:120px;">
+																											Buena ( 1 día)
+																										</td>
+																										<td class="Por_01" style="width:25px;">
+																											1.20 - 1.15
+																										</td>
+																										<td class="Por_15" style="width:25px;">
+																											1.15 - 1.10
+																										</td>
+																										<td class="Por_525" style="width:25px;">
+																											1.10 - 1.00
+																										</td>
+																										<td class="Por_25" style="width:25px;">
+																											1.00
+																										</td>
+																									</tr>
+																									<tr id="Cal_Aceptable">
+																										<td style="width:120px;">
+																											Aceptable (1 semana)
+																										</td>
+																										<td class="Por_01" style="width:25px;">
+																											1.15 - 1.10
+																										</td>
+																										<td class="Por_15" style="width:25px;">
+																											1.10 - 1.00
+																										</td>
+																										<td class="Por_525" style="width:25px;">
+																											1.00 - 0.90
+																										</td>
+																										<td class="Por_25" style="width:25px;">
+																											0.90
+																										</td>
+																									</tr>
+																									<tr id="Cal_Pobre">
+																										<td style="width:120px;">
+																											Pobre (1 mes)
+																										</td>
+																										<td class="Por_01" style="width:25px;">
+																											1.10 - 1.00
+																										</td>
+																										<td class="Por_15" style="width:25px;">
+																											1.00 - 0.90
+																										</td>
+																										<td class="Por_525" style="width:25px;">
+																											0.90 - 0.80
+																										</td>
+																										<td class="Por_25" style="width:25px;">
+																											0.80
+																										</td>
+																									</tr>
+																									<tr id="Cal_Muypobre">
+																										<td style="width:120px;">
+																											Muy pobre (el agua no drena)
+																										</td>
+																										<td class="Por_01" style="width:25px;">
+																											1.00 - 0.90
+																										</td>
+																										<td class="Por_15" style="width:25px;">
+																											0.90 - 0.80
+																										</td>
+																										<td class="Por_525" style="width:25px;">
+																											0.80 - 0.70
+																										</td>
+																										<td class="Por_25" style="width:25px;">
+																											0.70
+																										</td>
+																									</tr> 
+																								</tbody>
+																								
+
+
+																							</table>
+																							<br>
+																							<table id="procesodrenajeb" style="width:100%;">
+																								<tr style="text-align : justify;">
+																									<td>
+																										<p>En base a la celda sombreada se determina el coeficiente de drenaje de la subbase. Si el valor está dentro de un rango debería interpolarse, caso contrario (>25%)  debe tomarse el valor directamente. En este caso el coeficiente de drenaje es:</p>
+																									</td>
+																								</tr>
+																								<tr style="text-align : center;">
+																									<td>
+																										<p id="proceso1"></p>
+																										<p id="proceso2"></p>
+																									</td>
+																								</tr>
+																							</table>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!--END DRENAJE-->
+
+																	<!-- SUBBASE GRANULAR-->
+																	<div align="left" class="tab-pane fade row flex-row" id="grafsubbaseGranular">
+																		<div id="contenedor1" class="panel panel-default">
+
+																			<div class="panel-body">
+																				<div id="graf-sbs" class="col-md-12">
+																					<div id="graf-sbs-gra">
+
+																						<div id="grafica-sbs-granular">
+																							<div id="contenedor2" class="panel-heading">
+																								<a id="parametroSubbase" href="#parametroSubbase">
+																									<span style="text-align: left" id="fa-arrow-circle-left" class="fa fa-arrow-circle-left" style="color:white"></span>&nbsp;&nbsp;&nbsp;
+																								</a>
+																								<strong>Ábaco subbase granular</strong>
+
+																							</div>
+
+																							<div class="text-center" style="height: 400px; width: 650px;">
+																								<canvas id="subBaseGranular" width="650px" height="400px"></canvas>
+																							</div>
+																							<br>
+																							<div>
+																								<input id="guardarSubbaseGranular" class="btn btn-danger btn-radius btn-xs button-Carga-Ejemplo" type="button" value="Descargar"
+																								/>
+																							</div>
+
+																						</div>
+
+																						<div id="grafica-sbs-cemento">
+																							<div id="contenedor2" class="panel-heading">
+																								<a id="parametroSubbase" href="#parametroSubbase">
+																									<span style="text-align: left" id="fa-arrow-circle-left" class="fa fa-arrow-circle-left"></span>&nbsp;&nbsp;&nbsp;
+																								</a>
+																								<strong>Ábaco subbase cemento</strong>
+																							</div>
+																							<div class="text-center" style="height: 400px; width: 650px;">
+																								<canvas id="subBaseCemento" width="650px" height="400 px"></canvas>
+																							</div>
+																							<br>
+																							<div>
+																								<input id="guardarsubBaseCemento" class="btn btn-danger btn-radius btn-xs button-Carga-Ejemplo" type="button" value="Descargar"
+																								/>
+																							</div>
+																						</div>
+																						<div id="grafica-sbs-bituminosa">
+																							<div id="contenedor2" class="panel-heading">
+																								<a id="parametroSubbase" href="#parametroSubbase">
+																									<span style="text-align: left" id="fa-arrow-circle-left" class="fa fa-arrow-circle-left"></span>&nbsp;&nbsp;&nbsp;
+																								</a>
+																								<strong>Ábaco subbase bituminosa</strong>
+
+																							</div>
+																							<div class="text-center" style="height: 400px; width: 650px;">
+																								<canvas id="subBaseBituminoso" width="650px" height="400px"></canvas>
+																							</div>
+																							<br>
+																							<div>
+																								<input id="guardarsubBaseBituminoso" class="btn btn-danger btn-radius btn-xs button-Carga-Ejemplo" type="button" value="Descargar"
+																								/>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- END SUBBASE GRANULAR-->
+
+																	<!-- MODULO REACCION DE LA SUBRASANTE-->
+																	<div align="left" class="tab-pane fade row flex-row" id="moduloSubrasante">
+																		<div id="contenedor1" class="panel panel-default">
+																			<div id="contenedor2" class="panel-heading">
+																				<a href="#parametroK">
+																					<span style="text-align: left" id="fa-arrow-circle-left" class="fa fa-arrow-circle-left" style="color:white"></span>&nbsp;&nbsp;&nbsp;
+																				</a>
+																				<strong>Ábaco módulo reacción compuesto</strong>
+
+																			</div>
+																			<div class="panel-body">
+
+																				<div id="ReaccionCompuestoK">
+																					<div class="text-center" style="height: 600px; width: 650px;">
+																						<canvas id="moduloReaccionCompuestoK" width="650px" height="600px"></canvas>
+																					</div>
+																					<br>
+																					<div>
+																						<input id="guardarmoduloReaccionCompuestoK" class="btn btn-danger btn-radius btn-xs button-Carga-Ejemplo" type="button" value="Descargar"
+																						/>
+																					</div>
+																				</div>
+
+																			</div>
+																		</div>
+																	</div>
+																	<!-- END MODULO REACCION DE LA SUBRASANTE-->
+
+																	<!-- Efecto de fundacion rigida-->
+																	<div align="left" class="tab-pane fade row flex-row" id="efectfundacionrigida">
+																		<div id="contenedor1" class="panel panel-default">
+																			<div id="contenedor2" class="panel-heading">
+																				<a href="#parametroFundacionRigida">
+																					<span style="text-align: left" id="fa-arrow-circle-left" class="fa fa-arrow-circle-left"></span>&nbsp;&nbsp;&nbsp;
+																				</a>
+																				<strong>Efecto fundación rígida</strong>
+																			</div>
+																			<div id="fundacioRigida" class="panel-body">
+																				<div align="center" class="text-center " style="height: 600px; width: 650px;">
+																					<canvas id="KfundacionRigida" width="650px " height="600px"></canvas>
+																				</div>
+																				<br>
+																				<div>
+																					<input id="guardarKfundacionRigida" class="btn btn-danger btn-radius btn-xs button-Carga-Ejemplo" type="button" value="Descargar"
+																					/>
+																				</div>
+
+																			</div>
+																		</div>
+																	</div>
+																	<!-- Parametro perdida de soporte-->
+																	<div align="left " class="tab-pane fade row flex-row " id="moduloKCORR">
+																		<div id="contenedor1" class="panel panel-default">
+																			<div id="contenedor2" class="panel-heading">
+																				<a href="#parametroPerdidaSoporte">
+																					<span style="text-align: left" id="fa-arrow-circle-left" class="fa fa-arrow-circle-left"></span>&nbsp;&nbsp;&nbsp;
+																				</a>
+																				<strong>Pérdida de soporte</strong>
+																			</div>
+																			<div class="panel-body">
+																				<div id="modkcorr">
+																					<div id="perdidasorporte">
+
+																						<div class="text-center" style="height: 550px; width: 650px;">
+																							<canvas id="perdidaSoporteK" width="650px" height="550px"></canvas>
+																						</div>
+																						<br>
+																						<div>
+																							<input id="guardarperdidaSoporteK" class="btn btn-danger btn-radius btn-xs button-Carga-Ejemplo" type="button" value="Descargar"
+																							/>
+																						</div>
+
+																					</div>
+
+
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																	<!-- ESPESOR DE LOSA-->
+																	<div align="left " class="tab-pane fade row flex-row " id="espesorhormigon">
+
+																		<div id="contenedor1" class="panel panel-default">
+																			<div id="contenedor2" class="panel-heading">
+																				<a href="#parametroResultados">
+																					<span style="text-align: left" id="fa-arrow-circle-left" class="fa fa-arrow-circle-left"></span>&nbsp;&nbsp;&nbsp;
+																				</a>
+																				<strong>Espesor Final</strong>
+																			</div>
+																			<div class="panel-body" id="EspesorFinal">
+																				<div id="graf-sbs">
+																					<div id="graf-sbs-gra">
+
+																						<div id="materiales">
+																							<div>
+																								<input id="ampliar" type="button" value="Ampliar" data-toggle="modal" data-target="#myModalespesor">
+																							</div>
+																							<br>
+																							<div class="text-center graespesord" width="660px" height="480px">
+																									<canvas id="espesorFinalD" width="660px" height="480px"></canvas>
+																								</div>
+																							<br>
+																							<div>
+																								<input id="guardarespesorFinalD" class="btn btn-danger btn-radius btn-xs button-Carga-Ejemplo" type="button" value="Descargar"
+																								/>
+																							</div>
+
+																						</div>
+																						<div id="myModalespesor" class="modal fade col-md-12" role="dialog">
+																							<div class="modal-dialog">
+
+																								<!-- Modal content-->
+																								<div class="modal-content">
+																									<div class="modal-header">
+																										<button id="closemodal" type="button" class="close" data-dismiss="modal">&times;</button>
+																									</div>
+																									
+																									<div class="modal-body">
+																											<div class="text-center graespesord" width="1300px" height="550px">
+																													<canvas id="espesorFinalDamplio" width="1300px" height="550px"></canvas>
+																												</div>
+																											
+																										
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+
+
+																	</div>
+																	<!-- END ESPESOR DE LOSA-->
+
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</aside>
+			</form>
+        </div>
+		
+		
+		<!--Modal de trafico: myModalvehiculos-->
+		<div id="myModalvehiculos" class="modal fade col-md-12" role="dialog">
+			<div class="modal-dialog" id="modalCatalogo">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button id="closemodalx" type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 style="text-align:center;" class="modal-title">TABLA ECUATORIANA DE
+							VEHÍCULOS
+						</h4>
+						<input align='right' id="cargar-vehiculos" type="button" value=Cargar class="btn btn-warning btn-radius btn-sm">
+					</div>
+					<div class="modal-body">
+						<section style="font-size: 10px;" id="numerodeejes" class="tab-content col-md-12" style="padding-bottom: 20px;">
+							<form id="frmTraficoEq" action="">
+								<table>
+									<tr>
+										<td style="width:210px">Tráfico medio diario anual (veh/día)
+										</td>
+										<td>
+											<input id="trf_tmda" name="trf_tmda" class="form-control form-control-sm integer required" type="text" placeholder="Ingrese valor (veh/día)">
+										</td>
+										<td></td>
+										<td></td>
+										<td rowspan="6" style="font-size:16px; width:140px">
+												
+										</td>
+										<td rowspan="6" style="font-size:14px; width:210px;">
+											<p style="font-size:14px; text-align: center; width:210px; border: orange 2px solid; border-radius: 5px">Los valores de peso por eje pueden ser modificados a los valores que se dispongan</p>
+
+										</td>
+									</tr>
+									<tr>
+										<td>Tasa de crecimiento
+											vehicular
+											(%)
+										</td>
+										<td>
+											<input id="trf_tasa_cre" name="trf_tasa_cre" class="form-control form-control-sm numeric2 required" type="text" placeholder="Ingrese valor (%)" onkeyup="restrictionPorcent()"> </td>
+											
+									</tr>
+									<tr>
+										<td>Periodo de
+											diseño (años)
+										</td>
+										<td>
+											<input id="trf_per_dis" name="trf_per_dis" class="form-control form-control-sm integer required" type="text" placeholder="Ingrese valor (Años)"> </td>
+											
+									</tr>
+									<tr>
+										<td>Direccionalidad
+											(%)
+										</td>
+										<td>
+											<input id="trf_direccionalidad" name="trf_direccionalidad" class="form-control form-control-sm integer required" type="text"
+												placeholder="Ingrese valor (%)" onchange="restrictionDireccionalidad ()" onkeyup="restrictionPorcent()"> </td>
+												<td>
+													&nbsp;&nbsp;&nbsp;
+												</td>
+												<td>
+													<span id="fa-question-circle " class="fa fa-question-circle helpData">
+
+														<span class="tip-D">
+															<section class="sct-D">
+
+  
+																	<p style="text-align:center; font-size: 12px; font-weight: bold; font-family: Arial">
+																			Factor de distribución en función del número de carriles en cada dirección de la vía
+																		</p>
+																		<hr>
+																<table id="tabla_direccion_rigid" style="font-size: 11px; font-family: Arial" border="1"  class="table-responsive table-borderless table-hover table-bordered table-condensed table-editable">
+																	<thead>
+																	<tr>
+																		<th style="width: 90px">
+																			Número de carriles en cada dirección
+																		</th>
+																		<th style="width: 90px">
+																			Porcentaje de ejes simples equivalente 18 kip en el carril de diseño
+																		</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>
+																			1
+																		</td>
+																		<td>
+																			100
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			2
+																		</td>
+																		<td>
+																			80 - 100
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			3
+																		</td>
+																		<td>
+																			60 - 80
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			4 o más
+																		</td>
+																		<td>
+																			50 - 75
+																		</td>
+																	</tr>
+																</tbody>
+																</table>
+															</section>
+
+														</span>
+													</span>
+												</td>
+
+									</tr>
+									
+									<tr>
+										<td>Serviciabilidad
+											final - pt
+										</td>
+										<td>
+											<select id="trf_pt" name="trf_pt" class="form-control form-control-sm required" placeholder="Ingrese valor">
+												<option value="">--Seleccione--</option>
+												<option value="2">2</option>
+												<option value="2.5">2.5</option>
+												<option value="3">3</option>
+											</select>
+										</td>
+										
+
+									</tr>
+									<tr>
+										<td>Espesor - D
+										</td>
+										<td>
+											<select id="trf_espesor" name="trf_espesor" class="form-control form-control-sm required" placeholder="Ingrese valor">
+												<option value="">--Seleccione--</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+												<option value="13">13</option>
+												<option value="14">14</option>
+											</select>
+										</td>
+										
+									</tr>
+
+								</table>
+							</form>
+
+							<span id="abrir-modal-vehiculos" style="display:none" class="fa fa-cloud-upload "> Cargar vehículos
+							</span>
+
+							<br>
+
+						</section>
+						<table id="clasfvehiculos" class="table table-borderless table-hover table-responsive table-bordered table-condensed " border="5">
+							<thead>
+								<tr>
+									<th colspan="2" rowspan="2" width="80px">
+										Tipo de vehículo
+									</th>
+									<th colspan="2" rowspan="2">
+										Descripción
+									</th>
+									<th width="15px" height="40px" rowspan="2">
+										% de flota vehicular
+									</th>
+									<th colspan="4">
+										Peso por eje (kips)
+									</th>
+								</tr>
+								<tr>
+									<th>Eje1</th>
+									<th>Eje2</th>
+									<th>Eje3</th>
+									<th>Eje4</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--End myModalvehiculos-->
+    </div>
+
+	<div id="ReporteCaratula_rigid" style="margin-bottom: 0px; display:none">
+		<div  style="width :auto; height :auto; position: absolute ; top:40%;">
+			<h2 style="text-align: center">Laboratorio virtual de pavimentos</h2>
+			<h2 style="text-align: center">Reporte del cálculo de espesores de capas de pavimentos rígidos por el método AASHTO 1998
+			</h2>
+		</div>
+
+    </div>
+
+    <div id="ReporteDeclaracion_rigid" style="margin-bottom: 0px; display:none">
+        <p style="font-size: 18px; font-weight: bold">Renuncia</p>
+        <p style="font-size: 16px; text-align : justify;">El software de diseño de espesores de capas de pavimentos rígidos por el método AASHTO 1998 (versión Beta), se difunde bajo
+            el patrocinio del Grupo de Investigacion en Ingeniería Vial de la Titulación de Ingeniería Civil, en interés de mejorar el aprendizaje de diseño de pavimentos rígidos.
+            La Universidad Técnica Particular de Loja no asume ninguna responsabilidad por su contenido o uso. Este documento
+            no constituye un estándar, especificación o regulación, pues únicamente tiene fines académicos; así los nombres
+            de los elaboradores pueden aparecer en este software solo porque se consideran esenciales para el objetivo de
+            este.
+        </p>
+
+    </div>
+
+    <div id="Reporte_variables_resultados_rigid" style="margin-bottom: 0px; display:none">
+        <h2 style="width: 100%">Estimación de espesores de capas de pavimentos rígidos por el método AASHTO 1998</h2>
+        <table style="width: 100%" class="table-responsive  table-hover  table-condensed table-editable datosProyect" id="reporte1">
+
+            <!-- DATOS DEL PROYECTO-->
+            <tr>
+                <td style="font-size: 20px; font-weight: bold; vertical-align: middle; text-align: center; ">
+                    Datos del proyecto
+                </td>
+                <td>
+                    <h4>&nbsp;&nbsp;</h4>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable datosProyect">
+
+
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtNombre_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtUbicacion_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtRuta_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtTramo_rigid"></p>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtDisenador_rigid"></p>
+                </td>
+
+            </tr>
+
+
+        </table>
+
+
+        <br>
+        <!-- VARIABLES DE ENTRADA-->
+        <table style="width: 100%" class="table-responsive  table-hover  table-condensed table-editable">
+            <tr>
+                <td style="font-size: 20px; font-weight: bold; vertical-align: middle; text-align: center; ">
+                    Variables de entrada
+                </td>
+                <td>
+                    <h4>&nbsp;&nbsp;</h4>
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+            <tr>
+                <td style="font-size: 20px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Parámetros de diseño
+                </td>
+            </tr>
+            <!-- SERVICIABILIDAD-->
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_pi_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_pf_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_psi_rigid"></p>
+                </td>
+
+            </tr>
+            <!-- CONFIABILIDAD Y DESVIACIÓN ESTÁNDAR-->
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtConfi_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtZr_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtSo_rigid"></p>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <!-- PARÁMETROS DEL TRÁFICO-->
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+            <tr>
+                <td style="font-size: 20px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Parámetros de tráfico
+                </td>
+            </tr>
+            <tr class="datosESALS">
+                <td style=" font-size: 16px">
+                    <p id="txtTMDA_rigid"></p>
+                </td>
+
+            </tr>
+            <tr class="datosESALS">
+                <td style=" font-size: 16px">
+                    <p id="txt_r_rigid"></p>
+                </td>
+            </tr>
+            <tr class="datosESALS">
+                <td style=" font-size: 16px">
+                    <p id="txtPD_rigid"></p>
+                </td>
+            </tr>
+            <tr class="datosESALS">
+                <td style=" font-size: 16px">
+                    <p id="txtD_rigid"></p>
+                </td>
+            </tr>
+
+            
+            <tr class="datosESALS">
+                <td style=" font-size: 16px">
+                    <p id="txt_ptt_rigid"></p>
+                </td>
+            </tr>
+            <tr class="datosESALS">
+                <td style=" font-size: 16px">
+                    <p id="txt_Espesor_rigid"></p>
+                </td>
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtESALS_rigid"></p>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+            <tr>
+                <td style="font-size: 20px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Parámetros de subbase
+                </td>
+            </tr>
+
+            <tr>
+                <td style="font-size: 18px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Propiedades mecánicas de la capa
+                </td>
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_propiedad_subbase_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_a2_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txtMb_rigid"></p>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td style="font-size: 18px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Drenaje
+                </td>
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_cd_subbase_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_porcentajeHumedad_subbase_rigid"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_m2_rigid"></p>
+                </td>
+
+            </tr>
+        </table>
+        <br>
+    </div>
+
+    <!-- BEGIN JS PLUGIN-->
+    <br>
+    <!-- PARÁMETROS DE SUBBASE-->
+    <div id="ReporteResultados_rigid" style="margin-bottom: 0px; display:none">
+        <h2 style="text-align: center"></h2>
+        
+
+        <!-- TRANSFERENCIA DE CARGA -->
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+            <tr>
+                <td style="font-size: 20px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Coeficiente de transferencia de carga
+                </td>
+            </tr>
+
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_TipoBerma"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_DispCarga"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_TipoPavimento"></p>
+                </td>
+
+            </tr>
+
+            <td style=" font-size: 16px">
+                <p id="txt_Rango"></p>
+            </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_Valor"></p>
+                </td>
+
+            </tr>
+
+        </table>
+        <br>
+
+
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+            <tr>
+                <td style="font-size: 20px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Carpeta de Hormigón
+                </td>
+            </tr>
+
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_TipoAgregado"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_Resistencia"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_ModuloRotura"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_ModuloElastico"></p>
+                </td>
+
+            </tr>
+        </table>
+        <br>
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+
+            <tr>
+                <td style="font-size: 20px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Módulo de reacción K
+                </td>
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_EspesorK"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_ModuloResiSubrasante"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_ModuloResiSubbase"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_ModuloReaccion"></p>
+                </td>
+
+            </tr>
+        </table>
+        <br>
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+            <tr>
+                <td style="font-size: 20px; font-weight: bold;  vertical-align: middle; text-align: center;">
+                    Efecto fundación rígida
+                </td>
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_Produndidad"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_ModuloReaccion1"></p>
+                </td>
+
+            </tr>
+
+        </table>
+        <br>
+
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+
+            <tr>
+                <td style="font-size: 18px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Factor de pérdida de soporte
+                </td>
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_TipoSubbase"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_PerdidaRango"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_PerdidaValor"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_KCorregido"></p>
+                </td>
+
+            </tr>
+        </table>
+        <br>
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+
+            <tr>
+                <td style="font-size: 18px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Módulo resiliente
+                </td>
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_CBR"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_ModuloResiliente"></p>
+                </td>
+
+            </tr>
+        </table>
+        <br>
+        <table style="width: 100%" border="1" cellspacing=0 class="table-responsive  table-hover  table-condensed table-editable">
+
+            <tr>
+                <td style="font-size: 18px; font-weight: bold; vertical-align: middle; text-align: center;">
+                    Resultados
+                </td>
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_EspesorLosa"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td style=" font-size: 16px">
+                    <p id="txt_EspesorFinal"></p>
+                </td>
+
+            </tr>
+
+        </Table>
+    </div>
+
+    <!-- TITULO PRINCIPAL -->
+    <div id="titulo_principal_reporte_rigid" style="margin-bottom: 0px; display:none " class='page-break-after'>
+		<h2 style="text-align: center">Gráficas y procedimientos</h2>
+		<p style="text-align: justify">Para el cálculo el diseño del pavimento rígido por el método AASHTO 1998 se necesitan lo siguientes parámetros: número de ejes equivalentes (ESAL's); coeficiente de drenaje, estructural y módulo resiliente de la subbase; módulo resiliente de la subrasante y otros parámetros propios del método.</p>
+
+        <h3 style="text-align: center" class="datosESALS">
+            Cálculo de número de ejes equivalentes ESAL´S
+        </h3>
+            <p style="text-align: justify" class="datosESALS"> La determinación del valor de ESAL´S está en función del tráfico medio diario anual (TMDA), porcentaje de direccionalidad (A), porcentaje de flota vehicular (B), tasa de crecimiento vehicular (r), periodo de diseño (N). En primer lugar, se estiman los factores de equivalencia de carga (Fe) correspondiente a cada tipo de vehículo. Estos factores se obtienen de tablas que proporciona el método, las cuales están en relación con la serviciabilidad final (pt) y un espesor de losa asumido inicialmente. Con la suma de los factores de equivalencia de carga se obtiene el factor camión de cada vehículo (Fc). En base a todos estos datos se calcula el número de ejes equivalentes de cada vehículo, de acuerdo a la siguiente expresión:</p>
+            <p style="text-align: center" class="datosESALS">𝑁 = TMDA × A/100 × B/100 × 365 × ((1+r)^N)−1)/(ln(1+r)) × Fc</p>
+            
+            <p style="text-align: center; font-size: 14px" class="datosESALS">Tabla 1. Valores de factor de equivalencia y ESAL´S obtenidos</p>
+    </div>
+
+    <!-- TITULO COEFICIENTE DE DRENAJE -->
+    <div id="titulo_drenajeSubBase_reporte_rigid" style="margin-bottom: 0px; display:none " class='page-break-after'>
+        <p style="text-align: center; font-size: 20px">
+            <strong>Parámetros de subbase</strong>
+        </p>
+        <p style="text-align: center; font-size: 18px">
+            <strong>Coeficiente de drenaje</strong>
+        </p>
+        <p id="explicacionDrenaje" style="text-align: justify"></p>
+        <p id="table_drenaje_subbase" style="text-align: center; font-size: 14px"></p>
+    </div>
+
+    <!-- TITULO PARÁMETROS DE SUBBASE -->
+    <div id="titulo_graficaSubbase_reporte_rigid" style="margin-bottom: 0px; display:none; width: 100% " class='page-break-after'>
+        <p style="text-align: center; font-size: 18px">
+            <strong>Coeficiente estructural y módulo resiliente de la subbase</strong>
+        </p>
+        <p style="font-size: 16px; text-align: justify">Para la determinación de estos parámetros existen tres ábacos diferentes dependiendo del material, los cuales permiten obtener el coeficiente estructural y el módulo resiliente de la subbase.</p>
+        <p id="print_PropiedadSubBase_rigid" style="font-size: 16px; text-align: justify"></p>
+        <img style="width: 100%" id="copy_carta_subbase_rigid">
+        <p style="font-size: 14px; text-align: center">Figura 1. Ábaco de diseño para parámetros de subbase</p>
+        <br>
+    </div>
+
+    <!-- TITULO PARÁMETROS DE SUBRASANTE -->
+    <div id="titulo_graficaSubRasante_reporte_rigid" style="margin-bottom: 0px; display:none; width: 100% " class='page-break-after'>
+        <p style="text-align: center; font-size: 20px">
+            <strong>Parámetros de la subrasante</strong>
+        </p>
+        <p style="text-align: center; font-size: 18px">
+            <strong>Módulo resiliente</strong>
+        </p>
+        <p style="text-align: justify; ">
+            Para determinar el módulo resiliente de la subrasante se emplea la siguiente expresión:
+        </p>
+        <p id="MrEcuacion" style="text-align: center;"></p>
+        <p id="MrProceso" style="text-align: center;"></p>
+        <br>
+        <p style="text-align: center; font-size: 18px">
+            <strong>Módulo de reacción compuesto (k) de la subrasante</strong>
+        </p>
+        <p style="text-align: justify; ">
+				El módulo de reacción de la subrasante (k), se define como la presión que ha de transmitirse a una placa para producir en el suelo una deformación prefijada. Para determinarlo se emplea el ábaco ilustrado en la figura 2, el mismo que está en función del módulo resiliente de subrasante, el espesor y el módulo resiliente de la subbase.
+        </p>
+        <p id="print_moduloReaccion" style="font-size: 16px; text-align: justify"></p>
+        <img style="width: 100%" id="copy_carta_moduloReaccion">
+        <p style="font-size: 14px; text-align: center">Figura 2. Ábaco de diseño para el módulo de reacción compuesta</p>
+        <br>
+        <p style="text-align: center; font-size: 18px; display: none" class="procesoFundacionRigida">
+            <strong>Efecto de fundación rígida</strong>
+        </p>
+        <p style="text-align: justify; display: none " class="procesoFundacionRigida">
+            
+        </p>
+        <p id="print_fundación" style="font-size: 16px; text-align: justify; display: none" class="procesoFundacionRigida"></p>
+        <img style="width: 100%; display: none" id="copy_carta_fundacion" class="procesoFundacionRigida">
+        <p style="font-size: 14px; text-align: center; display: none" class="procesoFundacionRigida">Figura 3. Ábaco de diseño para el efecto de fundación rígida</p>
+        <br style="display:none" class="procesoFundacionRigida">
+        <p style="text-align: center; font-size: 18px;">
+            <strong>Factor de pérdida de soporte</strong>
+        </p>
+       
+        <p id="print_LS" style="font-size: 16px; text-align: justify;"></p>
+        <img style="width: 100%;" id="copy_carta_LS">
+        <p id="numFiguraLS" style="font-size: 14px; text-align: center;"></p>
+		<br>
+		<p style="text-align: center; font-size: 18px">
+            <strong>Módulo elástico del hormigón</strong>
+        </p>
+        <p style="text-align: justify; ">
+            Para determinar el módulo elástico del hormigón se emplea la siguiente expresión:
+        </p>
+        <p id="EcEcuacion" style="text-align: center;"></p>
+        <p id="EcProceso" style="text-align: center;"></p>
+		<br>
+		
+		<p style="text-align: center; font-size: 18px">
+            <strong>Coeficiente de tranferencia de carga</strong>
+        </p>
+        <p id="coef_TransferenciaJ" style="text-align: justify;"></p>
+        
+		<br>
+    </div>
+
+    <!-- TITULO CÁLCULO DE ESPESOR -->
+    
+    <div id="titulo_graficaEspesor_reporte" style="margin-bottom: 0px; display:none; width: 100% " class='page-break-after'>
+        <p style="text-align: center; font-size: 20px">
+            <strong>Cálculo de espesor de la losa de hormigón</strong>
+        </p>
+        <p style="text-align: center; font-size: 20px">
+            <strong>Método gráfico</strong>
+        </p>
+        <p id="explicacionEspesor" style="text-align: justify;"> </p>
+        <p id="print_Espesor" style="font-size: 16px; text-align: justify;"></p>
+        <img style="width: 100%" id="copy_carta_Espesor">
+        <p id="numFiguraEspesor" style="font-size: 14px; text-align: center"></p>
+		<br>
+		<p style="text-align: center; font-size: 20px">
+				<strong>Método numérico</strong>
+		</p>
+		<p style="text-align: justify;">El espesor de losa de hormigón, también pueden ser calculado usando la siguiente ecuación:
+		</p>
+		<img src="Images/FlotaVehiculos/ecuacionD.png" width="600px" height="100px" />
+		<p style="text-align: justify;">Después se debe colocar los valores de cada una de las variables así:</p>
+		<p id="explicaciónClcEspesor" style="text-align: justify;"></p>
+		<p id="txt_EspesorLosa_copy"></p>
+		<p id="txt_EspesorFinal_copy"></p>
+    </div>
+
+    <div id="titulo_clcSN_reporte" style="margin-bottom: 0px; display:none " class='page-break-after'>
+        <p style="text-align: center; font-size: 20px">
+            <strong>Cálculo de número estructural SN numérico</strong>
+        </p>
+    </div>
+
+    <div id="titulo_clcEspesor_reporte" style="margin-bottom: 0px; display:none " class='page-break-after'>
+        <p style="text-align: center; font-size: 20px">
+            <strong>Cálculo de espesor de capas de pavimento</strong>
+        </p>
+    </div>
+
+
+    <!-- BEGIN JS PLUGIN -->
+    <script type="text/javascript ">
+        /**
+         * Seteamos con index cero el combo y la imagen
+         * Autor: OneClick
+         */
+
+        //Hide all Graphics
+        var arrGraphics = ["graphics0 ", "graphics1 ", "graphics2 ", "graphics3 ", "graphics4 ", "graphics5 ",
+            "graphics6 ", "graphics7 ", "graphics8 ", "graphics9 ", "graphics10 ", "graphics11 ", "graphics12 ",
+            "graphics13 ", "graphics14 ", "graphics15 "
+        ];
+        jQuery.each(arrGraphics, function (i, val) {
+            $("#" + val).hide();
+        });
+        if ($("#graphics").length > 0) $("#graphics")[0].selectedIndex = 0;
+        $("#graphics0 ").show();
+
+        /**
+         * Show and Hide Graphics
+         * Autor: OneClick
+         * @param {select}: Elemento select
+         * @param {imgName}: Tipo imagen
+         */
+        function setImageGraphics(select, imgName) {
+            //Disabled all Graphics
+            jQuery.each(arrGraphics, function (i, val) {
+                $("# " + val).hide();
+            });
+            $("# " + imgName + select.selectedIndex).show();
+        }
+    </script>
+    <!-- END JS PLUGIN -->
+
+</body>
+
+</html>
